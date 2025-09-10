@@ -1,0 +1,667 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User authentication and authorization
+model User {
+  id                   String         @id @default(cuid())
+  email                String         @unique
+  password             String
+  role                 UserRole       @default(EMPLOYEE)
+  employeeId           String?        @unique
+  isActive             Boolean        @default(true)
+  lastLoginAt          DateTime?
+  passwordResetToken   String?
+  passwordResetExpires DateTime?
+  createdAt            DateTime       @default(now())
+  updatedAt            DateTime       @updatedAt
+
+  // Relations
+  employee      Employee?     @relation(fields: [employeeId], references: [id])
+  refreshTokens RefreshToken[]
+
+  @@map("users")
+}
+
+model RefreshToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("refresh_tokens")
+}
+
+enum UserRole {
+  SUPER_ADMIN
+  HR_ADMIN
+  HR_MANAGER
+  MANAGER
+  EMPLOYEE
+  READONLY
+}
+
+// Department and organizational structure
+model Department {
+  id                 String      @id @default(cuid())
+  name               String      @unique
+  description        String?
+  managerId          String?
+  parentDepartmentId String?
+  status             Status      @default(ACTIVE)
+  createdAt          DateTime    @default(now())
+  updatedAt          DateTime    @updatedAt
+  createdById        String?
+  updatedById        String?
+
+  // Relations
+  manager          Employee?    @relation("DepartmentManager", fields: [managerId], references: [id])
+  parentDepartment Department?  @relation("DepartmentHierarchy", fields: [parentDepartmentId], references: [id])
+  subDepartments   Department[] @relation("DepartmentHierarchy")
+  employees        Employee[]   @relation("EmployeeDepartment")
+  positions        Position[]
+
+  @@map("departments")
+}
+
+model Position {
+  id               String   @id @default(cuid())
+  title            String
+  description      String?
+  departmentId     String
+  requirements     String[]
+  responsibilities String[]
+  minSalary        Float?
+  maxSalary        Float?
+  status           Status   @default(ACTIVE)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  createdById      String?
+  updatedById      String?
+
+  // Relations
+  department Department @relation(fields: [departmentId], references: [id])
+  employees  Employee[] @relation("EmployeePosition")
+
+  @@map("positions")
+}
+
+// Employee management
+model Employee {
+  id               String          @id @default(cuid())
+  employeeId       String          @unique
+  firstName        String
+  lastName         String
+  email            String          @unique
+  phone            String
+  dateOfBirth      DateTime
+  hireDate         DateTime
+  terminationDate  DateTime?
+  status           Status          @default(ACTIVE)
+  profilePicture   String?
+  
+  // Personal Information (JSON fields)
+  personalInfo     Json
+  
+  // Employment Information
+  departmentId     String
+  positionId       String
+  managerId        String?
+  employmentType   EmploymentType
+  workLocation     WorkLocation
+  salaryGrade      String?
+  baseSalary       Float
+  currency         String          @default("USD")
+  
+  // Bank Information (JSON field)
+  bankInfo         Json?
+  
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  createdById      String?
+  updatedById      String?
+
+  // Relations
+  user               User?                @relation()
+  department         Department           @relation("EmployeeDepartment", fields: [departmentId], references: [id])
+  position           Position             @relation("EmployeePosition", fields: [positionId], references: [id])
+  manager            Employee?            @relation("EmployeeManager", fields: [managerId], references: [id])
+  subordinates       Employee[]           @relation("EmployeeManager")
+  managedDepartments Department[]         @relation("DepartmentManager")
+  
+  // Leave related
+  leaveBalances      LeaveBalance[]
+  leaveRequests      LeaveRequest[]       @relation("EmployeeLeaveRequests")
+  approvedLeaves     LeaveRequest[]       @relation("LeaveApprover")
+  leaveComments      LeaveComment[]
+  
+  // Payroll related
+  payslips           Payslip[]
+  employeeSalaries   EmployeeSalary[]
+  
+  // Recruitment related
+  jobPostings        JobPosting[]         @relation("JobPostingCreator")
+  approvedJobPostings JobPosting[]        @relation("JobPostingApprover")
+  interviews         InterviewerAssignment[]
+
+  @@map("employees")
+}
+
+enum EmploymentType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  INTERN
+}
+
+enum WorkLocation {
+  OFFICE
+  REMOTE
+  HYBRID
+}
+
+enum Status {
+  ACTIVE
+  INACTIVE
+  PENDING
+  DELETED
+}
+
+// Leave management
+model LeaveType {
+  id                String         @id @default(cuid())
+  name              String         @unique
+  description       String?
+  maxDaysPerYear    Int
+  carryForward      Boolean        @default(false)
+  carryForwardLimit Int?
+  requiresApproval  Boolean        @default(true)
+  allowHalfDay      Boolean        @default(true)
+  minimumNotice     Int            @default(0)
+  status            Status         @default(ACTIVE)
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+  createdById       String?
+  updatedById       String?
+
+  // Relations
+  leaveBalances LeaveBalance[]
+  leaveRequests LeaveRequest[]
+
+  @@map("leave_types")
+}
+
+model LeaveBalance {
+  id             String    @id @default(cuid())
+  employeeId     String
+  leaveTypeId    String
+  year           Int
+  entitlement    Float
+  used           Float     @default(0)
+  pending        Float     @default(0)
+  available      Float
+  carriedForward Float     @default(0)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  createdById    String?
+  updatedById    String?
+
+  // Relations
+  employee  Employee  @relation(fields: [employeeId], references: [id])
+  leaveType LeaveType @relation(fields: [leaveTypeId], references: [id])
+
+  @@unique([employeeId, leaveTypeId, year])
+  @@map("leave_balances")
+}
+
+model LeaveRequest {
+  id             String             @id @default(cuid())
+  employeeId     String
+  leaveTypeId    String
+  startDate      DateTime
+  endDate        DateTime
+  totalDays      Float
+  isHalfDay      Boolean            @default(false)
+  halfDayPeriod  HalfDayPeriod?
+  reason         String
+  status         LeaveRequestStatus @default(PENDING)
+  appliedDate    DateTime           @default(now())
+  approvedBy     String?
+  approvedDate   DateTime?
+  rejectedBy     String?
+  rejectedDate   DateTime?
+  rejectionReason String?
+  attachments    String[]
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+  createdById    String?
+  updatedById    String?
+
+  // Relations
+  employee  Employee       @relation("EmployeeLeaveRequests", fields: [employeeId], references: [id])
+  leaveType LeaveType      @relation(fields: [leaveTypeId], references: [id])
+  approver  Employee?      @relation("LeaveApprover", fields: [approvedBy], references: [id])
+  comments  LeaveComment[]
+
+  @@map("leave_requests")
+}
+
+model LeaveComment {
+  id             String   @id @default(cuid())
+  leaveRequestId String
+  commentBy      String
+  comment        String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  // Relations
+  leaveRequest LeaveRequest @relation(fields: [leaveRequestId], references: [id], onDelete: Cascade)
+  commenter    Employee     @relation(fields: [commentBy], references: [id])
+
+  @@map("leave_comments")
+}
+
+enum LeaveRequestStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  CANCELLED
+  WITHDRAWN
+}
+
+enum HalfDayPeriod {
+  MORNING
+  AFTERNOON
+}
+
+// Payroll management
+model PayrollPeriod {
+  id              String              @id @default(cuid())
+  name            String              @unique
+  startDate       DateTime
+  endDate         DateTime
+  payDate         DateTime
+  status          PayrollPeriodStatus @default(DRAFT)
+  processedBy     String?
+  processedDate   DateTime?
+  totalEmployees  Int                 @default(0)
+  totalGrossPay   Float               @default(0)
+  totalDeductions Float               @default(0)
+  totalNetPay     Float               @default(0)
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt
+  createdById     String?
+  updatedById     String?
+
+  // Relations
+  payslips Payslip[]
+
+  @@map("payroll_periods")
+}
+
+model Payslip {
+  id                   String        @id @default(cuid())
+  employeeId           String
+  payrollPeriodId      String
+  payslipNumber        String        @unique
+  employeeName         String
+  employeeIdDisplay    String
+  department           String
+  position             String
+  payDate              DateTime
+  workingDays          Int
+  actualWorkingDays    Float
+  basicSalary          Float
+  allowances           Json          // Array of allowances
+  overtime             Json          // Array of overtime
+  bonuses              Json          // Array of bonuses
+  totalEarnings        Float
+  deductions           Json          // Array of deductions
+  totalDeductions      Float
+  grossPay             Float
+  netPay               Float
+  taxableIncome        Float
+  taxDeducted          Float
+  status               PayslipStatus @default(DRAFT)
+  paidDate             DateTime?
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+  createdById          String?
+  updatedById          String?
+
+  // Relations
+  employee       Employee       @relation(fields: [employeeId], references: [id])
+  payrollPeriod  PayrollPeriod  @relation(fields: [payrollPeriodId], references: [id])
+
+  @@map("payslips")
+}
+
+model SalaryStructure {
+  id            String             @id @default(cuid())
+  name          String             @unique
+  description   String?
+  effectiveFrom DateTime
+  effectiveTo   DateTime?
+  components    SalaryComponent[]
+  status        Status             @default(ACTIVE)
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+  createdById   String?
+  updatedById   String?
+
+  // Relations
+  employeeSalaries EmployeeSalary[]
+
+  @@map("salary_structures")
+}
+
+model SalaryComponent {
+  id               String                   @id @default(cuid())
+  salaryStructureId String
+  name             String
+  type             SalaryComponentType
+  category         SalaryComponentCategory
+  calculationType  CalculationType
+  value            Float
+  baseComponent    String?
+  formula          String?
+  taxable          Boolean                  @default(true)
+  mandatory        Boolean                  @default(false)
+  order            Int                      @default(0)
+
+  // Relations
+  salaryStructure SalaryStructure @relation(fields: [salaryStructureId], references: [id], onDelete: Cascade)
+
+  @@map("salary_components")
+}
+
+model EmployeeSalary {
+  id                String            @id @default(cuid())
+  employeeId        String
+  salaryStructureId String
+  effectiveFrom     DateTime
+  effectiveTo       DateTime?
+  basicSalary       Float
+  currency          String            @default("USD")
+  components        Json              // Array of employee-specific component values
+  status            Status            @default(ACTIVE)
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  createdById       String?
+  updatedById       String?
+
+  // Relations
+  employee        Employee        @relation(fields: [employeeId], references: [id])
+  salaryStructure SalaryStructure @relation(fields: [salaryStructureId], references: [id])
+
+  @@map("employee_salaries")
+}
+
+enum PayrollPeriodStatus {
+  DRAFT
+  PROCESSING
+  COMPLETED
+  PAID
+  CANCELLED
+}
+
+enum PayslipStatus {
+  DRAFT
+  GENERATED
+  APPROVED
+  PAID
+  CANCELLED
+}
+
+enum SalaryComponentType {
+  EARNING
+  DEDUCTION
+}
+
+enum SalaryComponentCategory {
+  BASIC
+  ALLOWANCE
+  BONUS
+  DEDUCTION
+}
+
+enum CalculationType {
+  FIXED
+  PERCENTAGE
+  FORMULA
+}
+
+// Recruitment management
+model JobPosting {
+  id                  String            @id @default(cuid())
+  title               String
+  description         String
+  departmentId        String
+  positionId          String
+  requirements        String[]
+  responsibilities    String[]
+  qualifications      String[]
+  skills              String[]
+  experienceRequired  Int
+  salaryRange         Json              // {min, max, currency}
+  employmentType      EmploymentType
+  workLocation        WorkLocation
+  location            String
+  isUrgent            Boolean           @default(false)
+  applicationDeadline DateTime?
+  status              JobPostingStatus  @default(DRAFT)
+  postedBy            String
+  postedDate          DateTime          @default(now())
+  approvedBy          String?
+  approvedDate        DateTime?
+  totalApplications   Int               @default(0)
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+  createdById         String?
+  updatedById         String?
+
+  // Relations
+  department   Department        @relation(fields: [departmentId], references: [id])
+  position     Position          @relation(fields: [positionId], references: [id])
+  postedByUser Employee          @relation("JobPostingCreator", fields: [postedBy], references: [id])
+  approvedByUser Employee?       @relation("JobPostingApprover", fields: [approvedBy], references: [id])
+  applications JobApplication[]
+
+  @@map("job_postings")
+}
+
+model Applicant {
+  id               String            @id @default(cuid())
+  firstName        String
+  lastName         String
+  email            String            @unique
+  phone            String
+  address          String
+  city             String
+  state            String
+  country          String
+  zipCode          String
+  resumeUrl        String?
+  portfolioUrl     String?
+  linkedinUrl      String?
+  totalExperience  Int               @default(0)
+  currentCompany   String?
+  currentPosition  String?
+  currentSalary    Float?
+  noticePeriod     Int?
+  education        Json              // Array of education records
+  workExperience   Json              // Array of work experience
+  skills           Json              // Array of skills
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  createdById      String?
+  updatedById      String?
+
+  // Relations
+  applications JobApplication[]
+
+  @@map("applicants")
+}
+
+model JobApplication {
+  id              String                @id @default(cuid())
+  jobPostingId    String
+  applicantId     String
+  applicationDate DateTime              @default(now())
+  status          JobApplicationStatus  @default(SUBMITTED)
+  source          ApplicationSource
+  coverLetter     String?
+  expectedSalary  Float?
+  availableFrom   DateTime?
+  currentStage    String?
+  stageHistory    Json                  // Array of stage history
+  feedback        Json                  // Array of feedback
+  internalNotes   String[]
+  finalDecision   FinalDecision?
+  decisionDate    DateTime?
+  decisionBy      String?
+  decisionReason  String?
+  createdAt       DateTime              @default(now())
+  updatedAt       DateTime              @updatedAt
+  createdById     String?
+  updatedById     String?
+
+  // Relations
+  jobPosting JobPosting  @relation(fields: [jobPostingId], references: [id])
+  applicant  Applicant   @relation(fields: [applicantId], references: [id])
+  interviews Interview[]
+
+  @@map("job_applications")
+}
+
+model Interview {
+  id                String            @id @default(cuid())
+  applicationId     String
+  type              InterviewType
+  round             Int
+  scheduledDate     DateTime
+  duration          Int               // in minutes
+  mode              InterviewMode
+  location          String?
+  meetingLink       String?
+  status            InterviewStatus   @default(SCHEDULED)
+  conductedDate     DateTime?
+  feedback          Json              // Array of interviewer feedback
+  overallRating     Float?
+  recommendation    Recommendation    @default(PENDING)
+  scheduledBy       String
+  rescheduledCount  Int               @default(0)
+  cancellationReason String?
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  createdById       String?
+  updatedById       String?
+
+  // Relations
+  application       JobApplication              @relation(fields: [applicationId], references: [id])
+  interviewers      InterviewerAssignment[]
+
+  @@map("interviews")
+}
+
+model InterviewerAssignment {
+  id           String           @id @default(cuid())
+  interviewId  String
+  interviewerId String
+  role         InterviewerRole  @default(PRIMARY)
+
+  // Relations
+  interview    Interview @relation(fields: [interviewId], references: [id], onDelete: Cascade)
+  interviewer  Employee  @relation(fields: [interviewerId], references: [id])
+
+  @@unique([interviewId, interviewerId])
+  @@map("interviewer_assignments")
+}
+
+enum JobPostingStatus {
+  DRAFT
+  PENDING_APPROVAL
+  ACTIVE
+  PAUSED
+  CLOSED
+  CANCELLED
+}
+
+enum JobApplicationStatus {
+  SUBMITTED
+  UNDER_REVIEW
+  SHORTLISTED
+  INTERVIEW_SCHEDULED
+  INTERVIEWED
+  OFFER_EXTENDED
+  OFFER_ACCEPTED
+  OFFER_DECLINED
+  HIRED
+  REJECTED
+  WITHDRAWN
+}
+
+enum ApplicationSource {
+  WEBSITE
+  JOB_BOARD
+  SOCIAL_MEDIA
+  REFERRAL
+  RECRUITMENT_AGENCY
+  WALK_IN
+  OTHER
+}
+
+enum InterviewType {
+  PHONE_SCREENING
+  TECHNICAL
+  BEHAVIORAL
+  PANEL
+  FINAL
+  HR_ROUND
+}
+
+enum InterviewMode {
+  IN_PERSON
+  VIDEO_CALL
+  PHONE_CALL
+}
+
+enum InterviewStatus {
+  SCHEDULED
+  CONFIRMED
+  RESCHEDULED
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
+
+enum InterviewerRole {
+  PRIMARY
+  SECONDARY
+  OBSERVER
+}
+
+enum Recommendation {
+  HIRE
+  NO_HIRE
+  MAYBE
+  PENDING
+}
+
+enum FinalDecision {
+  HIRED
+  REJECTED
+  WITHDRAWN
+}

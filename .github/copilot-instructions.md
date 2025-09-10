@@ -1,0 +1,9 @@
+- [x] Verify that the copilot-instructions.md file in the .github directory is created.
+- [x] Clarify Project Requirements - HRM System with MERN stack, PostgreSQL, Prisma, JWT, TailwindCSS, Shadcn UI, TypeScript, Docker
+- [x] Scaffold the Project - Created complete folder structure with shared types, backend API, and frontend setup
+- [x] Customize the Project - Implemented feature-based architecture with proper separation of concerns
+- [ ] Install Required Extensions
+- [ ] Compile the Project
+- [ ] Create and Run Task
+- [ ] Launch the Project
+- [ ] Ensure Documentation is Complete

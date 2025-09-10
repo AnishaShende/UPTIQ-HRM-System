@@ -1,0 +1,138 @@
+2025-09-10 22:07:29 [ERROR]: uncaughtException: @prisma/client did not initialize yet. Please run "prisma generate" and try to import it again.
+Error: @prisma/client did not initialize yet. Please run "prisma generate" and try to import it again.
+    at new PrismaClient (E:\uptiqai\backend\node_modules\.prisma\client\default.js:43:11)
+    at <anonymous> (E:\uptiqai\backend\src\config\database.ts:6:23)
+    at Object.<anonymous> (E:\uptiqai\backend\src\config\database.ts:144:16)
+    at Module._compile (node:internal/modules/cjs/loader:1554:14)
+    at Object.transformer (E:\uptiqai\backend\node_modules\tsx\dist\register-D46fvsV_.cjs:3:1104)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:220:24)
+    at Module.require (node:internal/modules/cjs/loader:1311:12)
+Stack: Error: @prisma/client did not initialize yet. Please run "prisma generate" and try to import it again.
+    at new PrismaClient (E:\uptiqai\backend\node_modules\.prisma\client\default.js:43:11)
+    at <anonymous> (E:\uptiqai\backend\src\config\database.ts:6:23)
+    at Object.<anonymous> (E:\uptiqai\backend\src\config\database.ts:144:16)
+    at Module._compile (node:internal/modules/cjs/loader:1554:14)
+    at Object.transformer (E:\uptiqai\backend\node_modules\tsx\dist\register-D46fvsV_.cjs:3:1104)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:220:24)
+    at Module.require (node:internal/modules/cjs/loader:1311:12)
+Meta: {
+  "error": {},
+  "exception": true,
+  "date": "Wed Sep 10 2025 22:07:29 GMT+0530 (India Standard Time)",
+  "process": {
+    "pid": 31652,
+    "uid": null,
+    "gid": null,
+    "cwd": "E:\\uptiqai\\backend",
+    "execPath": "C:\\Program Files\\nodejs\\node.exe",
+    "version": "v22.14.0",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "E:\\uptiqai\\backend\\src\\server.ts"
+    ],
+    "memoryUsage": {
+      "rss": 109645824,
+      "heapTotal": 34594816,
+      "heapUsed": 18973088,
+      "external": 3720960,
+      "arrayBuffers": 248897
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 1699263.687
+  },
+  "trace": [
+    {
+      "column": 11,
+      "file": "E:\\uptiqai\\backend\\node_modules\\.prisma\\client\\default.js",
+      "function": "new PrismaClient",
+      "line": 43,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 23,
+      "file": "E:\\uptiqai\\backend\\src\\config\\database.ts",
+      "function": "<anonymous>",
+      "line": 6,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 16,
+      "file": "E:\\uptiqai\\backend\\src\\config\\database.ts",
+      "function": null,
+      "line": 144,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 14,
+      "file": "node:internal/modules/cjs/loader",
+      "function": "Module._compile",
+      "line": 1554,
+      "method": "_compile",
+      "native": false
+    },
+    {
+      "column": 1104,
+      "file": "E:\\uptiqai\\backend\\node_modules\\tsx\\dist\\register-D46fvsV_.cjs",
+      "function": "Object.transformer",
+      "line": 3,
+      "method": "transformer",
+      "native": false
+    },
+    {
+      "column": 32,
+      "file": "node:internal/modules/cjs/loader",
+      "function": "Module.load",
+      "line": 1289,
+      "method": "load",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:internal/modules/cjs/loader",
+      "function": "Function._load",
+      "line": 1108,
+      "method": "_load",
+      "native": false
+    },
+    {
+      "column": 14,
+      "file": "node:diagnostics_channel",
+      "function": "TracingChannel.traceSync",
+      "line": 322,
+      "method": "traceSync",
+      "native": false
+    },
+    {
+      "column": 24,
+      "file": "node:internal/modules/cjs/loader",
+      "function": "wrapModuleLoad",
+      "line": 220,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:internal/modules/cjs/loader",
+      "function": "Module.require",
+      "line": 1311,
+      "method": "require",
+      "native": false
+    }
+  ],
+  "service": "hrm-backend"
+}
