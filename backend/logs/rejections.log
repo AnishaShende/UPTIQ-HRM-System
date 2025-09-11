@@ -1,0 +1,160 @@
+2025-09-11 17:37:36 [ERROR]: unhandledRejection: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+Stack: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+Meta: {
+  "error": {
+    "name": "PrismaClientInitializationError",
+    "clientVersion": "5.22.0"
+  },
+  "rejection": true,
+  "date": "Thu Sep 11 2025 17:37:36 GMT+0000 (Coordinated Universal Time)",
+  "process": {
+    "pid": 29,
+    "uid": 0,
+    "gid": 0,
+    "cwd": "/app",
+    "execPath": "/usr/local/bin/node",
+    "version": "v18.20.8",
+    "argv": [
+      "/usr/local/bin/node",
+      "/app/src/server.ts"
+    ],
+    "memoryUsage": {
+      "rss": 121393152,
+      "heapTotal": 38223872,
+      "heapUsed": 23830376,
+      "external": 2776720,
+      "arrayBuffers": 228221
+    }
+  },
+  "os": {
+    "loadavg": [
+      0.18,
+      0.17,
+      0.53
+    ],
+    "uptime": 2480.23
+  },
+  "trace": [
+    {
+      "column": 10243,
+      "file": "/app/node_modules/@prisma/client/runtime/library.js",
+      "function": "Object.loadLibrary",
+      "line": 111,
+      "method": "loadLibrary",
+      "native": false
+    },
+    {
+      "column": 448,
+      "file": "/app/node_modules/@prisma/client/runtime/library.js",
+      "function": "async _r.loadEngine",
+      "line": 112,
+      "method": "loadEngine",
+      "native": false
+    },
+    {
+      "column": 12599,
+      "file": "/app/node_modules/@prisma/client/runtime/library.js",
+      "function": "async _r.instantiateLibrary",
+      "line": 111,
+      "method": "instantiateLibrary",
+      "native": false
+    }
+  ],
+  "service": "hrm-backend"
+}
+2025-09-11 17:38:45 [ERROR]: unhandledRejection: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+Stack: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+Meta: {
+  "error": {
+    "name": "PrismaClientInitializationError",
+    "clientVersion": "5.22.0"
+  },
+  "rejection": true,
+  "date": "Thu Sep 11 2025 17:38:45 GMT+0000 (Coordinated Universal Time)",
+  "process": {
+    "pid": 29,
+    "uid": 0,
+    "gid": 0,
+    "cwd": "/app",
+    "execPath": "/usr/local/bin/node",
+    "version": "v18.20.8",
+    "argv": [
+      "/usr/local/bin/node",
+      "/app/src/server.ts"
+    ],
+    "memoryUsage": {
+      "rss": 107597824,
+      "heapTotal": 38748160,
+      "heapUsed": 21678512,
+      "external": 2600738,
+      "arrayBuffers": 52103
+    }
+  },
+  "os": {
+    "loadavg": [
+      0.17,
+      0.16,
+      0.5
+    ],
+    "uptime": 2549.35
+  },
+  "trace": [
+    {
+      "column": 10243,
+      "file": "/app/node_modules/@prisma/client/runtime/library.js",
+      "function": "Object.loadLibrary",
+      "line": 111,
+      "method": "loadLibrary",
+      "native": false
+    },
+    {
+      "column": 448,
+      "file": "/app/node_modules/@prisma/client/runtime/library.js",
+      "function": "async _r.loadEngine",
+      "line": 112,
+      "method": "loadEngine",
+      "native": false
+    },
+    {
+      "column": 12599,
+      "file": "/app/node_modules/@prisma/client/runtime/library.js",
+      "function": "async _r.instantiateLibrary",
+      "line": 111,
+      "method": "instantiateLibrary",
+      "native": false
+    }
+  ],
+  "service": "hrm-backend"
+}
