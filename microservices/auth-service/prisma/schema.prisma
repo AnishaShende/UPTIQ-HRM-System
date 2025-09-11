@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User authentication and authorization
+model User {
+  id                   String    @id @default(cuid())
+  email                String    @unique
+  password             String
+  role                 UserRole  @default(EMPLOYEE)
+  employeeId           String?   @unique
+  isActive             Boolean   @default(true)
+  lastLoginAt          DateTime?
+  passwordResetToken   String?
+  passwordResetExpires DateTime?
+  emailVerified        Boolean   @default(false)
+  emailVerificationToken String?
+  twoFactorEnabled     Boolean   @default(false)
+  twoFactorSecret      String?
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+
+  // Relations
+  refreshTokens RefreshToken[]
+  loginHistory  LoginHistory[]
+
+  @@map("users")
+}
+
+model RefreshToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  expiresAt DateTime
+  isRevoked Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("refresh_tokens")
+}
+
+model LoginHistory {
+  id        String   @id @default(cuid())
+  userId    String
+  ipAddress String
+  userAgent String?
+  location  String?
+  success   Boolean  @default(true)
+  failureReason String?
+  createdAt DateTime @default(now())
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("login_history")
+}
+
+enum UserRole {
+  SUPER_ADMIN
+  HR_ADMIN
+  HR_MANAGER
+  MANAGER
+  EMPLOYEE
+  READONLY
+}

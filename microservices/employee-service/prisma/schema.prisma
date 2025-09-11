@@ -1,0 +1,118 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Department and organizational structure
+model Department {
+  id                 String   @id @default(cuid())
+  name               String   @unique
+  description        String?
+  managerId          String?
+  parentDepartmentId String?
+  status             Status   @default(ACTIVE)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  createdById        String?
+  updatedById        String?
+
+  // Relations
+  manager          Employee?    @relation("DepartmentManager", fields: [managerId], references: [id])
+  parentDepartment Department?  @relation("DepartmentHierarchy", fields: [parentDepartmentId], references: [id])
+  subDepartments   Department[] @relation("DepartmentHierarchy")
+  employees        Employee[]   @relation("EmployeeDepartment")
+  positions        Position[]
+
+  @@map("departments")
+}
+
+model Position {
+  id               String   @id @default(cuid())
+  title            String
+  description      String?
+  departmentId     String
+  requirements     String[]
+  responsibilities String[]
+  minSalary        Float?
+  maxSalary        Float?
+  status           Status   @default(ACTIVE)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  createdById      String?
+  updatedById      String?
+
+  // Relations
+  department Department @relation(fields: [departmentId], references: [id])
+  employees  Employee[] @relation("EmployeePosition")
+
+  @@map("positions")
+}
+
+// Employee management
+model Employee {
+  id              String    @id @default(cuid())
+  employeeId      String    @unique
+  firstName       String
+  lastName        String
+  email           String    @unique
+  phone           String
+  dateOfBirth     DateTime
+  hireDate        DateTime
+  terminationDate DateTime?
+  status          Status    @default(ACTIVE)
+  profilePicture  String?
+
+  // Personal Information (JSON fields)
+  personalInfo Json
+
+  // Employment Information
+  departmentId   String
+  positionId     String
+  managerId      String?
+  employmentType EmploymentType
+  workLocation   WorkLocation
+  salaryGrade    String?
+  baseSalary     Float
+  currency       String         @default("USD")
+
+  // Bank Information (JSON field)
+  bankInfo Json?
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  createdById String?
+  updatedById String?
+
+  // Relations
+  department         Department   @relation("EmployeeDepartment", fields: [departmentId], references: [id])
+  position           Position     @relation("EmployeePosition", fields: [positionId], references: [id])
+  manager            Employee?    @relation("EmployeeManager", fields: [managerId], references: [id])
+  subordinates       Employee[]   @relation("EmployeeManager")
+  managedDepartments Department[] @relation("DepartmentManager")
+
+  @@map("employees")
+}
+
+enum EmploymentType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  INTERN
+}
+
+enum WorkLocation {
+  OFFICE
+  REMOTE
+  HYBRID
+}
+
+enum Status {
+  ACTIVE
+  INACTIVE
+  PENDING
+  DELETED
+}
