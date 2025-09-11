@@ -2,7 +2,7 @@ import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 import { toast } from "sonner";
 
 const API_BASE_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+  import.meta.env.VITE_API_URL || "http://localhost:3000/api/v1";
 
 class ApiClient {
   private instance: AxiosInstance;
@@ -65,7 +65,9 @@ class ApiClient {
         }
 
         // Handle other errors
-        if (error.response?.data?.message) {
+        if (error.response?.data?.error?.message) {
+          toast.error(error.response.data.error.message);
+        } else if (error.response?.data?.message) {
           toast.error(error.response.data.message);
         } else if (error.message) {
           toast.error(error.message);
