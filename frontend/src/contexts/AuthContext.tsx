@@ -91,8 +91,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       setIsLoading(true);
       const response = await authApi.register(userData);
 
+      console.log(response);
+
       toast.success(
-        "Registration successful! Please check your email to verify your account."
+        "Registration successful! Please check your email to verify your account.",
       );
     } catch (error: any) {
       throw error;
@@ -128,7 +130,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       await authApi.resetPassword(token, password);
       toast.success(
-        "Password reset successful! You can now log in with your new password."
+        "Password reset successful! You can now log in with your new password.",
       );
     } catch (error: any) {
       throw error;

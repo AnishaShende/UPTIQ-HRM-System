@@ -1,0 +1,2515 @@
+2025-09-11 12:48:01 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 12:48:01 [ERROR]: ❌ Database connection failed: Authentication failed against database server at `localhost`, the provided database credentials for `anisha` are not valid.
+
+Please make sure to provide valid database credentials for the database server at `localhost`.
+Stack: PrismaClientInitializationError: Authentication failed against database server at `localhost`, the provided database credentials for `anisha` are not valid.
+
+Please make sure to provide valid database credentials for the database server at `localhost`.
+    at t (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:112:2488)
+    at async DatabaseManager.connect (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/config/database.ts:75:7)
+    at async startServer (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts:14:5)
+Meta: {
+  "service": "hrm-backend",
+  "name": "PrismaClientInitializationError",
+  "clientVersion": "5.22.0",
+  "errorCode": "P1000"
+}
+2025-09-11 12:48:57 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 12:48:57 [ERROR]: ❌ Database connection failed: Authentication failed against database server at `localhost`, the provided database credentials for `anisha` are not valid.
+
+Please make sure to provide valid database credentials for the database server at `localhost`.
+Stack: PrismaClientInitializationError: Authentication failed against database server at `localhost`, the provided database credentials for `anisha` are not valid.
+
+Please make sure to provide valid database credentials for the database server at `localhost`.
+    at t (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:112:2488)
+    at async DatabaseManager.connect (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/config/database.ts:75:7)
+    at async startServer (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts:14:5)
+Meta: {
+  "service": "hrm-backend",
+  "name": "PrismaClientInitializationError",
+  "clientVersion": "5.22.0",
+  "errorCode": "P1000"
+}
+2025-09-11 12:59:12 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 12:59:12 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 12:59:12 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "3ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 12:59:12 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 12:59:12 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 12:59:12 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 12:59:12 [INFO]: 🚀 Server is running on port 3000
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 12:59:12 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 12:59:12 [INFO]: �📚 API Documentation: http://localhost:3000/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 12:59:12 [INFO]: 🏥 Health Check: http://localhost:3000/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 12:59:12 [INFO]: 🔗 API Base URL: http://localhost:3000/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 12:59:58 [INFO]: Received SIGINT, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 12:59:58 [INFO]: SIGINT received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 12:59:58 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:04:05 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 13:04:05 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:04:05 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 13:04:05 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:04:05 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:04:05 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:04:05 [INFO]: 🚀 Server is running on port 3000
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:04:05 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:04:05 [INFO]: �📚 API Documentation: http://localhost:3000/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:04:05 [INFO]: 🏥 Health Check: http://localhost:3000/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:04:05 [INFO]: 🔗 API Base URL: http://localhost:3000/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:04:55 [INFO]: Received SIGINT, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:04:55 [INFO]: SIGINT received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:04:55 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:05:11 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 13:05:11 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:05:11 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 13:05:11 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:05:11 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:05:11 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:05:11 [INFO]: 🚀 Server is running on port 3000
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:05:11 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:05:11 [INFO]: �📚 API Documentation: http://localhost:3000/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:05:11 [INFO]: 🏥 Health Check: http://localhost:3000/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:05:11 [INFO]: 🔗 API Base URL: http://localhost:3000/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:05:32 [ERROR]: Uncaught Exception: Cannot set headers after they are sent to the client
+Stack: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:700:11)
+    at ServerResponse.<anonymous> (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/middleware/logger.middleware.ts:77:9)
+    at ServerResponse.emit (node:events:530:35)
+    at onFinish (node:_http_outgoing:1082:10)
+    at callback (node:internal/streams/writable:766:21)
+    at afterWrite (node:internal/streams/writable:710:5)
+    at afterWriteTick (node:internal/streams/writable:696:10)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+Meta: {
+  "service": "hrm-backend",
+  "code": "ERR_HTTP_HEADERS_SENT"
+}
+2025-09-11 13:05:32 [INFO]: UNCAUGHT_EXCEPTION received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:05:32 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:05:32 [INFO]: GET /api-docs 301 158 - 5.488 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:05:32 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:10:28 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 13:10:28 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:10:28 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 13:10:28 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:10:28 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:10:28 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:10:28 [INFO]: 🚀 Server is running on port 3000
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:10:28 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:10:28 [INFO]: �📚 API Documentation: http://localhost:3000/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:10:28 [INFO]: 🏥 Health Check: http://localhost:3000/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:10:28 [INFO]: 🔗 API Base URL: http://localhost:3000/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:11:01 [INFO]: Received SIGINT, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:11:01 [INFO]: SIGINT received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:11:01 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:11:26 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 13:11:26 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:11:26 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "0ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 13:11:26 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:11:26 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:11:26 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:11:26 [INFO]: 🚀 Server is running on port 3000
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:11:26 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:11:26 [INFO]: �📚 API Documentation: http://localhost:3000/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:11:26 [INFO]: 🏥 Health Check: http://localhost:3000/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:11:26 [INFO]: 🔗 API Base URL: http://localhost:3000/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:11:45 [INFO]: GET /health 200 253 - 4.399 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:11:58 [INFO]: GET /health 200 253 - 0.790 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:11:58 [INFO]: GET /favicon.ico 404 124 - 2.598 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:12:48 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:12:48 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:12:48 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:12:48 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:12:49 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 13:12:49 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:12:49 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 13:12:49 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:12:49 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:12:49 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:12:49 [INFO]: 🚀 Server is running on port 3000
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:12:49 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:12:49 [INFO]: �📚 API Documentation: http://localhost:3000/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:12:49 [INFO]: 🏥 Health Check: http://localhost:3000/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:12:49 [INFO]: 🔗 API Base URL: http://localhost:3000/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:13:10 [INFO]: GET /api/v1 200 287 - 3.354 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:13:10 [INFO]: GET /favicon.ico 404 124 - 1.765 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:13:40 [INFO]: GET /api/v1/auth 404 124 - 1.645 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:13:41 [INFO]: GET /favicon.ico 404 124 - 0.631 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:14:18 [INFO]: GET /api-docs 301 158 - 3.172 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:14:18 [INFO]: GET /api-docs/ 200 - - 2.877 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:14:18 [INFO]: GET /api-docs/swagger-ui-init.js 200 - - 0.595 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:14:18 [INFO]: GET /api-docs/swagger-ui.css 200 - - 14.950 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:14:18 [INFO]: GET /api-docs/swagger-ui-standalone-preset.js 200 - - 10.019 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:14:18 [INFO]: GET /api-docs/swagger-ui-bundle.js 200 - - 11.366 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:14:18 [INFO]: GET /api-docs/favicon-32x32.png 200 628 - 1.221 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:14:55 [INFO]: Get current user attempt
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:14:55 [INFO]: GET /api/v1/auth/me 200 148 - 1.065 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:15:26 [INFO]: Get current user attempt
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:15:26 [INFO]: GET /api/v1/auth/me 304 - - 1.766 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:17:48 [WARN]: Validation failed
+Meta: {
+  "service": "hrm-backend",
+  "errors": [
+    {
+      "field": "body.password",
+      "message": "Password must be at least 6 characters",
+      "code": "too_small"
+    }
+  ],
+  "url": "/api/v1/auth/register",
+  "method": "POST"
+}
+2025-09-11 13:17:48 [ERROR]: Application Error Validation failed: body.password: Password must be at least 6 characters
+Stack: Error: Validation failed: body.password: Password must be at least 6 characters
+    at <anonymous> (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/middleware/validation.middleware.ts:39:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+Meta: {
+  "service": "hrm-backend",
+  "statusCode": 400,
+  "isOperational": true,
+  "method": "POST",
+  "url": "/api/v1/auth/register",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:142.0) Gecko/20100101 Firefox/142.0"
+}
+2025-09-11 13:17:48 [INFO]: POST /api/v1/auth/register 400 168 - 7.118 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:18:23 [INFO]: Registration attempt
+Meta: {
+  "service": "hrm-backend",
+  "email": "anishashende369@gmail.com"
+}
+2025-09-11 13:18:23 [INFO]: POST /api/v1/auth/register 201 151 - 1.792 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:30:54 [INFO]: Received SIGINT, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:30:54 [INFO]: SIGINT received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 13:30:54 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:25:06 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 15:25:06 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:25:06 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 15:25:06 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:25:06 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:25:06 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:25:06 [INFO]: 🚀 Server is running on port 3000
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:25:06 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:25:06 [INFO]: �📚 API Documentation: http://localhost:3000/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:25:06 [INFO]: 🏥 Health Check: http://localhost:3000/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:25:06 [INFO]: 🔗 API Base URL: http://localhost:3000/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:25:19 [INFO]: GET /api-docs?id=3e10e4f8-3769-42fd-9763-ade78cafaeee&vscodeBrowserReqId=1757584519557 301 235 - 5.071 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:25:19 [INFO]: GET /api-docs/?id=3e10e4f8-3769-42fd-9763-ade78cafaeee&vscodeBrowserReqId=1757584519557 200 - - 5.118 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:25:49 [INFO]: GET /api-docs?id=3e10e4f8-3769-42fd-9763-ade78cafaeee&vscodeBrowserReqId=1757584549971 301 235 - 0.890 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:25:49 [INFO]: GET /api-docs/?id=3e10e4f8-3769-42fd-9763-ade78cafaeee&vscodeBrowserReqId=1757584549971 200 - - 1.040 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:26:36 [INFO]: Received SIGINT, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:26:36 [INFO]: SIGINT received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:26:36 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:27:15 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 15:27:15 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:27:16 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 15:27:16 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:27:16 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:27:16 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:27:16 [INFO]: 🚀 Server is running on port 3000
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:27:16 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:27:16 [INFO]: �📚 API Documentation: http://localhost:3000/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:27:16 [INFO]: 🏥 Health Check: http://localhost:3000/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:27:16 [INFO]: 🔗 API Base URL: http://localhost:3000/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:27:24 [INFO]: GET /api-docs?id=3e10e4f8-3769-42fd-9763-ade78cafaeee&vscodeBrowserReqId=1757584644860 301 235 - 3.214 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:27:24 [INFO]: GET /api-docs/?id=3e10e4f8-3769-42fd-9763-ade78cafaeee&vscodeBrowserReqId=1757584644860 200 - - 2.616 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:27:42 [INFO]: GET /api-docs 301 158 - 1.012 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:27:42 [INFO]: GET /api-docs/ 304 - - 2.116 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:27:42 [INFO]: GET /api-docs/swagger-ui.css 304 - - 3.251 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:27:42 [INFO]: GET /api-docs/swagger-ui-standalone-preset.js 304 - - 2.974 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:27:42 [INFO]: GET /api-docs/swagger-ui-init.js 304 - - 0.884 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:27:42 [INFO]: GET /api-docs/swagger-ui-bundle.js 304 - - 10.033 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:27:43 [INFO]: GET /api-docs/favicon-32x32.png - - - - ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:30:21 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 15:30:21 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:30:21 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 15:30:46 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 15:30:46 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:30:46 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 15:32:45 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 15:32:45 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:32:45 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 15:33:10 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 15:33:10 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:33:10 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "0ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 15:34:13 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 15:34:13 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:34:13 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 15:34:13 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:34:13 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:34:13 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:34:13 [INFO]: 🚀 Server is running on port 3000
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:34:13 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:34:13 [INFO]: �📚 API Documentation: http://localhost:3000/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:34:13 [INFO]: 🏥 Health Check: http://localhost:3000/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:34:13 [INFO]: 🔗 API Base URL: http://localhost:3000/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:34:24 [INFO]: GET /health 200 253 - 5.538 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:34:25 [INFO]: GET /favicon.ico 404 124 - 1.825 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:34:31 [INFO]: Received SIGINT, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:34:31 [INFO]: SIGINT received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:34:31 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:34:42 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 15:34:42 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:34:42 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 15:34:42 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:34:42 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:34:42 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:34:42 [INFO]: 🚀 Server is running on port 3000
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:34:42 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:34:42 [INFO]: �📚 API Documentation: http://localhost:3000/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:34:42 [INFO]: 🏥 Health Check: http://localhost:3000/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:34:42 [INFO]: 🔗 API Base URL: http://localhost:3000/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:35:01 [INFO]: GET /api-docs/ 304 - - 7.000 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:35:01 [INFO]: GET /api-docs/swagger-ui.css 304 - - 6.157 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:35:01 [INFO]: GET /api-docs/swagger-ui-bundle.js 304 - - 2.516 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:35:01 [INFO]: GET /api-docs/swagger-ui-standalone-preset.js 304 - - 1.530 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:35:01 [INFO]: GET /api-docs/swagger-ui-init.js 304 - - 1.292 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:37:09 [INFO]: GET /api/v1 200 287 - 0.997 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:37:35 [INFO]: GET /health 200 253 - 1.020 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:39:12 [INFO]: Registration attempt
+Meta: {
+  "service": "hrm-backend",
+  "email": "anishashende369@gmail.com"
+}
+2025-09-11 15:39:12 [INFO]: POST /api/v1/auth/register 201 151 - 5.774 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:40:25 [INFO]: Login attempt
+Meta: {
+  "service": "hrm-backend",
+  "email": "anishashende369@gmail.com"
+}
+2025-09-11 15:40:25 [INFO]: POST /api/v1/auth/login 200 196 - 2.355 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:41:19 [INFO]: Token refresh attempt
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:41:19 [INFO]: POST /api/v1/auth/refresh 200 127 - 1.963 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:42:04 [INFO]: Get current user attempt
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:42:04 [INFO]: GET /api/v1/auth/me 200 148 - 1.288 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:42:28 [INFO]: Get current user attempt
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:42:28 [INFO]: GET /api/v1/auth/me 200 148 - 1.364 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:42:33 [INFO]: Get current user attempt
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:42:33 [INFO]: GET /api/v1/auth/me 200 148 - 1.110 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:43:23 [INFO]: Logout attempt
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:43:23 [INFO]: POST /api/v1/auth/logout 200 46 - 1.474 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:44:17 [INFO]: Get all employees request
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:44:17 [INFO]: GET /api/v1/employees 200 168 - 1.483 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:45:19 [INFO]: Get employee by ID request
+Meta: {
+  "service": "hrm-backend",
+  "employeeId": "123"
+}
+2025-09-11 15:45:19 [INFO]: GET /api/v1/employees/123 200 141 - 2.297 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:49:56 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:49:56 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:49:56 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:49:56 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:49:58 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 15:49:58 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:49:58 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 15:49:58 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:49:58 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:49:58 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:49:58 [INFO]: 🚀 Server is running on port 3000
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:49:58 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:49:58 [INFO]: �📚 API Documentation: http://localhost:3000/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:49:58 [INFO]: 🏥 Health Check: http://localhost:3000/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:49:58 [INFO]: 🔗 API Base URL: http://localhost:3000/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:09 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:09 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:09 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:09 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:11 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 15:53:11 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:11 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 15:53:11 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:11 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:11 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:11 [INFO]: 🚀 Server is running on port 3000
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:11 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:11 [INFO]: �📚 API Documentation: http://localhost:3000/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:11 [INFO]: 🏥 Health Check: http://localhost:3000/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:11 [INFO]: 🔗 API Base URL: http://localhost:3000/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:28 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:28 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:28 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:28 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:29 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 15:53:29 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:29 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 15:53:29 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:29 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:29 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:29 [INFO]: 🚀 Server is running on port 3000
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:29 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:29 [INFO]: �📚 API Documentation: http://localhost:3000/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:29 [INFO]: 🏥 Health Check: http://localhost:3000/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:29 [INFO]: 🔗 API Base URL: http://localhost:3000/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:39 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:39 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:39 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:39 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:41 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 15:53:41 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:41 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 15:53:41 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:41 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:41 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:41 [INFO]: 🚀 Server is running on port 3000
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:41 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:41 [INFO]: �📚 API Documentation: http://localhost:3000/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:41 [INFO]: 🏥 Health Check: http://localhost:3000/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:41 [INFO]: 🔗 API Base URL: http://localhost:3000/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:54 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 15:53:54 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:54 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 15:55:22 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 15:55:22 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:55:22 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 15:55:22 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:55:22 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:55:22 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:55:22 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:55:22 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:55:22 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:55:22 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:55:22 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:57:18 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:57:18 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:57:18 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:57:18 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:57:20 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 15:57:20 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:57:20 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 15:57:20 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:57:20 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:57:20 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:57:20 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:57:20 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:57:20 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:57:20 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 15:57:20 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:00:32 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:00:32 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:00:32 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:00:32 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:00:34 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 16:00:34 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:00:34 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 16:00:34 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:00:34 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:00:34 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:00:34 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:00:34 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:00:34 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:00:34 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:00:34 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:01:01 [INFO]: Received SIGINT, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:01:01 [INFO]: SIGINT received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:01:01 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:01:33 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 16:01:33 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:01:33 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 16:01:33 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:01:33 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:01:33 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:01:33 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:01:33 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:01:33 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:01:33 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:01:33 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:02:49 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:02:49 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:02:49 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:02:49 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:02:50 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 16:02:50 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:02:51 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 16:02:51 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:02:51 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:02:51 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:02:51 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:02:51 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:02:51 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:02:51 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:02:51 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:06:18 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 16:06:18 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:06:18 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 16:07:03 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:07:03 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:07:03 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:07:03 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:11:32 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 16:11:32 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:11:32 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 16:11:32 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:11:32 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:11:32 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:11:32 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:11:32 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:11:32 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:11:32 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:11:32 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:11:50 [INFO]: GET /api-docs?id=8e3328da-a8ad-48d2-8d49-b390f5a3205e&vscodeBrowserReqId=1757587310538 301 235 - 6.549 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:11:50 [INFO]: GET /api-docs/?id=8e3328da-a8ad-48d2-8d49-b390f5a3205e&vscodeBrowserReqId=1757587310538 200 - - 5.612 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:12:18 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:12:18 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:12:18 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:12:18 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:12:19 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 16:12:19 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:12:19 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 16:12:19 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:12:19 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:12:19 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:12:19 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:12:19 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:12:19 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:12:19 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:12:19 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:12:53 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:12:53 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:12:53 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:12:53 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:01 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 16:13:01 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:01 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 16:13:01 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:01 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:01 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:01 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:01 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:01 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:01 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:01 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:06 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:06 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:06 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:06 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:08 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 16:13:08 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:08 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "2ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 16:13:08 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:08 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:08 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:08 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:08 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:08 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:08 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:08 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:11 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:11 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:11 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:11 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:13 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 16:13:13 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:13 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 16:13:13 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:13 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:13 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:13 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:13 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:13 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:13 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:13 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:44 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:44 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:44 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:44 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:45 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 16:13:45 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:45 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "0ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 16:13:45 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:45 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:45 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:45 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:45 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:45 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:45 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:13:45 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:14:25 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:14:25 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:14:25 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:14:25 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:14:27 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 16:14:27 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:14:27 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 16:14:27 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:14:27 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:14:27 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:14:27 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:14:27 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:14:27 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:14:27 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:14:27 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:16 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:16 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:16 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:16 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:19 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 16:16:19 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:19 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "2ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 16:16:19 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:19 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:19 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:19 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:19 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:19 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:19 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:19 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:26 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:26 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:26 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:26 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:28 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 16:16:28 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:28 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 16:16:28 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:28 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:28 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:28 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:28 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:28 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:28 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:16:28 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:17:10 [INFO]: Received SIGINT, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:17:10 [INFO]: SIGINT received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:17:10 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:19:14 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 16:19:14 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:19:14 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "2ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 16:19:14 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:19:14 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:19:14 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:19:14 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:19:14 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:19:14 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:19:14 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:19:14 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:19:46 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:19:46 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:19:46 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:19:46 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:19:46 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 16:19:46 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:19:46 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "0ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 16:19:46 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:19:46 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:19:46 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:19:46 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:19:46 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:19:46 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:19:46 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:19:46 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:31 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:31 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:31 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:31 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:31 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 16:21:31 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:31 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "0ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 16:21:31 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:31 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:31 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:31 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:31 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:31 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:31 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:31 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:38 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:38 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:38 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:38 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:39 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 16:21:39 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:39 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "0ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 16:21:39 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:39 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:39 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:39 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:39 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:39 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:39 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:21:39 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:22:56 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:22:56 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:22:56 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:22:56 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:22:57 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 16:22:57 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:22:57 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "0ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 16:22:57 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:22:57 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:22:57 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:22:57 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:22:57 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:22:57 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:22:57 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:22:57 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:25:00 [INFO]: Received SIGINT, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:25:00 [INFO]: SIGINT received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 16:25:00 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}

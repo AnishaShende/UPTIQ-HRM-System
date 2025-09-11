@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { apiClient } from "@/lib/api";
+// import { apiClient } from "@/lib/api";
 
 interface UseApiOptions {
   immediate?: boolean;
@@ -9,7 +9,7 @@ interface UseApiOptions {
 
 export function useApi<T = any>(
   apiCall: () => Promise<T>,
-  options: UseApiOptions = {}
+  options: UseApiOptions = {},
 ) {
   const { immediate = true, onSuccess, onError } = options;
 
@@ -210,7 +210,7 @@ export function useMediaQuery(query: string): boolean {
 
 export function useOutsideClick(
   ref: React.RefObject<HTMLElement>,
-  handler: () => void
+  handler: () => void,
 ) {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

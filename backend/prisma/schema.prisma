@@ -12,20 +12,20 @@ datasource db {
 
 // User authentication and authorization
 model User {
-  id                   String         @id @default(cuid())
-  email                String         @unique
+  id                   String    @id @default(cuid())
+  email                String    @unique
   password             String
-  role                 UserRole       @default(EMPLOYEE)
-  employeeId           String?        @unique
-  isActive             Boolean        @default(true)
+  role                 UserRole  @default(EMPLOYEE)
+  employeeId           String?   @unique
+  isActive             Boolean   @default(true)
   lastLoginAt          DateTime?
   passwordResetToken   String?
   passwordResetExpires DateTime?
-  createdAt            DateTime       @default(now())
-  updatedAt            DateTime       @updatedAt
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
 
   // Relations
-  employee      Employee?     @relation(fields: [employeeId], references: [id])
+  employee      Employee?      @relation(fields: [employeeId], references: [id])
   refreshTokens RefreshToken[]
 
   @@map("users")
@@ -55,14 +55,14 @@ enum UserRole {
 
 // Department and organizational structure
 model Department {
-  id                 String      @id @default(cuid())
-  name               String      @unique
+  id                 String   @id @default(cuid())
+  name               String   @unique
   description        String?
   managerId          String?
   parentDepartmentId String?
-  status             Status      @default(ACTIVE)
-  createdAt          DateTime    @default(now())
-  updatedAt          DateTime    @updatedAt
+  status             Status   @default(ACTIVE)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
   createdById        String?
   updatedById        String?
 
@@ -72,6 +72,7 @@ model Department {
   subDepartments   Department[] @relation("DepartmentHierarchy")
   employees        Employee[]   @relation("EmployeeDepartment")
   positions        Position[]
+  jobPostings      JobPosting[]
 
   @@map("departments")
 }
@@ -92,69 +93,70 @@ model Position {
   updatedById      String?
 
   // Relations
-  department Department @relation(fields: [departmentId], references: [id])
-  employees  Employee[] @relation("EmployeePosition")
+  department  Department   @relation(fields: [departmentId], references: [id])
+  employees   Employee[]   @relation("EmployeePosition")
+  jobPostings JobPosting[]
 
   @@map("positions")
 }
 
 // Employee management
 model Employee {
-  id               String          @id @default(cuid())
-  employeeId       String          @unique
-  firstName        String
-  lastName         String
-  email            String          @unique
-  phone            String
-  dateOfBirth      DateTime
-  hireDate         DateTime
-  terminationDate  DateTime?
-  status           Status          @default(ACTIVE)
-  profilePicture   String?
-  
+  id              String    @id @default(cuid())
+  employeeId      String    @unique
+  firstName       String
+  lastName        String
+  email           String    @unique
+  phone           String
+  dateOfBirth     DateTime
+  hireDate        DateTime
+  terminationDate DateTime?
+  status          Status    @default(ACTIVE)
+  profilePicture  String?
+
   // Personal Information (JSON fields)
-  personalInfo     Json
-  
+  personalInfo Json
+
   // Employment Information
-  departmentId     String
-  positionId       String
-  managerId        String?
-  employmentType   EmploymentType
-  workLocation     WorkLocation
-  salaryGrade      String?
-  baseSalary       Float
-  currency         String          @default("USD")
-  
+  departmentId   String
+  positionId     String
+  managerId      String?
+  employmentType EmploymentType
+  workLocation   WorkLocation
+  salaryGrade    String?
+  baseSalary     Float
+  currency       String         @default("USD")
+
   // Bank Information (JSON field)
-  bankInfo         Json?
-  
-  createdAt        DateTime        @default(now())
-  updatedAt        DateTime        @updatedAt
-  createdById      String?
-  updatedById      String?
+  bankInfo Json?
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  createdById String?
+  updatedById String?
 
   // Relations
-  user               User?                @relation()
-  department         Department           @relation("EmployeeDepartment", fields: [departmentId], references: [id])
-  position           Position             @relation("EmployeePosition", fields: [positionId], references: [id])
-  manager            Employee?            @relation("EmployeeManager", fields: [managerId], references: [id])
-  subordinates       Employee[]           @relation("EmployeeManager")
-  managedDepartments Department[]         @relation("DepartmentManager")
-  
+  user               User?        @relation()
+  department         Department   @relation("EmployeeDepartment", fields: [departmentId], references: [id])
+  position           Position     @relation("EmployeePosition", fields: [positionId], references: [id])
+  manager            Employee?    @relation("EmployeeManager", fields: [managerId], references: [id])
+  subordinates       Employee[]   @relation("EmployeeManager")
+  managedDepartments Department[] @relation("DepartmentManager")
+
   // Leave related
-  leaveBalances      LeaveBalance[]
-  leaveRequests      LeaveRequest[]       @relation("EmployeeLeaveRequests")
-  approvedLeaves     LeaveRequest[]       @relation("LeaveApprover")
-  leaveComments      LeaveComment[]
-  
+  leaveBalances  LeaveBalance[]
+  leaveRequests  LeaveRequest[] @relation("EmployeeLeaveRequests")
+  approvedLeaves LeaveRequest[] @relation("LeaveApprover")
+  leaveComments  LeaveComment[]
+
   // Payroll related
-  payslips           Payslip[]
-  employeeSalaries   EmployeeSalary[]
-  
+  payslips         Payslip[]
+  employeeSalaries EmployeeSalary[]
+
   // Recruitment related
-  jobPostings        JobPosting[]         @relation("JobPostingCreator")
-  approvedJobPostings JobPosting[]        @relation("JobPostingApprover")
-  interviews         InterviewerAssignment[]
+  jobPostings         JobPosting[]            @relation("JobPostingCreator")
+  approvedJobPostings JobPosting[]            @relation("JobPostingApprover")
+  interviews          InterviewerAssignment[]
 
   @@map("employees")
 }
@@ -181,18 +183,18 @@ enum Status {
 
 // Leave management
 model LeaveType {
-  id                String         @id @default(cuid())
-  name              String         @unique
+  id                String   @id @default(cuid())
+  name              String   @unique
   description       String?
   maxDaysPerYear    Int
-  carryForward      Boolean        @default(false)
+  carryForward      Boolean  @default(false)
   carryForwardLimit Int?
-  requiresApproval  Boolean        @default(true)
-  allowHalfDay      Boolean        @default(true)
-  minimumNotice     Int            @default(0)
-  status            Status         @default(ACTIVE)
-  createdAt         DateTime       @default(now())
-  updatedAt         DateTime       @updatedAt
+  requiresApproval  Boolean  @default(true)
+  allowHalfDay      Boolean  @default(true)
+  minimumNotice     Int      @default(0)
+  status            Status   @default(ACTIVE)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
   createdById       String?
   updatedById       String?
 
@@ -204,17 +206,17 @@ model LeaveType {
 }
 
 model LeaveBalance {
-  id             String    @id @default(cuid())
+  id             String   @id @default(cuid())
   employeeId     String
   leaveTypeId    String
   year           Int
   entitlement    Float
-  used           Float     @default(0)
-  pending        Float     @default(0)
+  used           Float    @default(0)
+  pending        Float    @default(0)
   available      Float
-  carriedForward Float     @default(0)
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
+  carriedForward Float    @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
   createdById    String?
   updatedById    String?
 
@@ -227,27 +229,27 @@ model LeaveBalance {
 }
 
 model LeaveRequest {
-  id             String             @id @default(cuid())
-  employeeId     String
-  leaveTypeId    String
-  startDate      DateTime
-  endDate        DateTime
-  totalDays      Float
-  isHalfDay      Boolean            @default(false)
-  halfDayPeriod  HalfDayPeriod?
-  reason         String
-  status         LeaveRequestStatus @default(PENDING)
-  appliedDate    DateTime           @default(now())
-  approvedBy     String?
-  approvedDate   DateTime?
-  rejectedBy     String?
-  rejectedDate   DateTime?
+  id              String             @id @default(cuid())
+  employeeId      String
+  leaveTypeId     String
+  startDate       DateTime
+  endDate         DateTime
+  totalDays       Float
+  isHalfDay       Boolean            @default(false)
+  halfDayPeriod   HalfDayPeriod?
+  reason          String
+  status          LeaveRequestStatus @default(PENDING)
+  appliedDate     DateTime           @default(now())
+  approvedBy      String?
+  approvedDate    DateTime?
+  rejectedBy      String?
+  rejectedDate    DateTime?
   rejectionReason String?
-  attachments    String[]
-  createdAt      DateTime           @default(now())
-  updatedAt      DateTime           @updatedAt
-  createdById    String?
-  updatedById    String?
+  attachments     String[]
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+  createdById     String?
+  updatedById     String?
 
   // Relations
   employee  Employee       @relation("EmployeeLeaveRequests", fields: [employeeId], references: [id])
@@ -312,52 +314,52 @@ model PayrollPeriod {
 }
 
 model Payslip {
-  id                   String        @id @default(cuid())
-  employeeId           String
-  payrollPeriodId      String
-  payslipNumber        String        @unique
-  employeeName         String
-  employeeIdDisplay    String
-  department           String
-  position             String
-  payDate              DateTime
-  workingDays          Int
-  actualWorkingDays    Float
-  basicSalary          Float
-  allowances           Json          // Array of allowances
-  overtime             Json          // Array of overtime
-  bonuses              Json          // Array of bonuses
-  totalEarnings        Float
-  deductions           Json          // Array of deductions
-  totalDeductions      Float
-  grossPay             Float
-  netPay               Float
-  taxableIncome        Float
-  taxDeducted          Float
-  status               PayslipStatus @default(DRAFT)
-  paidDate             DateTime?
-  createdAt            DateTime      @default(now())
-  updatedAt            DateTime      @updatedAt
-  createdById          String?
-  updatedById          String?
+  id                String        @id @default(cuid())
+  employeeId        String
+  payrollPeriodId   String
+  payslipNumber     String        @unique
+  employeeName      String
+  employeeIdDisplay String
+  department        String
+  position          String
+  payDate           DateTime
+  workingDays       Int
+  actualWorkingDays Float
+  basicSalary       Float
+  allowances        Json // Array of allowances
+  overtime          Json // Array of overtime
+  bonuses           Json // Array of bonuses
+  totalEarnings     Float
+  deductions        Json // Array of deductions
+  totalDeductions   Float
+  grossPay          Float
+  netPay            Float
+  taxableIncome     Float
+  taxDeducted       Float
+  status            PayslipStatus @default(DRAFT)
+  paidDate          DateTime?
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+  createdById       String?
+  updatedById       String?
 
   // Relations
-  employee       Employee       @relation(fields: [employeeId], references: [id])
-  payrollPeriod  PayrollPeriod  @relation(fields: [payrollPeriodId], references: [id])
+  employee      Employee      @relation(fields: [employeeId], references: [id])
+  payrollPeriod PayrollPeriod @relation(fields: [payrollPeriodId], references: [id])
 
   @@map("payslips")
 }
 
 model SalaryStructure {
-  id            String             @id @default(cuid())
-  name          String             @unique
+  id            String            @id @default(cuid())
+  name          String            @unique
   description   String?
   effectiveFrom DateTime
   effectiveTo   DateTime?
   components    SalaryComponent[]
-  status        Status             @default(ACTIVE)
-  createdAt     DateTime           @default(now())
-  updatedAt     DateTime           @updatedAt
+  status        Status            @default(ACTIVE)
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
   createdById   String?
   updatedById   String?
 
@@ -368,18 +370,18 @@ model SalaryStructure {
 }
 
 model SalaryComponent {
-  id               String                   @id @default(cuid())
+  id                String                  @id @default(cuid())
   salaryStructureId String
-  name             String
-  type             SalaryComponentType
-  category         SalaryComponentCategory
-  calculationType  CalculationType
-  value            Float
-  baseComponent    String?
-  formula          String?
-  taxable          Boolean                  @default(true)
-  mandatory        Boolean                  @default(false)
-  order            Int                      @default(0)
+  name              String
+  type              SalaryComponentType
+  category          SalaryComponentCategory
+  calculationType   CalculationType
+  value             Float
+  baseComponent     String?
+  formula           String?
+  taxable           Boolean                 @default(true)
+  mandatory         Boolean                 @default(false)
+  order             Int                     @default(0)
 
   // Relations
   salaryStructure SalaryStructure @relation(fields: [salaryStructureId], references: [id], onDelete: Cascade)
@@ -388,17 +390,17 @@ model SalaryComponent {
 }
 
 model EmployeeSalary {
-  id                String            @id @default(cuid())
+  id                String    @id @default(cuid())
   employeeId        String
   salaryStructureId String
   effectiveFrom     DateTime
   effectiveTo       DateTime?
   basicSalary       Float
-  currency          String            @default("USD")
-  components        Json              // Array of employee-specific component values
-  status            Status            @default(ACTIVE)
-  createdAt         DateTime          @default(now())
-  updatedAt         DateTime          @updatedAt
+  currency          String    @default("USD")
+  components        Json // Array of employee-specific component values
+  status            Status    @default(ACTIVE)
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
   createdById       String?
   updatedById       String?
 
@@ -445,7 +447,7 @@ enum CalculationType {
 
 // Recruitment management
 model JobPosting {
-  id                  String            @id @default(cuid())
+  id                  String           @id @default(cuid())
   title               String
   description         String
   departmentId        String
@@ -455,59 +457,59 @@ model JobPosting {
   qualifications      String[]
   skills              String[]
   experienceRequired  Int
-  salaryRange         Json              // {min, max, currency}
+  salaryRange         Json // {min, max, currency}
   employmentType      EmploymentType
   workLocation        WorkLocation
   location            String
-  isUrgent            Boolean           @default(false)
+  isUrgent            Boolean          @default(false)
   applicationDeadline DateTime?
-  status              JobPostingStatus  @default(DRAFT)
+  status              JobPostingStatus @default(DRAFT)
   postedBy            String
-  postedDate          DateTime          @default(now())
+  postedDate          DateTime         @default(now())
   approvedBy          String?
   approvedDate        DateTime?
-  totalApplications   Int               @default(0)
-  createdAt           DateTime          @default(now())
-  updatedAt           DateTime          @updatedAt
+  totalApplications   Int              @default(0)
+  createdAt           DateTime         @default(now())
+  updatedAt           DateTime         @updatedAt
   createdById         String?
   updatedById         String?
 
   // Relations
-  department   Department        @relation(fields: [departmentId], references: [id])
-  position     Position          @relation(fields: [positionId], references: [id])
-  postedByUser Employee          @relation("JobPostingCreator", fields: [postedBy], references: [id])
-  approvedByUser Employee?       @relation("JobPostingApprover", fields: [approvedBy], references: [id])
-  applications JobApplication[]
+  department     Department       @relation(fields: [departmentId], references: [id])
+  position       Position         @relation(fields: [positionId], references: [id])
+  postedByUser   Employee         @relation("JobPostingCreator", fields: [postedBy], references: [id])
+  approvedByUser Employee?        @relation("JobPostingApprover", fields: [approvedBy], references: [id])
+  applications   JobApplication[]
 
   @@map("job_postings")
 }
 
 model Applicant {
-  id               String            @id @default(cuid())
-  firstName        String
-  lastName         String
-  email            String            @unique
-  phone            String
-  address          String
-  city             String
-  state            String
-  country          String
-  zipCode          String
-  resumeUrl        String?
-  portfolioUrl     String?
-  linkedinUrl      String?
-  totalExperience  Int               @default(0)
-  currentCompany   String?
-  currentPosition  String?
-  currentSalary    Float?
-  noticePeriod     Int?
-  education        Json              // Array of education records
-  workExperience   Json              // Array of work experience
-  skills           Json              // Array of skills
-  createdAt        DateTime          @default(now())
-  updatedAt        DateTime          @updatedAt
-  createdById      String?
-  updatedById      String?
+  id              String   @id @default(cuid())
+  firstName       String
+  lastName        String
+  email           String   @unique
+  phone           String
+  address         String
+  city            String
+  state           String
+  country         String
+  zipCode         String
+  resumeUrl       String?
+  portfolioUrl    String?
+  linkedinUrl     String?
+  totalExperience Int      @default(0)
+  currentCompany  String?
+  currentPosition String?
+  currentSalary   Float?
+  noticePeriod    Int?
+  education       Json // Array of education records
+  workExperience  Json // Array of work experience
+  skills          Json // Array of skills
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  createdById     String?
+  updatedById     String?
 
   // Relations
   applications JobApplication[]
@@ -516,25 +518,25 @@ model Applicant {
 }
 
 model JobApplication {
-  id              String                @id @default(cuid())
+  id              String               @id @default(cuid())
   jobPostingId    String
   applicantId     String
-  applicationDate DateTime              @default(now())
-  status          JobApplicationStatus  @default(SUBMITTED)
+  applicationDate DateTime             @default(now())
+  status          JobApplicationStatus @default(SUBMITTED)
   source          ApplicationSource
   coverLetter     String?
   expectedSalary  Float?
   availableFrom   DateTime?
   currentStage    String?
-  stageHistory    Json                  // Array of stage history
-  feedback        Json                  // Array of feedback
+  stageHistory    Json // Array of stage history
+  feedback        Json // Array of feedback
   internalNotes   String[]
   finalDecision   FinalDecision?
   decisionDate    DateTime?
   decisionBy      String?
   decisionReason  String?
-  createdAt       DateTime              @default(now())
-  updatedAt       DateTime              @updatedAt
+  createdAt       DateTime             @default(now())
+  updatedAt       DateTime             @updatedAt
   createdById     String?
   updatedById     String?
 
@@ -547,44 +549,44 @@ model JobApplication {
 }
 
 model Interview {
-  id                String            @id @default(cuid())
-  applicationId     String
-  type              InterviewType
-  round             Int
-  scheduledDate     DateTime
-  duration          Int               // in minutes
-  mode              InterviewMode
-  location          String?
-  meetingLink       String?
-  status            InterviewStatus   @default(SCHEDULED)
-  conductedDate     DateTime?
-  feedback          Json              // Array of interviewer feedback
-  overallRating     Float?
-  recommendation    Recommendation    @default(PENDING)
-  scheduledBy       String
-  rescheduledCount  Int               @default(0)
+  id                 String          @id @default(cuid())
+  applicationId      String
+  type               InterviewType
+  round              Int
+  scheduledDate      DateTime
+  duration           Int // in minutes
+  mode               InterviewMode
+  location           String?
+  meetingLink        String?
+  status             InterviewStatus @default(SCHEDULED)
+  conductedDate      DateTime?
+  feedback           Json // Array of interviewer feedback
+  overallRating      Float?
+  recommendation     Recommendation  @default(PENDING)
+  scheduledBy        String
+  rescheduledCount   Int             @default(0)
   cancellationReason String?
-  createdAt         DateTime          @default(now())
-  updatedAt         DateTime          @updatedAt
-  createdById       String?
-  updatedById       String?
+  createdAt          DateTime        @default(now())
+  updatedAt          DateTime        @updatedAt
+  createdById        String?
+  updatedById        String?
 
   // Relations
-  application       JobApplication              @relation(fields: [applicationId], references: [id])
-  interviewers      InterviewerAssignment[]
+  application  JobApplication          @relation(fields: [applicationId], references: [id])
+  interviewers InterviewerAssignment[]
 
   @@map("interviews")
 }
 
 model InterviewerAssignment {
-  id           String           @id @default(cuid())
-  interviewId  String
+  id            String          @id @default(cuid())
+  interviewId   String
   interviewerId String
-  role         InterviewerRole  @default(PRIMARY)
+  role          InterviewerRole @default(PRIMARY)
 
   // Relations
-  interview    Interview @relation(fields: [interviewId], references: [id], onDelete: Cascade)
-  interviewer  Employee  @relation(fields: [interviewerId], references: [id])
+  interview   Interview @relation(fields: [interviewId], references: [id], onDelete: Cascade)
+  interviewer Employee  @relation(fields: [interviewerId], references: [id])
 
   @@unique([interviewId, interviewerId])
   @@map("interviewer_assignments")

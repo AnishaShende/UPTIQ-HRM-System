@@ -3,6 +3,47 @@ import { ZodSchema, ZodError } from "zod";
 import { AppError } from "@/utils/errors";
 import { logger } from "@/config/logger";
 
+export const validateRequest = (schema: ZodSchema) => {
+  return async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const validated = await schema.parseAsync({
+        body: req.body,
+        query: req.query,
+        params: req.params,
+      });
+      
+      req.body = validated.body;
+      if (validated.query) req.query = validated.query;
+      if (validated.params) req.params = validated.params;
+      
+      next();
+    } catch (error) {
+      if (error instanceof ZodError) {
+        const validationErrors = error.errors.map((err) => ({
+          field: err.path.join("."),
+          message: err.message,
+          code: err.code,
+        }));
+
+        logger.warn("Validation failed", {
+          errors: validationErrors,
+          url: req.originalUrl,
+          method: req.method,
+          userId: req.user?.id,
+        });
+
+        const errorMessage = validationErrors
+          .map((err) => `${err.field}: ${err.message}`)
+          .join(", ");
+
+        next(new AppError(`Validation failed: ${errorMessage}`, 400));
+      } else {
+        next(error);
+      }
+    }
+  };
+};
+
 export interface ValidationOptions {
   body?: ZodSchema;
   query?: ZodSchema;

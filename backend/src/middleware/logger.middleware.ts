@@ -10,9 +10,9 @@ morgan.token("user-id", (req: Request) => {
 
 // Custom token for response time in a readable format
 morgan.token("response-time-formatted", (req: Request, res: Response) => {
-  const responseTime = parseFloat(
-    (res.getHeader("X-Response-Time") as string) || "0"
-  );
+  const startTime = (req as any).startTime;
+  const responseTime = startTime ? Date.now() - startTime : 0;
+  
   if (responseTime < 1000) {
     return `${responseTime.toFixed(2)}ms`;
   } else {
@@ -64,19 +64,14 @@ export const addRequestId = (req: Request, res: Response, next: Function) => {
   next();
 };
 
-// Request timing middleware
+// Request timing middleware - simplified version
 export const addResponseTime = (
   req: Request,
   res: Response,
   next: Function
 ) => {
-  const start = Date.now();
-
-  res.on("finish", () => {
-    const duration = Date.now() - start;
-    res.setHeader("X-Response-Time", duration.toString());
-  });
-
+  // Store start time on request object for logging purposes
+  (req as any).startTime = Date.now();
   next();
 };
 

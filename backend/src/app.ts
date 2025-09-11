@@ -18,9 +18,9 @@ import {
 } from "@/middleware/logger.middleware";
 import { sanitizeInput } from "@/middleware/validation.middleware";
 
-// Import routes (we'll create these next)
-// import authRoutes from '@/routes/auth.routes';
-// import employeeRoutes from '@/routes/employee.routes';
+// Import routes
+import authRoutes from '@/routes/auth.routes';
+import employeeRoutes from '@/routes/employee.routes';
 // import departmentRoutes from '@/routes/department.routes';
 // import leaveRoutes from '@/routes/leave.routes';
 // import payrollRoutes from '@/routes/payroll.routes';
@@ -235,9 +235,9 @@ apiRouter.get("/", (req, res) => {
 // Mount API routes
 app.use(config.api.baseUrl, apiRouter);
 
-// Uncomment when routes are created
-// app.use(`${config.api.baseUrl}/auth`, authRoutes);
-// app.use(`${config.api.baseUrl}/employees`, employeeRoutes);
+// Mount feature routes
+app.use(`${config.api.baseUrl}/auth`, authRoutes);
+app.use(`${config.api.baseUrl}/employees`, employeeRoutes);
 // app.use(`${config.api.baseUrl}/departments`, departmentRoutes);
 // app.use(`${config.api.baseUrl}/leaves`, leaveRoutes);
 // app.use(`${config.api.baseUrl}/payroll`, payrollRoutes);

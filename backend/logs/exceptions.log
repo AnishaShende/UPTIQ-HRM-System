@@ -136,3 +136,627 @@ Meta: {
   ],
   "service": "hrm-backend"
 }
+2025-09-11 13:05:32 [ERROR]: uncaughtException: Cannot set headers after they are sent to the client
+Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:700:11)
+    at ServerResponse.<anonymous> (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/middleware/logger.middleware.ts:77:9)
+    at ServerResponse.emit (node:events:530:35)
+    at onFinish (node:_http_outgoing:1082:10)
+    at callback (node:internal/streams/writable:766:21)
+    at afterWrite (node:internal/streams/writable:710:5)
+    at afterWriteTick (node:internal/streams/writable:696:10)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+Stack: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:700:11)
+    at ServerResponse.<anonymous> (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/middleware/logger.middleware.ts:77:9)
+    at ServerResponse.emit (node:events:530:35)
+    at onFinish (node:_http_outgoing:1082:10)
+    at callback (node:internal/streams/writable:766:21)
+    at afterWrite (node:internal/streams/writable:710:5)
+    at afterWriteTick (node:internal/streams/writable:696:10)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+Meta: {
+  "error": {
+    "code": "ERR_HTTP_HEADERS_SENT"
+  },
+  "exception": true,
+  "date": "Thu Sep 11 2025 13:05:32 GMT+0530 (India Standard Time)",
+  "process": {
+    "pid": 91245,
+    "uid": 1000,
+    "gid": 1000,
+    "cwd": "/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend",
+    "execPath": "/home/anisha/.nvm/versions/node/v22.18.0/bin/node",
+    "version": "v22.18.0",
+    "argv": [
+      "/home/anisha/.nvm/versions/node/v22.18.0/bin/node",
+      "/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts"
+    ],
+    "memoryUsage": {
+      "rss": 92192768,
+      "heapTotal": 23265280,
+      "heapUsed": 19945976,
+      "external": 3466382,
+      "arrayBuffers": 35299
+    }
+  },
+  "os": {
+    "loadavg": [
+      1.83,
+      1.62,
+      1.54
+    ],
+    "uptime": 265468.96
+  },
+  "trace": [
+    {
+      "column": 11,
+      "file": "node:_http_outgoing",
+      "function": "ServerResponse.setHeader",
+      "line": 700,
+      "method": "setHeader",
+      "native": false
+    },
+    {
+      "column": 9,
+      "file": "/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/middleware/logger.middleware.ts",
+      "function": null,
+      "line": 77,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 35,
+      "file": "node:events",
+      "function": "ServerResponse.emit",
+      "line": 530,
+      "method": "emit",
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:_http_outgoing",
+      "function": "onFinish",
+      "line": 1082,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 21,
+      "file": "node:internal/streams/writable",
+      "function": "callback",
+      "line": 766,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "node:internal/streams/writable",
+      "function": "afterWrite",
+      "line": 710,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "afterWriteTick",
+      "line": 696,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 21,
+      "file": "node:internal/process/task_queues",
+      "function": "process.processTicksAndRejections",
+      "line": 89,
+      "method": "processTicksAndRejections",
+      "native": false
+    }
+  ],
+  "service": "hrm-backend"
+}
+2025-09-11 15:30:21 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use :::3000
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at startServer (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts:18:12)
+Stack: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at startServer (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts:18:12)
+Meta: {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -98,
+    "syscall": "listen",
+    "address": "::",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Thu Sep 11 2025 15:30:21 GMT+0530 (India Standard Time)",
+  "process": {
+    "pid": 101264,
+    "uid": 1000,
+    "gid": 1000,
+    "cwd": "/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend",
+    "execPath": "/home/anisha/.nvm/versions/node/v22.18.0/bin/node",
+    "version": "v22.18.0",
+    "argv": [
+      "/home/anisha/.nvm/versions/node/v22.18.0/bin/node",
+      "/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts"
+    ],
+    "memoryUsage": {
+      "rss": 101273600,
+      "heapTotal": 36634624,
+      "heapUsed": 22687384,
+      "external": 3483966,
+      "arrayBuffers": 52883
+    }
+  },
+  "os": {
+    "loadavg": [
+      1.68,
+      1.37,
+      1.11
+    ],
+    "uptime": 274157.95
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "Server.listen",
+      "line": 2102,
+      "method": "listen",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts",
+      "function": "startServer",
+      "line": 18,
+      "method": null,
+      "native": false
+    }
+  ],
+  "service": "hrm-backend"
+}
+2025-09-11 15:30:46 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use :::3000
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at startServer (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts:18:12)
+Stack: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at startServer (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts:18:12)
+Meta: {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -98,
+    "syscall": "listen",
+    "address": "::",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Thu Sep 11 2025 15:30:46 GMT+0530 (India Standard Time)",
+  "process": {
+    "pid": 101431,
+    "uid": 1000,
+    "gid": 1000,
+    "cwd": "/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend",
+    "execPath": "/home/anisha/.nvm/versions/node/v22.18.0/bin/node",
+    "version": "v22.18.0",
+    "argv": [
+      "/home/anisha/.nvm/versions/node/v22.18.0/bin/node",
+      "/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts"
+    ],
+    "memoryUsage": {
+      "rss": 104427520,
+      "heapTotal": 36896768,
+      "heapUsed": 22809560,
+      "external": 3483966,
+      "arrayBuffers": 52883
+    }
+  },
+  "os": {
+    "loadavg": [
+      2.1,
+      1.51,
+      1.17
+    ],
+    "uptime": 274182.66
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "Server.listen",
+      "line": 2102,
+      "method": "listen",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts",
+      "function": "startServer",
+      "line": 18,
+      "method": null,
+      "native": false
+    }
+  ],
+  "service": "hrm-backend"
+}
+2025-09-11 15:32:45 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use :::3000
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at startServer (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts:18:12)
+Stack: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at startServer (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts:18:12)
+Meta: {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -98,
+    "syscall": "listen",
+    "address": "::",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Thu Sep 11 2025 15:32:45 GMT+0530 (India Standard Time)",
+  "process": {
+    "pid": 101771,
+    "uid": 1000,
+    "gid": 1000,
+    "cwd": "/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend",
+    "execPath": "/home/anisha/.nvm/versions/node/v22.18.0/bin/node",
+    "version": "v22.18.0",
+    "argv": [
+      "/home/anisha/.nvm/versions/node/v22.18.0/bin/node",
+      "/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts"
+    ],
+    "memoryUsage": {
+      "rss": 103071744,
+      "heapTotal": 37158912,
+      "heapUsed": 21365640,
+      "external": 3483766,
+      "arrayBuffers": 52683
+    }
+  },
+  "os": {
+    "loadavg": [
+      0.74,
+      1.17,
+      1.08
+    ],
+    "uptime": 274301.53
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "Server.listen",
+      "line": 2102,
+      "method": "listen",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts",
+      "function": "startServer",
+      "line": 18,
+      "method": null,
+      "native": false
+    }
+  ],
+  "service": "hrm-backend"
+}
+2025-09-11 15:33:10 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use :::3000
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at startServer (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts:18:12)
+Stack: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at startServer (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts:18:12)
+Meta: {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -98,
+    "syscall": "listen",
+    "address": "::",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Thu Sep 11 2025 15:33:10 GMT+0530 (India Standard Time)",
+  "process": {
+    "pid": 101947,
+    "uid": 1000,
+    "gid": 1000,
+    "cwd": "/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend",
+    "execPath": "/home/anisha/.nvm/versions/node/v22.18.0/bin/node",
+    "version": "v22.18.0",
+    "argv": [
+      "/home/anisha/.nvm/versions/node/v22.18.0/bin/node",
+      "/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts"
+    ],
+    "memoryUsage": {
+      "rss": 100503552,
+      "heapTotal": 36634624,
+      "heapUsed": 22812888,
+      "external": 3492158,
+      "arrayBuffers": 61075
+    }
+  },
+  "os": {
+    "loadavg": [
+      1.53,
+      1.3,
+      1.12
+    ],
+    "uptime": 274326.14
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "Server.listen",
+      "line": 2102,
+      "method": "listen",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts",
+      "function": "startServer",
+      "line": 18,
+      "method": null,
+      "native": false
+    }
+  ],
+  "service": "hrm-backend"
+}
+2025-09-11 15:53:54 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use :::3000
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at startServer (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts:18:12)
+Stack: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at startServer (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts:18:12)
+Meta: {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -98,
+    "syscall": "listen",
+    "address": "::",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Thu Sep 11 2025 15:53:54 GMT+0530 (India Standard Time)",
+  "process": {
+    "pid": 106429,
+    "uid": 1000,
+    "gid": 1000,
+    "cwd": "/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend",
+    "execPath": "/home/anisha/.nvm/versions/node/v22.18.0/bin/node",
+    "version": "v22.18.0",
+    "argv": [
+      "/home/anisha/.nvm/versions/node/v22.18.0/bin/node",
+      "/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts"
+    ],
+    "memoryUsage": {
+      "rss": 111779840,
+      "heapTotal": 38207488,
+      "heapUsed": 25751096,
+      "external": 3501550,
+      "arrayBuffers": 70467
+    }
+  },
+  "os": {
+    "loadavg": [
+      1.57,
+      1.39,
+      1.36
+    ],
+    "uptime": 275570.82
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "Server.listen",
+      "line": 2102,
+      "method": "listen",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts",
+      "function": "startServer",
+      "line": 18,
+      "method": null,
+      "native": false
+    }
+  ],
+  "service": "hrm-backend"
+}
+2025-09-11 16:06:18 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use :::3001
+Error: listen EADDRINUSE: address already in use :::3001
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at startServer (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts:18:12)
+Stack: Error: listen EADDRINUSE: address already in use :::3001
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at startServer (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts:18:12)
+Meta: {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -98,
+    "syscall": "listen",
+    "address": "::",
+    "port": 3001
+  },
+  "exception": true,
+  "date": "Thu Sep 11 2025 16:06:18 GMT+0530 (India Standard Time)",
+  "process": {
+    "pid": 109160,
+    "uid": 1000,
+    "gid": 1000,
+    "cwd": "/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend",
+    "execPath": "/home/anisha/.nvm/versions/node/v22.18.0/bin/node",
+    "version": "v22.18.0",
+    "argv": [
+      "/home/anisha/.nvm/versions/node/v22.18.0/bin/node",
+      "/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts"
+    ],
+    "memoryUsage": {
+      "rss": 112349184,
+      "heapTotal": 38207488,
+      "heapUsed": 26081984,
+      "external": 3524290,
+      "arrayBuffers": 93207
+    }
+  },
+  "os": {
+    "loadavg": [
+      1.18,
+      0.99,
+      1.14
+    ],
+    "uptime": 276314.32
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "Server.listen",
+      "line": 2102,
+      "method": "listen",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts",
+      "function": "startServer",
+      "line": 18,
+      "method": null,
+      "native": false
+    }
+  ],
+  "service": "hrm-backend"
+}

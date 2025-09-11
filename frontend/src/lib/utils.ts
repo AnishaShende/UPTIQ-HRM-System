@@ -8,7 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 export function formatCurrency(
   amount: number,
   currency: string = "USD",
-  locale: string = "en-US"
+  locale: string = "en-US",
 ): string {
   return new Intl.NumberFormat(locale, {
     style: "currency",
@@ -18,7 +18,7 @@ export function formatCurrency(
 
 export function formatDate(
   date: Date | string,
-  options: Intl.DateTimeFormatOptions = {}
+  options: Intl.DateTimeFormatOptions = {},
 ): string {
   const defaultOptions: Intl.DateTimeFormatOptions = {
     year: "numeric",
@@ -36,7 +36,7 @@ export function formatRelativeTime(date: Date | string): string {
   const now = new Date();
   const targetDate = new Date(date);
   const diffInSeconds = Math.floor(
-    (now.getTime() - targetDate.getTime()) / 1000
+    (now.getTime() - targetDate.getTime()) / 1000,
   );
 
   const rtf = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
@@ -80,7 +80,7 @@ export function generateInitials(name: string): string {
 
 export function debounce<T extends (...args: any[]) => any>(
   func: T,
-  wait: number
+  wait: number,
 ): (...args: Parameters<T>) => void {
   let timeout: NodeJS.Timeout | null = null;
 
@@ -128,7 +128,7 @@ export function generateRandomId(): string {
 export function downloadFile(
   data: BlobPart,
   filename: string,
-  type: string = "text/plain"
+  type: string = "text/plain",
 ): void {
   const blob = new Blob([data], { type });
   const url = window.URL.createObjectURL(blob);

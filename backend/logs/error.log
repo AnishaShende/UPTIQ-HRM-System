@@ -1,0 +1,240 @@
+2025-09-11 12:48:01 [ERROR]: ❌ Database connection failed: Authentication failed against database server at `localhost`, the provided database credentials for `anisha` are not valid.
+
+Please make sure to provide valid database credentials for the database server at `localhost`.
+Stack: PrismaClientInitializationError: Authentication failed against database server at `localhost`, the provided database credentials for `anisha` are not valid.
+
+Please make sure to provide valid database credentials for the database server at `localhost`.
+    at t (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:112:2488)
+    at async DatabaseManager.connect (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/config/database.ts:75:7)
+    at async startServer (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts:14:5)
+Meta: {
+  "service": "hrm-backend",
+  "name": "PrismaClientInitializationError",
+  "clientVersion": "5.22.0",
+  "errorCode": "P1000"
+}
+2025-09-11 12:48:57 [ERROR]: ❌ Database connection failed: Authentication failed against database server at `localhost`, the provided database credentials for `anisha` are not valid.
+
+Please make sure to provide valid database credentials for the database server at `localhost`.
+Stack: PrismaClientInitializationError: Authentication failed against database server at `localhost`, the provided database credentials for `anisha` are not valid.
+
+Please make sure to provide valid database credentials for the database server at `localhost`.
+    at t (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:112:2488)
+    at async DatabaseManager.connect (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/config/database.ts:75:7)
+    at async startServer (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts:14:5)
+Meta: {
+  "service": "hrm-backend",
+  "name": "PrismaClientInitializationError",
+  "clientVersion": "5.22.0",
+  "errorCode": "P1000"
+}
+2025-09-11 12:59:58 [ERROR]: Error closing HTTP server: Server is not running.
+Stack: Error [ERR_SERVER_NOT_RUNNING]: Server is not running.
+    at Server.close (node:net:2359:12)
+    at Object.onceWrapper (node:events:632:28)
+    at Server.emit (node:events:518:28)
+    at emitCloseNT (node:net:2419:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+Meta: {
+  "service": "hrm-backend",
+  "code": "ERR_SERVER_NOT_RUNNING"
+}
+2025-09-11 13:04:55 [ERROR]: Error closing HTTP server: Server is not running.
+Stack: Error [ERR_SERVER_NOT_RUNNING]: Server is not running.
+    at Server.close (node:net:2359:12)
+    at Object.onceWrapper (node:events:632:28)
+    at Server.emit (node:events:518:28)
+    at emitCloseNT (node:net:2419:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+Meta: {
+  "service": "hrm-backend",
+  "code": "ERR_SERVER_NOT_RUNNING"
+}
+2025-09-11 13:05:32 [ERROR]: Uncaught Exception: Cannot set headers after they are sent to the client
+Stack: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:700:11)
+    at ServerResponse.<anonymous> (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/middleware/logger.middleware.ts:77:9)
+    at ServerResponse.emit (node:events:530:35)
+    at onFinish (node:_http_outgoing:1082:10)
+    at callback (node:internal/streams/writable:766:21)
+    at afterWrite (node:internal/streams/writable:710:5)
+    at afterWriteTick (node:internal/streams/writable:696:10)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+Meta: {
+  "service": "hrm-backend",
+  "code": "ERR_HTTP_HEADERS_SENT"
+}
+2025-09-11 13:11:01 [ERROR]: Error closing HTTP server: Server is not running.
+Stack: Error [ERR_SERVER_NOT_RUNNING]: Server is not running.
+    at Server.close (node:net:2359:12)
+    at Object.onceWrapper (node:events:632:28)
+    at Server.emit (node:events:518:28)
+    at emitCloseNT (node:net:2419:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+Meta: {
+  "service": "hrm-backend",
+  "code": "ERR_SERVER_NOT_RUNNING"
+}
+2025-09-11 13:17:48 [ERROR]: Application Error Validation failed: body.password: Password must be at least 6 characters
+Stack: Error: Validation failed: body.password: Password must be at least 6 characters
+    at <anonymous> (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/middleware/validation.middleware.ts:39:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+Meta: {
+  "service": "hrm-backend",
+  "statusCode": 400,
+  "isOperational": true,
+  "method": "POST",
+  "url": "/api/v1/auth/register",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:142.0) Gecko/20100101 Firefox/142.0"
+}
+2025-09-11 13:30:54 [ERROR]: Error closing HTTP server: Server is not running.
+Stack: Error [ERR_SERVER_NOT_RUNNING]: Server is not running.
+    at Server.close (node:net:2359:12)
+    at Object.onceWrapper (node:events:632:28)
+    at Server.emit (node:events:518:28)
+    at emitCloseNT (node:net:2419:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+Meta: {
+  "service": "hrm-backend",
+  "code": "ERR_SERVER_NOT_RUNNING"
+}
+2025-09-11 15:26:36 [ERROR]: Error closing HTTP server: Server is not running.
+Stack: Error [ERR_SERVER_NOT_RUNNING]: Server is not running.
+    at Server.close (node:net:2359:12)
+    at Object.onceWrapper (node:events:632:28)
+    at Server.emit (node:events:518:28)
+    at emitCloseNT (node:net:2419:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+Meta: {
+  "service": "hrm-backend",
+  "code": "ERR_SERVER_NOT_RUNNING"
+}
+2025-09-11 15:30:21 [ERROR]: Uncaught Exception: listen EADDRINUSE: address already in use :::3000
+Stack: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at startServer (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts:18:12)
+Meta: {
+  "service": "hrm-backend",
+  "code": "EADDRINUSE",
+  "errno": -98,
+  "syscall": "listen",
+  "address": "::",
+  "port": 3000
+}
+2025-09-11 15:30:46 [ERROR]: Uncaught Exception: listen EADDRINUSE: address already in use :::3000
+Stack: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at startServer (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts:18:12)
+Meta: {
+  "service": "hrm-backend",
+  "code": "EADDRINUSE",
+  "errno": -98,
+  "syscall": "listen",
+  "address": "::",
+  "port": 3000
+}
+2025-09-11 15:32:45 [ERROR]: Uncaught Exception: listen EADDRINUSE: address already in use :::3000
+Stack: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at startServer (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts:18:12)
+Meta: {
+  "service": "hrm-backend",
+  "code": "EADDRINUSE",
+  "errno": -98,
+  "syscall": "listen",
+  "address": "::",
+  "port": 3000
+}
+2025-09-11 15:33:10 [ERROR]: Uncaught Exception: listen EADDRINUSE: address already in use :::3000
+Stack: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at startServer (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts:18:12)
+Meta: {
+  "service": "hrm-backend",
+  "code": "EADDRINUSE",
+  "errno": -98,
+  "syscall": "listen",
+  "address": "::",
+  "port": 3000
+}
+2025-09-11 15:34:31 [ERROR]: Error closing HTTP server: Server is not running.
+Stack: Error [ERR_SERVER_NOT_RUNNING]: Server is not running.
+    at Server.close (node:net:2359:12)
+    at Object.onceWrapper (node:events:632:28)
+    at Server.emit (node:events:518:28)
+    at emitCloseNT (node:net:2419:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+Meta: {
+  "service": "hrm-backend",
+  "code": "ERR_SERVER_NOT_RUNNING"
+}
+2025-09-11 15:53:54 [ERROR]: Uncaught Exception: listen EADDRINUSE: address already in use :::3000
+Stack: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at startServer (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts:18:12)
+Meta: {
+  "service": "hrm-backend",
+  "code": "EADDRINUSE",
+  "errno": -98,
+  "syscall": "listen",
+  "address": "::",
+  "port": 3000
+}
+2025-09-11 16:01:01 [ERROR]: Error closing HTTP server: Server is not running.
+Stack: Error [ERR_SERVER_NOT_RUNNING]: Server is not running.
+    at Server.close (node:net:2359:12)
+    at Object.onceWrapper (node:events:632:28)
+    at Server.emit (node:events:518:28)
+    at emitCloseNT (node:net:2419:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+Meta: {
+  "service": "hrm-backend",
+  "code": "ERR_SERVER_NOT_RUNNING"
+}
+2025-09-11 16:06:18 [ERROR]: Uncaught Exception: listen EADDRINUSE: address already in use :::3001
+Stack: Error: listen EADDRINUSE: address already in use :::3001
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at startServer (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/server.ts:18:12)
+Meta: {
+  "service": "hrm-backend",
+  "code": "EADDRINUSE",
+  "errno": -98,
+  "syscall": "listen",
+  "address": "::",
+  "port": 3001
+}
+2025-09-11 16:17:10 [ERROR]: Error closing HTTP server: Server is not running.
+Stack: Error [ERR_SERVER_NOT_RUNNING]: Server is not running.
+    at Server.close (node:net:2359:12)
+    at Object.onceWrapper (node:events:632:28)
+    at Server.emit (node:events:518:28)
+    at emitCloseNT (node:net:2419:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+Meta: {
+  "service": "hrm-backend",
+  "code": "ERR_SERVER_NOT_RUNNING"
+}
+2025-09-11 16:25:00 [ERROR]: Error closing HTTP server: Server is not running.
+Stack: Error [ERR_SERVER_NOT_RUNNING]: Server is not running.
+    at Server.close (node:net:2359:12)
+    at Object.onceWrapper (node:events:632:28)
+    at Server.emit (node:events:518:28)
+    at emitCloseNT (node:net:2419:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+Meta: {
+  "service": "hrm-backend",
+  "code": "ERR_SERVER_NOT_RUNNING"
+}
