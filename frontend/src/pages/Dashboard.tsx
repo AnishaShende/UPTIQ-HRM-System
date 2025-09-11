@@ -1,4 +1,5 @@
 import React from "react";
+import { useQuery } from "@tanstack/react-query";
 import {
   Users,
   Calendar,
@@ -8,12 +9,35 @@ import {
   UserPlus,
   AlertCircle,
   CheckCircle,
+  Building2,
+  FileText,
+  BarChart3,
+  PieChart,
+  Activity,
+  Target
 } from "lucide-react";
+import { 
+  LineChart, 
+  Line, 
+  XAxis, 
+  YAxis, 
+  CartesianGrid, 
+  Tooltip, 
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  PieChart as RechartsPieChart,
+  Pie,
+  Cell,
+  AreaChart,
+  Area
+} from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { formatCurrency, formatDate } from "@/lib/utils";
 import { Spinner } from "@/components/ui/spinner";
+import { reportsApi, employeeApi, departmentApi } from "../lib/api";
 
 interface DashboardStats {
   totalEmployees: number;
@@ -247,11 +271,58 @@ const UpcomingEvents: React.FC = () => {
   );
 };
 
+// Mock data for charts
+const employeeGrowthData = [
+  { month: 'Jan', employees: 120, newHires: 5 },
+  { month: 'Feb', employees: 125, newHires: 8 },
+  { month: 'Mar', employees: 130, newHires: 6 },
+  { month: 'Apr', employees: 135, newHires: 7 },
+  { month: 'May', employees: 140, newHires: 9 },
+  { month: 'Jun', employees: 142, newHires: 4 },
+];
+
+const departmentData = [
+  { name: 'Engineering', value: 45, color: '#3B82F6' },
+  { name: 'Sales', value: 28, color: '#10B981' },
+  { name: 'Marketing', value: 15, color: '#F59E0B' },
+  { name: 'HR', value: 12, color: '#EF4444' },
+  { name: 'Finance', value: 18, color: '#8B5CF6' },
+  { name: 'Operations', value: 24, color: '#06B6D4' },
+];
+
+const attendanceData = [
+  { day: 'Mon', present: 135, absent: 7 },
+  { day: 'Tue', present: 138, absent: 4 },
+  { day: 'Wed', present: 140, absent: 2 },
+  { day: 'Thu', present: 137, absent: 5 },
+  { day: 'Fri', present: 132, absent: 10 },
+];
+
 export const Dashboard: React.FC = () => {
-  // Use mock data for now
-  const stats = mockStats;
-  const isLoading = false;
-  const error = null;
+  // Fetch dashboard stats with real API integration
+  const {
+    data: dashboardStats,
+    isLoading,
+    error
+  } = useQuery({
+    queryKey: ['dashboard-stats'],
+    queryFn: () => reportsApi.getDashboardStats(),
+    staleTime: 2 * 60 * 1000, // 2 minutes
+  });
+
+  // Fetch employees for additional stats
+  const { data: employeesData } = useQuery({
+    queryKey: ['employees-stats'],
+    queryFn: () => employeeApi.getAll({ limit: 1000 }),
+    staleTime: 5 * 60 * 1000,
+  });
+
+  // Fetch departments for additional stats
+  const { data: departmentsData } = useQuery({
+    queryKey: ['departments-stats'],
+    queryFn: () => departmentApi.getAll(),
+    staleTime: 5 * 60 * 1000,
+  });
 
   if (isLoading) {
     return (
@@ -277,12 +348,15 @@ export const Dashboard: React.FC = () => {
     );
   }
 
-  const dashboardStats = stats as DashboardStats;
+  // Use mock data as fallback
+  const stats = dashboardStats?.data || mockStats;
+  const employees = employeesData?.data || [];
+  const departments = departmentsData?.data || [];
 
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
             Dashboard
@@ -291,12 +365,15 @@ export const Dashboard: React.FC = () => {
             Welcome back! Here's what's happening at your organization.
           </p>
         </div>
-        <div className="text-sm text-gray-500 dark:text-gray-400">
-          Last updated:{" "}
-          {formatDate(new Date(), {
-            hour: "numeric",
-            minute: "numeric",
-          })}
+        <div className="flex items-center space-x-3">
+          <Button variant="outline" size="sm">
+            <FileText className="h-4 w-4 mr-2" />
+            Export Report
+          </Button>
+          <Button variant="outline" size="sm">
+            <BarChart3 className="h-4 w-4 mr-2" />
+            Analytics
+          </Button>
         </div>
       </div>
 
@@ -304,90 +381,215 @@ export const Dashboard: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard
           title="Total Employees"
-          value={dashboardStats?.totalEmployees || 0}
+          value={employees.length || stats.totalEmployees}
           icon={Users}
           trend={{ value: 12, isPositive: true }}
           color="blue"
         />
         <StatCard
           title="Attendance Rate"
-          value={`${dashboardStats?.attendanceRate || 0}%`}
+          value={`${stats.attendanceRate || 94.5}%`}
           icon={Clock}
           trend={{ value: 2.5, isPositive: true }}
           color="green"
         />
         <StatCard
           title="Pending Leaves"
-          value={dashboardStats?.pendingLeaveRequests || 0}
+          value={stats.pendingLeaveRequests || 8}
           icon={Calendar}
           trend={{ value: -8, isPositive: false }}
           color="orange"
         />
         <StatCard
           title="Monthly Payroll"
-          value={formatCurrency(dashboardStats?.totalPayroll || 0)}
+          value={formatCurrency(stats.totalPayroll || 450000)}
           icon={DollarSign}
           trend={{ value: 5.2, isPositive: true }}
           color="purple"
         />
       </div>
 
+      {/* Charts Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Employee Growth Chart */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center space-x-2">
+              <TrendingUp className="h-5 w-5 text-blue-600" />
+              <span>Employee Growth</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ResponsiveContainer width="100%" height={300}>
+              <AreaChart data={employeeGrowthData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="month" />
+                <YAxis />
+                <Tooltip />
+                <Area 
+                  type="monotone" 
+                  dataKey="employees" 
+                  stroke="#3B82F6" 
+                  fill="#3B82F6" 
+                  fillOpacity={0.2}
+                />
+                <Area 
+                  type="monotone" 
+                  dataKey="newHires" 
+                  stroke="#10B981" 
+                  fill="#10B981" 
+                  fillOpacity={0.2}
+                />
+              </AreaChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+
+        {/* Department Distribution */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center space-x-2">
+              <PieChart className="h-5 w-5 text-purple-600" />
+              <span>Department Distribution</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ResponsiveContainer width="100%" height={300}>
+              <RechartsPieChart>
+                <Pie
+                  data={departmentData}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={60}
+                  outerRadius={100}
+                  paddingAngle={5}
+                  dataKey="value"
+                >
+                  {departmentData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                </Pie>
+                <Tooltip />
+              </RechartsPieChart>
+            </ResponsiveContainer>
+            <div className="mt-4 grid grid-cols-2 gap-2">
+              {departmentData.map((dept, index) => (
+                <div key={index} className="flex items-center space-x-2">
+                  <div 
+                    className="w-3 h-3 rounded-full" 
+                    style={{ backgroundColor: dept.color }}
+                  />
+                  <span className="text-sm text-gray-600">{dept.name}</span>
+                  <span className="text-sm font-medium text-gray-900">{dept.value}</span>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Attendance Overview */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center space-x-2">
+              <Activity className="h-5 w-5 text-green-600" />
+              <span>Weekly Attendance</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={attendanceData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="day" />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="present" fill="#10B981" />
+                <Bar dataKey="absent" fill="#EF4444" />
+              </BarChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+
+        {/* Quick Metrics */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center space-x-2">
+              <Target className="h-5 w-5 text-orange-600" />
+              <span>Key Metrics</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="p-2 bg-blue-100 rounded-lg">
+                  <Building2 className="h-5 w-5 text-blue-600" />
+                </div>
+                <div>
+                  <p className="font-medium">Departments</p>
+                  <p className="text-sm text-gray-500">Active units</p>
+                </div>
+              </div>
+              <div className="text-right">
+                <p className="text-2xl font-bold">{departments.length || 6}</p>
+                <Badge variant="success" className="text-xs">+2 this month</Badge>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="p-2 bg-green-100 rounded-lg">
+                  <UserPlus className="h-5 w-5 text-green-600" />
+                </div>
+                <div>
+                  <p className="font-medium">New Hires</p>
+                  <p className="text-sm text-gray-500">This month</p>
+                </div>
+              </div>
+              <div className="text-right">
+                <p className="text-2xl font-bold">{stats.newHires || 6}</p>
+                <Badge variant="success" className="text-xs">+20% vs last month</Badge>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="p-2 bg-purple-100 rounded-lg">
+                  <CheckCircle className="h-5 w-5 text-purple-600" />
+                </div>
+                <div>
+                  <p className="font-medium">Open Positions</p>
+                  <p className="text-sm text-gray-500">Currently hiring</p>
+                </div>
+              </div>
+              <div className="text-right">
+                <p className="text-2xl font-bold">{stats.openPositions || 4}</p>
+                <Badge variant="warning" className="text-xs">2 urgent</Badge>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="p-2 bg-orange-100 rounded-lg">
+                  <TrendingUp className="h-5 w-5 text-orange-600" />
+                </div>
+                <div>
+                  <p className="font-medium">Performance Reviews</p>
+                  <p className="text-sm text-gray-500">Due this quarter</p>
+                </div>
+              </div>
+              <div className="text-right">
+                <p className="text-2xl font-bold">{stats.performanceReviews || 23}</p>
+                <Badge variant="warning" className="text-xs">15 overdue</Badge>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Left Column */}
-        <div className="lg:col-span-2 space-y-6">
+        {/* Recent Activity */}
+        <div className="lg:col-span-2">
           <RecentActivity />
-
-          {/* Additional Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-center space-x-2">
-                  <UserPlus className="h-5 w-5 text-green-600" />
-                  <div>
-                    <p className="text-2xl font-bold">
-                      {dashboardStats?.newHires || 0}
-                    </p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
-                      New Hires
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-center space-x-2">
-                  <TrendingUp className="h-5 w-5 text-blue-600" />
-                  <div>
-                    <p className="text-2xl font-bold">
-                      {dashboardStats?.performanceReviews || 0}
-                    </p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
-                      Reviews Due
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-5 w-5 text-purple-600" />
-                  <div>
-                    <p className="text-2xl font-bold">
-                      {dashboardStats?.openPositions || 0}
-                    </p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
-                      Open Positions
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
         </div>
 
         {/* Right Column */}

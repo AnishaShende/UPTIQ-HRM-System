@@ -1,22 +1,41 @@
-import { useState } from "react";
-import { Eye, EyeOff, LogIn } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Eye, EyeOff, LogIn, AlertCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import { toast } from "sonner";
 
 export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const { login, isLoading, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+
+  // Redirect if already authenticated
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/dashboard");
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
+    setError("");
     
-    // Simulate login API call
-    setTimeout(() => {
-      setIsLoading(false);
-      // Here you would typically handle the login logic
-      console.log("Login attempt:", { email, password });
-    }, 1000);
+    if (!email || !password) {
+      setError("Please fill in all fields");
+      return;
+    }
+
+    try {
+      await login(email, password);
+      navigate("/dashboard");
+    } catch (error: any) {
+      console.error("Login error:", error);
+      setError(error?.response?.data?.message || "Invalid email or password");
+      toast.error("Login failed. Please check your credentials.");
+    }
   };
 
   return (
@@ -35,6 +54,21 @@ export function Login() {
         </div>
         
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+          {error && (
+            <div className="rounded-md bg-red-50 p-4">
+              <div className="flex">
+                <div className="flex-shrink-0">
+                  <AlertCircle className="h-5 w-5 text-red-400" />
+                </div>
+                <div className="ml-3">
+                  <h3 className="text-sm font-medium text-red-800">
+                    {error}
+                  </h3>
+                </div>
+              </div>
+            </div>
+          )}
+
           <div className="space-y-4">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
