@@ -4,8 +4,8 @@ FROM node:20-alpine AS base
 # Set working directory
 WORKDIR /app
 
-# Install system dependencies for building native modules
-RUN apk add --no-cache libc6-compat
+# Install system dependencies for building native modules and curl
+RUN apk add --no-cache libc6-compat curl
 
 # Copy shared package first
 COPY shared ./shared
@@ -38,6 +38,9 @@ RUN npm run build
 FROM node:20-alpine AS production
 ENV NODE_ENV=production
 WORKDIR /app
+
+# Install curl for health checks
+RUN apk add --no-cache curl
 
 # Create app user
 RUN addgroup --system --gid 1001 nodejs

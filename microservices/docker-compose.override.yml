@@ -1,0 +1,51 @@
+# Docker Compose override for development
+# This file extends docker-compose.yml for development-specific configurations
+
+services:
+  auth-service:
+    build:
+      target: dev
+    volumes:
+      - ./auth-service:/app/auth-service
+      - ./shared:/app/shared
+      - /app/auth-service/node_modules
+      - /app/shared/node_modules
+      - auth_logs:/app/auth-service/logs
+    command: sh -c "cd /app/shared && npm run build && cd /app/auth-service && mkdir -p node_modules/@hrm && rm -f node_modules/@hrm/shared && ln -sf /app/shared node_modules/@hrm/shared && npx prisma generate && npm run dev"
+    environment:
+      - NODE_ENV=development
+
+  employee-service:
+    build:
+      target: dev
+    volumes:
+      - ./employee-service:/app/employee-service
+      - ./shared:/app/shared
+      - /app/employee-service/node_modules
+      - /app/shared/node_modules
+      - employee_logs:/app/employee-service/logs
+      - employee_uploads:/app/employee-service/uploads
+    command: sh -c "cd /app/shared && npm run build && cd /app/employee-service && mkdir -p node_modules/@hrm && rm -f node_modules/@hrm/shared && ln -sf /app/shared node_modules/@hrm/shared && npx prisma generate && npm run dev"
+    environment:
+      - NODE_ENV=development
+
+  api-gateway:
+    build:
+      target: dev
+    volumes:
+      - ./api-gateway:/app/api-gateway
+      - ./shared:/app/shared
+      - /app/api-gateway/node_modules
+      - /app/shared/node_modules
+      - gateway_logs:/app/api-gateway/logs
+    command: sh -c "cd /app/shared && npm run build && cd /app/api-gateway && mkdir -p node_modules/@hrm && rm -f node_modules/@hrm/shared && ln -sf /app/shared node_modules/@hrm/shared && npm run dev"
+    environment:
+      - NODE_ENV=development
+
+  frontend:
+    environment:
+      - NODE_ENV=development
+      - VITE_API_URL=http://localhost:3000/api/v1
+    volumes:
+      - ../frontend:/app
+      - /app/node_modules

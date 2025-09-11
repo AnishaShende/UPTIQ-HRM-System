@@ -19,9 +19,25 @@ if [ ! -f .env ]; then
     echo "✅ Please review and update the .env file with your configuration."
 fi
 
-# Build and start services
-echo "🔨 Building and starting services..."
-docker-compose up --build -d
+# Build and start infrastructure services first
+echo "🔨 Starting infrastructure services..."
+docker-compose up --build -d postgres-auth postgres-employee redis
+
+# Wait for infrastructure to be ready
+echo "⏳ Waiting for infrastructure services to be ready..."
+sleep 15
+
+# Initialize databases
+echo "🗄️ Initializing databases..."
+./scripts/init-databases.sh
+
+# Start application services
+echo "🚀 Starting application services..."
+docker-compose up --build -d auth-service employee-service api-gateway
+
+# Start frontend
+echo "🌐 Starting frontend..."
+docker-compose up --build -d frontend
 
 # Wait for services to be healthy
 echo "⏳ Waiting for services to be healthy..."
