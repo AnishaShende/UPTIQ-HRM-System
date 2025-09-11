@@ -4,8 +4,8 @@ FROM node:20-alpine AS base
 # Set working directory
 WORKDIR /app
 
-# Install system dependencies for building native modules
-RUN apk add --no-cache libc6-compat
+# Install system dependencies for building native modules and curl
+RUN apk add --no-cache libc6-compat curl
 
 # Copy shared package first
 COPY shared ./shared
@@ -32,12 +32,16 @@ FROM base AS builder
 ENV NODE_ENV=production
 RUN npm ci --only=production && npm cache clean --force
 COPY employee-service/ .
+RUN npx prisma generate
 RUN npm run build
 
 # Production stage
 FROM node:20-alpine AS production
 ENV NODE_ENV=production
 WORKDIR /app
+
+# Install curl for health checks
+RUN apk add --no-cache curl
 
 # Create app user
 RUN addgroup --system --gid 1001 nodejs
