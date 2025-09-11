@@ -40,6 +40,9 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
   }
 };
 
+// Alias for convenience
+export const authMiddleware = authenticateToken;
+
 export const authorizeRoles = (...roles: UserRole[]) => {
   return (req: Request, res: Response, next: NextFunction) => {
     if (!req.user) {

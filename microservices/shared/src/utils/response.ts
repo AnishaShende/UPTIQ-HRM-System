@@ -1,6 +1,26 @@
 import { Response } from 'express';
 import { ApiResponse } from '../types';
 
+export const successResponse = <T>(data: T, message?: string, meta?: any): ApiResponse<T> => {
+  return {
+    success: true,
+    data,
+    meta
+  };
+};
+
+export const errorResponse = (message: string, statusCode: number = 500, details?: any): ApiResponse => {
+  return {
+    success: false,
+    error: {
+      message,
+      statusCode,
+      timestamp: new Date().toISOString(),
+      details
+    }
+  };
+};
+
 export class ResponseHelper {
   static success<T>(
     res: Response,
