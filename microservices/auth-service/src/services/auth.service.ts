@@ -27,7 +27,7 @@ export class AuthService {
   private refreshExpiresIn: string;
 
   constructor() {
-    this.jwtSecret = process.env.JWT_SECRET!;
+    this.jwtSecret = process.env.JWT_SECRET || 'hrm-dev-secret-1234567890abcdefghijklmnopqrstuvwxyz';
     this.jwtExpiresIn = process.env.JWT_EXPIRES_IN || '15m';
     this.refreshExpiresIn = process.env.JWT_REFRESH_EXPIRES_IN || '7d';
   }
@@ -76,7 +76,7 @@ export class AuthService {
           id: user.id,
           email: user.email,
           role: user.role,
-          employeeId: user.employeeId
+          employeeId: user.employeeId || undefined
         },
         tokens
       };
@@ -310,12 +310,12 @@ export class AuthService {
       userId: user.id,
       email: user.email,
       role: user.role,
-      employeeId: user.employeeId
+      employeeId: user.employeeId || undefined
     };
 
     const accessToken = jwt.sign(accessTokenPayload, this.jwtSecret, {
       expiresIn: this.jwtExpiresIn
-    });
+    } as jwt.SignOptions);
 
     // Generate refresh token
     const refreshTokenValue = crypto.randomBytes(32).toString('hex');

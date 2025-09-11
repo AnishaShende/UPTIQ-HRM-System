@@ -8,3 +8,13 @@ frontend/dist
 backend/dist
 shared/dist
 .env
+microservices/api-gateway/dist
+microservices/employee-service/dist
+microservices/auth-service/dist
+microservices/api-gateway/node_modules
+microservices/employee-service/node_modules
+microservices/auth-service/node_modules
+microservices/api-gateway/.env
+microservices/employee-service/.env
+microservices/auth-service/.env
+

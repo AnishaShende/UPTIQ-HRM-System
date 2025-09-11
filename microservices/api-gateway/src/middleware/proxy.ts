@@ -35,15 +35,15 @@ export const createServiceProxy = (serviceName: string) => {
     onProxyReq: (proxyReq, req) => {
       // Forward request metadata
       const request = req as Request;
-      proxyReq.setHeader('X-Gateway-Request-ID', request.requestId || '');
+      proxyReq.setHeader('X-Gateway-Request-ID', request.requestId || 'unknown');
       proxyReq.setHeader('X-Gateway-Service', serviceName);
-      proxyReq.setHeader('X-Forwarded-For', request.ip);
+      proxyReq.setHeader('X-Forwarded-For', request.ip || '');
       
       // Forward user information if available
       if (request.user) {
-        proxyReq.setHeader('X-User-ID', request.user.userId);
-        proxyReq.setHeader('X-User-Role', request.user.role);
-        proxyReq.setHeader('X-User-Email', request.user.email);
+        proxyReq.setHeader('X-User-ID', (request.user as any).id || '');
+        proxyReq.setHeader('X-User-Role', request.user.role || '');
+        proxyReq.setHeader('X-User-Email', request.user.email || '');
       }
 
       logger.debug(`Proxying request to ${serviceName}`, {
