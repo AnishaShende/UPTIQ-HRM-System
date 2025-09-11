@@ -2513,3 +2513,248 @@ Meta: {
 Meta: {
   "service": "hrm-backend"
 }
+2025-09-11 17:37:36 [ERROR]: unhandledRejection: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+Stack: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+Meta: {
+  "error": {
+    "name": "PrismaClientInitializationError",
+    "clientVersion": "5.22.0"
+  },
+  "rejection": true,
+  "date": "Thu Sep 11 2025 17:37:36 GMT+0000 (Coordinated Universal Time)",
+  "process": {
+    "pid": 29,
+    "uid": 0,
+    "gid": 0,
+    "cwd": "/app",
+    "execPath": "/usr/local/bin/node",
+    "version": "v18.20.8",
+    "argv": [
+      "/usr/local/bin/node",
+      "/app/src/server.ts"
+    ],
+    "memoryUsage": {
+      "rss": 121393152,
+      "heapTotal": 38223872,
+      "heapUsed": 23830376,
+      "external": 2776720,
+      "arrayBuffers": 228221
+    }
+  },
+  "os": {
+    "loadavg": [
+      0.18,
+      0.17,
+      0.53
+    ],
+    "uptime": 2480.23
+  },
+  "trace": [
+    {
+      "column": 10243,
+      "file": "/app/node_modules/@prisma/client/runtime/library.js",
+      "function": "Object.loadLibrary",
+      "line": 111,
+      "method": "loadLibrary",
+      "native": false
+    },
+    {
+      "column": 448,
+      "file": "/app/node_modules/@prisma/client/runtime/library.js",
+      "function": "async _r.loadEngine",
+      "line": 112,
+      "method": "loadEngine",
+      "native": false
+    },
+    {
+      "column": 12599,
+      "file": "/app/node_modules/@prisma/client/runtime/library.js",
+      "function": "async _r.instantiateLibrary",
+      "line": 111,
+      "method": "instantiateLibrary",
+      "native": false
+    }
+  ],
+  "service": "hrm-backend"
+}
+2025-09-11 17:38:45 [ERROR]: unhandledRejection: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+Stack: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+Meta: {
+  "error": {
+    "name": "PrismaClientInitializationError",
+    "clientVersion": "5.22.0"
+  },
+  "rejection": true,
+  "date": "Thu Sep 11 2025 17:38:45 GMT+0000 (Coordinated Universal Time)",
+  "process": {
+    "pid": 29,
+    "uid": 0,
+    "gid": 0,
+    "cwd": "/app",
+    "execPath": "/usr/local/bin/node",
+    "version": "v18.20.8",
+    "argv": [
+      "/usr/local/bin/node",
+      "/app/src/server.ts"
+    ],
+    "memoryUsage": {
+      "rss": 107597824,
+      "heapTotal": 38748160,
+      "heapUsed": 21678512,
+      "external": 2600738,
+      "arrayBuffers": 52103
+    }
+  },
+  "os": {
+    "loadavg": [
+      0.17,
+      0.16,
+      0.5
+    ],
+    "uptime": 2549.35
+  },
+  "trace": [
+    {
+      "column": 10243,
+      "file": "/app/node_modules/@prisma/client/runtime/library.js",
+      "function": "Object.loadLibrary",
+      "line": 111,
+      "method": "loadLibrary",
+      "native": false
+    },
+    {
+      "column": 448,
+      "file": "/app/node_modules/@prisma/client/runtime/library.js",
+      "function": "async _r.loadEngine",
+      "line": 112,
+      "method": "loadEngine",
+      "native": false
+    },
+    {
+      "column": 12599,
+      "file": "/app/node_modules/@prisma/client/runtime/library.js",
+      "function": "async _r.instantiateLibrary",
+      "line": 111,
+      "method": "instantiateLibrary",
+      "native": false
+    }
+  ],
+  "service": "hrm-backend"
+}
+2025-09-11 17:43:35 [INFO]: Prisma Info Starting a postgresql pool with 25 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-11 17:43:35 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 17:43:35 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "15ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-11 17:43:35 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 17:43:35 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 17:43:35 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 17:43:35 [INFO]: 🚀 Server is running on port 3000
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 17:43:35 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 17:43:35 [INFO]: �📚 API Documentation: http://localhost:3000/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 17:43:35 [INFO]: 🏥 Health Check: http://localhost:3000/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 17:43:35 [INFO]: 🔗 API Base URL: http://localhost:3000/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 17:43:52 [INFO]: GET /health 200 253 - 7.400 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 17:43:52 [INFO]: GET /favicon.ico 404 124 - 3.045 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 17:44:11 [INFO]: GET /api-docs 301 158 - 3.689 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 17:44:11 [INFO]: GET /api-docs/ 304 - - 7.613 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 17:44:11 [INFO]: GET /api-docs/swagger-ui.css 304 - - 3.741 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 17:44:12 [INFO]: GET /api-docs/swagger-ui-init.js 304 - - 1.500 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 17:44:12 [INFO]: GET /api-docs/swagger-ui-bundle.js 304 - - 10.859 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 17:44:12 [INFO]: GET /api-docs/swagger-ui-standalone-preset.js 304 - - 6.757 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-11 17:44:12 [INFO]: GET /api-docs/favicon-32x32.png - - - - ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
