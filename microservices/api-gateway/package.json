@@ -1,0 +1,47 @@
+{
+  "name": "@hrm/api-gateway",
+  "version": "1.0.0",
+  "description": "API Gateway for HRM microservices",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc && tsc-alias",
+    "start": "node dist/server.js",
+    "test": "jest",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "format": "prettier --write src/**/*.ts"
+  },
+  "dependencies": {
+    "@hrm/shared": "file:../shared",
+    "express": "^4.18.2",
+    "http-proxy-middleware": "^2.0.6",
+    "zod": "^3.22.4",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "compression": "^1.7.4",
+    "express-rate-limit": "^7.1.5",
+    "redis": "^4.6.11",
+    "dotenv": "^17.2.2",
+    "consul": "^0.40.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.8.0",
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0",
+    "eslint": "^8.52.0",
+    "prettier": "^3.0.3",
+    "tsc-alias": "^1.8.8",
+    "tsx": "^4.1.4",
+    "typescript": "^5.2.2"
+  },
+  "keywords": [
+    "api-gateway",
+    "microservices",
+    "hrm",
+    "proxy"
+  ],
+  "author": "UPTIQ.ai",
+  "license": "MIT"
+}
