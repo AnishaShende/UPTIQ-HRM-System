@@ -1,13 +1,11 @@
-version: '3.8'
-
 services:
   # Databases
   postgres-auth:
     image: postgres:15-alpine
     container_name: hrm-postgres-auth
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-hrm_user}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-root}
       POSTGRES_DB: hrm_auth_db
     ports:
       - "5432:5432"
@@ -42,65 +40,65 @@ services:
       timeout: 10s
       retries: 3
 
-  postgres-leave:
-    image: postgres:15-alpine
-    container_name: hrm-postgres-leave
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER:-hrm_user}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
-      POSTGRES_DB: hrm_leave_db
-    ports:
-      - "5434:5432"
-    volumes:
-      - postgres_leave_data:/var/lib/postgresql/data
-    networks:
-      - hrm-network
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-hrm_user} -d hrm_leave_db"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+  # postgres-leave:
+  #   image: postgres:15-alpine
+  #   container_name: hrm-postgres-leave
+  #   environment:
+  #     POSTGRES_USER: ${POSTGRES_USER:-hrm_user}
+  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+  #     POSTGRES_DB: hrm_leave_db
+  #   ports:
+  #     - "5434:5432"
+  #   volumes:
+  #     - postgres_leave_data:/var/lib/postgresql/data
+  #   networks:
+  #     - hrm-network
+  #   restart: unless-stopped
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-hrm_user} -d hrm_leave_db"]
+  #     interval: 30s
+  #     timeout: 10s
+  #     retries: 3
 
-  postgres-payroll:
-    image: postgres:15-alpine
-    container_name: hrm-postgres-payroll
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER:-hrm_user}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
-      POSTGRES_DB: hrm_payroll_db
-    ports:
-      - "5435:5432"
-    volumes:
-      - postgres_payroll_data:/var/lib/postgresql/data
-    networks:
-      - hrm-network
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-hrm_user} -d hrm_payroll_db"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+  # postgres-payroll:
+  #   image: postgres:15-alpine
+  #   container_name: hrm-postgres-payroll
+  #   environment:
+  #     POSTGRES_USER: ${POSTGRES_USER:-hrm_user}
+  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+  #     POSTGRES_DB: hrm_payroll_db
+  #   ports:
+  #     - "5435:5432"
+  #   volumes:
+  #     - postgres_payroll_data:/var/lib/postgresql/data
+  #   networks:
+  #     - hrm-network
+  #   restart: unless-stopped
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-hrm_user} -d hrm_payroll_db"]
+  #     interval: 30s
+  #     timeout: 10s
+  #     retries: 3
 
-  postgres-recruitment:
-    image: postgres:15-alpine
-    container_name: hrm-postgres-recruitment
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER:-hrm_user}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
-      POSTGRES_DB: hrm_recruitment_db
-    ports:
-      - "5436:5432"
-    volumes:
-      - postgres_recruitment_data:/var/lib/postgresql/data
-    networks:
-      - hrm-network
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-hrm_user} -d hrm_recruitment_db"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+  # postgres-recruitment:
+  #   image: postgres:15-alpine
+  #   container_name: hrm-postgres-recruitment
+  #   environment:
+  #     POSTGRES_USER: ${POSTGRES_USER:-hrm_user}
+  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+  #     POSTGRES_DB: hrm_recruitment_db
+  #   ports:
+  #     - "5436:5432"
+  #   volumes:
+  #     - postgres_recruitment_data:/var/lib/postgresql/data
+  #   networks:
+  #     - hrm-network
+  #   restart: unless-stopped
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-hrm_user} -d hrm_recruitment_db"]
+  #     interval: 30s
+  #     timeout: 10s
+  #     retries: 3
 
   # Redis for caching and session management
   redis:
@@ -122,15 +120,15 @@ services:
   # Microservices
   auth-service:
     build:
-      context: ./auth-service
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./auth-service/Dockerfile
     container_name: hrm-auth-service
     environment:
       NODE_ENV: development
       PORT: 3001
       DATABASE_URL: postgresql://${POSTGRES_USER:-hrm_user}:${POSTGRES_PASSWORD:-password}@postgres-auth:5432/hrm_auth_db
       REDIS_URL: redis://redis:6379
-      JWT_SECRET: ${JWT_SECRET:-your-super-secret-jwt-key-change-this-in-production}
+      JWT_SECRET: ${JWT_SECRET:-hrm-dev-secret-1234567890abcdefghijklmnopqrstuvwxyz}
       JWT_EXPIRES_IN: 15m
       JWT_REFRESH_EXPIRES_IN: 7d
       CORS_ORIGIN: http://localhost:5173,http://localhost:3000
@@ -138,9 +136,11 @@ services:
     ports:
       - "3001:3001"
     volumes:
-      - ./auth-service:/app
-      - /app/node_modules
-      - auth_logs:/app/logs
+      - ./auth-service:/app/auth-service
+      - ./shared:/app/shared
+      - /app/auth-service/node_modules
+      - /app/shared/node_modules
+      - auth_logs:/app/auth-service/logs
     depends_on:
       postgres-auth:
         condition: service_healthy
@@ -154,28 +154,30 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-    command: npm run dev
+    command: sh -c "cd /app/auth-service && mkdir -p node_modules/@hrm && rm -f node_modules/@hrm/shared && ln -sf /app/shared node_modules/@hrm/shared && npm run dev"
 
   employee-service:
     build:
-      context: ./employee-service
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./employee-service/Dockerfile
     container_name: hrm-employee-service
     environment:
       NODE_ENV: development
       PORT: 3002
       DATABASE_URL: postgresql://${POSTGRES_USER:-hrm_user}:${POSTGRES_PASSWORD:-password}@postgres-employee:5432/hrm_employee_db
       REDIS_URL: redis://redis:6379
-      JWT_SECRET: ${JWT_SECRET:-your-super-secret-jwt-key-change-this-in-production}
+      JWT_SECRET: ${JWT_SECRET:-hrm-dev-secret-1234567890abcdefghijklmnopqrstuvwxyz}
       CORS_ORIGIN: http://localhost:5173,http://localhost:3000
       CORS_CREDENTIALS: true
     ports:
       - "3002:3002"
     volumes:
-      - ./employee-service:/app
-      - /app/node_modules
-      - employee_logs:/app/logs
-      - employee_uploads:/app/uploads
+      - ./employee-service:/app/employee-service
+      - ./shared:/app/shared
+      - /app/employee-service/node_modules
+      - /app/shared/node_modules
+      - employee_logs:/app/employee-service/logs
+      - employee_uploads:/app/employee-service/uploads
     depends_on:
       postgres-employee:
         condition: service_healthy
@@ -189,153 +191,229 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-    command: npm run dev
+    command: sh -c "cd /app/employee-service && mkdir -p node_modules/@hrm && rm -f node_modules/@hrm/shared && ln -sf /app/shared node_modules/@hrm/shared && npm run dev"
 
-  leave-service:
-    build:
-      context: ./leave-service
-      dockerfile: Dockerfile
-    container_name: hrm-leave-service
-    environment:
-      NODE_ENV: development
-      PORT: 3003
-      DATABASE_URL: postgresql://${POSTGRES_USER:-hrm_user}:${POSTGRES_PASSWORD:-password}@postgres-leave:5432/hrm_leave_db
-      REDIS_URL: redis://redis:6379
-      JWT_SECRET: ${JWT_SECRET:-your-super-secret-jwt-key-change-this-in-production}
-      CORS_ORIGIN: http://localhost:5173,http://localhost:3000
-      CORS_CREDENTIALS: true
-      EMPLOYEE_SERVICE_URL: http://employee-service:3002
-    ports:
-      - "3003:3003"
-    volumes:
-      - ./leave-service:/app
-      - /app/node_modules
-      - leave_logs:/app/logs
-    depends_on:
-      postgres-leave:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
-      employee-service:
-        condition: service_healthy
-    networks:
-      - hrm-network
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3003/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-    command: npm run dev
+  # leave-service:
+  #   build:
+  #     context: ./leave-service
+  #     dockerfile: Dockerfile
+  #   container_name: hrm-leave-service
+  #   environment:
+  #     NODE_ENV: development
+  #     PORT: 3003
+  #     DATABASE_URL: postgresql://${POSTGRES_USER:-hrm_user}:${POSTGRES_PASSWORD:-password}@postgres-leave:5432/hrm_leave_db
+  #     REDIS_URL: redis://redis:6379
+  #     JWT_SECRET: ${JWT_SECRET:-hrm-dev-secret-1234567890abcdefghijklmnopqrstuvwxyz}
+  #     CORS_ORIGIN: http://localhost:5173,http://localhost:3000
+  #     CORS_CREDENTIALS: true
+  #     EMPLOYEE_SERVICE_URL: http://employee-service:3002
+  #   ports:
+  #     - "3003:3003"
+  #   volumes:
+  #     - ./leave-service:/app
+  #     - /app/node_modules
+  #     - leave_logs:/app/logs
+  #   depends_on:
+  #     postgres-leave:
+  #       condition: service_healthy
+  #     redis:
+  #       condition: service_healthy
+  #     employee-service:
+  #       condition: service_healthy
+  #   networks:
+  #     - hrm-network
+  #   restart: unless-stopped
+  #   healthcheck:
+  #     test: ["CMD", "curl", "-f", "http://localhost:3003/health"]
+  #     interval: 30s
+  #     timeout: 10s
+  #     retries: 3
+  #   command: npm run dev
 
-  payroll-service:
-    build:
-      context: ./payroll-service
-      dockerfile: Dockerfile
-    container_name: hrm-payroll-service
-    environment:
-      NODE_ENV: development
-      PORT: 3004
-      DATABASE_URL: postgresql://${POSTGRES_USER:-hrm_user}:${POSTGRES_PASSWORD:-password}@postgres-payroll:5432/hrm_payroll_db
-      REDIS_URL: redis://redis:6379
-      JWT_SECRET: ${JWT_SECRET:-your-super-secret-jwt-key-change-this-in-production}
-      CORS_ORIGIN: http://localhost:5173,http://localhost:3000
-      CORS_CREDENTIALS: true
-      EMPLOYEE_SERVICE_URL: http://employee-service:3002
-    ports:
-      - "3004:3004"
-    volumes:
-      - ./payroll-service:/app
-      - /app/node_modules
-      - payroll_logs:/app/logs
-    depends_on:
-      postgres-payroll:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
-      employee-service:
-        condition: service_healthy
-    networks:
-      - hrm-network
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3004/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-    command: npm run dev
+  # payroll-service:
+  #   build:
+  #     context: ./payroll-service
+  #     dockerfile: Dockerfile
+  #   container_name: hrm-payroll-service
+  #   environment:
+  #     NODE_ENV: development
+  #     PORT: 3004
+  #     DATABASE_URL: postgresql://${POSTGRES_USER:-hrm_user}:${POSTGRES_PASSWORD:-password}@postgres-payroll:5432/hrm_payroll_db
+  #     REDIS_URL: redis://redis:6379
+  #     JWT_SECRET: ${JWT_SECRET:-hrm-dev-secret-1234567890abcdefghijklmnopqrstuvwxyz}
+  #     CORS_ORIGIN: http://localhost:5173,http://localhost:3000
+  #     CORS_CREDENTIALS: true
+  #     EMPLOYEE_SERVICE_URL: http://employee-service:3002
+  #   ports:
+  #     - "3004:3004"
+  #   volumes:
+  #     - ./payroll-service:/app
+  #     - /app/node_modules
+  #     - payroll_logs:/app/logs
+  #   depends_on:
+  #     postgres-payroll:
+  #       condition: service_healthy
+  #     redis:
+  #       condition: service_healthy
+  #     employee-service:
+  #       condition: service_healthy
+  #   networks:
+  #     - hrm-network
+  #   restart: unless-stopped
+  #   healthcheck:
+  #     test: ["CMD", "curl", "-f", "http://localhost:3004/health"]
+  #     interval: 30s
+  #     timeout: 10s
+  #     retries: 3
+  #   command: npm run dev
 
-  recruitment-service:
-    build:
-      context: ./recruitment-service
-      dockerfile: Dockerfile
-    container_name: hrm-recruitment-service
-    environment:
-      NODE_ENV: development
-      PORT: 3005
-      DATABASE_URL: postgresql://${POSTGRES_USER:-hrm_user}:${POSTGRES_PASSWORD:-password}@postgres-recruitment:5432/hrm_recruitment_db
-      REDIS_URL: redis://redis:6379
-      JWT_SECRET: ${JWT_SECRET:-your-super-secret-jwt-key-change-this-in-production}
-      CORS_ORIGIN: http://localhost:5173,http://localhost:3000
-      CORS_CREDENTIALS: true
-      EMPLOYEE_SERVICE_URL: http://employee-service:3002
-    ports:
-      - "3005:3005"
-    volumes:
-      - ./recruitment-service:/app
-      - /app/node_modules
-      - recruitment_logs:/app/logs
-    depends_on:
-      postgres-recruitment:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
-      employee-service:
-        condition: service_healthy
-    networks:
-      - hrm-network
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3005/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-    command: npm run dev
+  # recruitment-service:
+  #   build:
+  #     context: ./recruitment-service
+  #     dockerfile: Dockerfile
+  #   container_name: hrm-recruitment-service
+  #   environment:
+  #     NODE_ENV: development
+  #     PORT: 3005
+  #     DATABASE_URL: postgresql://${POSTGRES_USER:-hrm_user}:${POSTGRES_PASSWORD:-password}@postgres-recruitment:5432/hrm_recruitment_db
+  #     REDIS_URL: redis://redis:6379
+  #     JWT_SECRET: ${JWT_SECRET:-hrm-dev-secret-1234567890abcdefghijklmnopqrstuvwxyz}
+  #     CORS_ORIGIN: http://localhost:5173,http://localhost:3000
+  #     CORS_CREDENTIALS: true
+  #     EMPLOYEE_SERVICE_URL: http://employee-service:3002
+  #   ports:
+  #     - "3005:3005"
+  #   volumes:
+  #     - ./recruitment-service:/app
+  #     - /app/node_modules
+  #     - recruitment_logs:/app/logs
+  #   depends_on:
+  #     postgres-recruitment:
+  #       condition: service_healthy
+  #     redis:
+  #       condition: service_healthy
+  #     employee-service:
+  #       condition: service_healthy
+  #   networks:
+  #     - hrm-network
+  #   restart: unless-stopped
+  #   healthcheck:
+  #     test: ["CMD", "curl", "-f", "http://localhost:3005/health"]
+  #     interval: 30s
+  #     timeout: 10s
+  #     retries: 3
+  #   command: npm run dev
+
+  # payroll-service:
+  #   build:
+  #     context: ./payroll-service
+  #     dockerfile: Dockerfile
+  #   container_name: hrm-payroll-service
+  #   environment:
+  #     NODE_ENV: development
+  #     PORT: 3004
+  #     DATABASE_URL: postgresql://${POSTGRES_USER:-hrm_user}:${POSTGRES_PASSWORD:-password}@postgres-payroll:5432/hrm_payroll_db
+  #     REDIS_URL: redis://redis:6379
+  #     JWT_SECRET: ${JWT_SECRET:-hrm-dev-secret-1234567890abcdefghijklmnopqrstuvwxyz}
+  #     CORS_ORIGIN: http://localhost:5173,http://localhost:3000
+  #     CORS_CREDENTIALS: true
+  #     EMPLOYEE_SERVICE_URL: http://employee-service:3002
+  #   ports:
+  #     - "3004:3004"
+  #   volumes:
+  #     - ./payroll-service:/app
+  #     - /app/node_modules
+  #     - payroll_logs:/app/logs
+  #   depends_on:
+  #     postgres-payroll:
+  #       condition: service_healthy
+  #     redis:
+  #       condition: service_healthy
+  #     employee-service:
+  #       condition: service_healthy
+  #   networks:
+  #     - hrm-network
+  #   restart: unless-stopped
+  #   healthcheck:
+  #     test: ["CMD", "curl", "-f", "http://localhost:3004/health"]
+  #     interval: 30s
+  #     timeout: 10s
+  #     retries: 3
+  #   command: npm run dev
+
+  # recruitment-service:
+  #   build:
+  #     context: ./recruitment-service
+  #     dockerfile: Dockerfile
+  #   container_name: hrm-recruitment-service
+  #   environment:
+  #     NODE_ENV: development
+  #     PORT: 3005
+  #     DATABASE_URL: postgresql://${POSTGRES_USER:-hrm_user}:${POSTGRES_PASSWORD:-password}@postgres-recruitment:5432/hrm_recruitment_db
+  #     REDIS_URL: redis://redis:6379
+  #     JWT_SECRET: ${JWT_SECRET:-hrm-dev-secret-1234567890abcdefghijklmnopqrstuvwxyz}
+  #     CORS_ORIGIN: http://localhost:5173,http://localhost:3000
+  #     CORS_CREDENTIALS: true
+  #     EMPLOYEE_SERVICE_URL: http://employee-service:3002
+  #   ports:
+  #     - "3005:3005"
+  #   volumes:
+  #     - ./recruitment-service:/app
+  #     - /app/node_modules
+  #     - recruitment_logs:/app/logs
+  #   depends_on:
+  #     postgres-recruitment:
+  #       condition: service_healthy
+  #     redis:
+  #       condition: service_healthy
+  #     employee-service:
+  #       condition: service_healthy
+  #   networks:
+  #     - hrm-network
+  #   restart: unless-stopped
+  #   healthcheck:
+  #     test: ["CMD", "curl", "-f", "http://localhost:3005/health"]
+  #     interval: 30s
+  #     timeout: 10s
+  #     retries: 3
+  #   command: npm run dev
 
   # API Gateway
   api-gateway:
     build:
-      context: ./api-gateway
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./api-gateway/Dockerfile
     container_name: hrm-api-gateway
     environment:
       NODE_ENV: development
       PORT: 3000
-      JWT_SECRET: ${JWT_SECRET:-your-super-secret-jwt-key-change-this-in-production}
+      JWT_SECRET: ${JWT_SECRET:-hrm-dev-secret-1234567890abcdefghijklmnopqrstuvwxyz}
       CORS_ORIGIN: http://localhost:5173
       CORS_CREDENTIALS: true
       AUTH_SERVICE_URL: http://auth-service:3001
       EMPLOYEE_SERVICE_URL: http://employee-service:3002
-      LEAVE_SERVICE_URL: http://leave-service:3003
-      PAYROLL_SERVICE_URL: http://payroll-service:3004
-      RECRUITMENT_SERVICE_URL: http://recruitment-service:3005
+      # LEAVE_SERVICE_URL: http://leave-service:3003
+      # PAYROLL_SERVICE_URL: http://payroll-service:3004
+      # RECRUITMENT_SERVICE_URL: http://recruitment-service:3005
     ports:
       - "3000:3000"
     volumes:
-      - ./api-gateway:/app
-      - /app/node_modules
-      - gateway_logs:/app/logs
+      - ./api-gateway:/app/api-gateway
+      - ./shared:/app/shared
+      - /app/api-gateway/node_modules
+      - /app/shared/node_modules
+      - gateway_logs:/app/api-gateway/logs
     depends_on:
       auth-service:
         condition: service_healthy
       employee-service:
         condition: service_healthy
-      leave-service:
-        condition: service_healthy
-      payroll-service:
-        condition: service_healthy
-      recruitment-service:
-        condition: service_healthy
+      # leave-service:
+      #   condition: service_healthy
+      # payroll-service:
+      #   condition: service_healthy
+      # recruitment-service:
+      #   condition: service_healthy
     networks:
       - hrm-network
     restart: unless-stopped
@@ -344,7 +422,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-    command: npm run dev
+    command: sh -c "cd /app/api-gateway && mkdir -p node_modules/@hrm && rm -f node_modules/@hrm/shared && ln -sf /app/shared node_modules/@hrm/shared && npm run dev"
 
   # Frontend
   frontend:
@@ -368,58 +446,58 @@ services:
     command: npm run dev
 
   # Monitoring and Observability
-  prometheus:
-    image: prom/prometheus:latest
-    container_name: hrm-prometheus
-    ports:
-      - "9090:9090"
-    volumes:
-      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
-      - prometheus_data:/prometheus
-    networks:
-      - hrm-network
-    restart: unless-stopped
-    command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
-      - '--storage.tsdb.path=/prometheus'
-      - '--web.console.libraries=/etc/prometheus/console_libraries'
-      - '--web.console.templates=/etc/prometheus/consoles'
-      - '--storage.tsdb.retention.time=200h'
-      - '--web.enable-lifecycle'
+  # prometheus:
+  #   image: prom/prometheus:latest
+  #   container_name: hrm-prometheus
+  #   ports:
+  #     - "9090:9090"
+  #   volumes:
+  #     - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+  #     - prometheus_data:/prometheus
+  #   networks:
+  #     - hrm-network
+  #   restart: unless-stopped
+  #   command:
+  #     - '--config.file=/etc/prometheus/prometheus.yml'
+  #     - '--storage.tsdb.path=/prometheus'
+  #     - '--web.console.libraries=/etc/prometheus/console_libraries'
+  #     - '--web.console.templates=/etc/prometheus/consoles'
+  #     - '--storage.tsdb.retention.time=200h'
+  #     - '--web.enable-lifecycle'
 
-  grafana:
-    image: grafana/grafana:latest
-    container_name: hrm-grafana
-    ports:
-      - "3001:3000"
-    environment:
-      GF_SECURITY_ADMIN_PASSWORD: admin
-    volumes:
-      - grafana_data:/var/lib/grafana
-      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards
-      - ./monitoring/grafana/datasources:/etc/grafana/provisioning/datasources
-    networks:
-      - hrm-network
-    restart: unless-stopped
-    depends_on:
-      - prometheus
+  # grafana:
+  #   image: grafana/grafana:latest
+  #   container_name: hrm-grafana
+  #   ports:
+  #     - "3010:3000"
+  #   environment:
+  #     GF_SECURITY_ADMIN_PASSWORD: admin
+  #   volumes:
+  #     - grafana_data:/var/lib/grafana
+  #     - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards
+  #     - ./monitoring/grafana/datasources:/etc/grafana/provisioning/datasources
+  #   networks:
+  #     - hrm-network
+  #   restart: unless-stopped
+  #   depends_on:
+  #     - prometheus
 
 volumes:
   postgres_auth_data:
   postgres_employee_data:
-  postgres_leave_data:
-  postgres_payroll_data:
-  postgres_recruitment_data:
+  # postgres_leave_data:
+  # postgres_payroll_data:
+  # postgres_recruitment_data:
   redis_data:
   auth_logs:
   employee_logs:
-  leave_logs:
-  payroll_logs:
-  recruitment_logs:
+  # leave_logs:
+  # payroll_logs:
+  # recruitment_logs:
   gateway_logs:
   employee_uploads:
-  prometheus_data:
-  grafana_data:
+  # prometheus_data:
+  # grafana_data:
 
 networks:
   hrm-network:

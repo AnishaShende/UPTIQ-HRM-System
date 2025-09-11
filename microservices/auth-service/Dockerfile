@@ -2,12 +2,20 @@ FROM node:18-alpine
 
 WORKDIR /app
 
+# Copy shared package first
+COPY shared ./shared
+WORKDIR /app/shared
+RUN npm ci && npm run build
+
+# Set working directory to auth-service
+WORKDIR /app/auth-service
+
 # Install dependencies
-COPY package*.json ./
+COPY auth-service/package*.json ./
 RUN npm ci --only=production
 
 # Copy source code
-COPY . .
+COPY auth-service/ .
 
 # Generate Prisma client
 RUN npx prisma generate
@@ -23,7 +31,7 @@ RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nodejs -u 1001
 
 # Change ownership of the app directory
-RUN chown -R nodejs:nodejs /app
+RUN chown -R nodejs:nodejs /app/auth-service
 USER nodejs
 
 # Expose port
