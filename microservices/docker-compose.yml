@@ -4,8 +4,8 @@ services:
     image: postgres:15-alpine
     container_name: hrm-postgres-auth
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-postgres}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-root}
+      POSTGRES_USER: ${POSTGRES_USER:-hrm_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
       POSTGRES_DB: hrm_auth_db
     ports:
       - "5432:5432"
@@ -122,6 +122,7 @@ services:
     build:
       context: .
       dockerfile: ./auth-service/Dockerfile
+      target: production
     container_name: hrm-auth-service
     environment:
       NODE_ENV: development
@@ -154,12 +155,13 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-    command: sh -c "cd /app/auth-service && mkdir -p node_modules/@hrm && rm -f node_modules/@hrm/shared && ln -sf /app/shared node_modules/@hrm/shared && npm run dev"
+    command: ["npm", "start"]
 
   employee-service:
     build:
       context: .
       dockerfile: ./employee-service/Dockerfile
+      target: production
     container_name: hrm-employee-service
     environment:
       NODE_ENV: development
@@ -191,7 +193,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-    command: sh -c "cd /app/employee-service && mkdir -p node_modules/@hrm && rm -f node_modules/@hrm/shared && ln -sf /app/shared node_modules/@hrm/shared && npm run dev"
+    command: ["npm", "start"]
 
   # leave-service:
   #   build:
@@ -383,6 +385,7 @@ services:
     build:
       context: .
       dockerfile: ./api-gateway/Dockerfile
+      target: production
     container_name: hrm-api-gateway
     environment:
       NODE_ENV: development
@@ -422,7 +425,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-    command: sh -c "cd /app/api-gateway && mkdir -p node_modules/@hrm && rm -f node_modules/@hrm/shared && ln -sf /app/shared node_modules/@hrm/shared && npm run dev"
+    command: ["npm", "start"]
 
   # Frontend
   frontend:
