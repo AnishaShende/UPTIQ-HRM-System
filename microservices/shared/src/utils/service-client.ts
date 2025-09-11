@@ -23,7 +23,7 @@ export class ServiceClient {
     // Request interceptor to add service metadata
     this.client.interceptors.request.use((config) => {
       config.headers['X-Service-Name'] = this.serviceName;
-      config.headers['X-Request-ID'] = config.metadata?.requestId || '';
+      config.headers['X-Request-ID'] = '';
       return config;
     });
 
