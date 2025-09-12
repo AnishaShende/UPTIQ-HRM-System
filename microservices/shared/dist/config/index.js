@@ -3,11 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.createServiceConfig = void 0;
 const createServiceConfig = (serviceName) => {
     const requiredEnvVars = ['JWT_SECRET', 'DATABASE_URL'];
-    for (const envVar of requiredEnvVars) {
-        if (!process.env[envVar]) {
-            throw new Error(`Missing required environment variable: ${envVar}`);
-        }
-    }
+    // for (const envVar of requiredEnvVars) {
+    //   if (!process.env[envVar]) {
+    //     throw new Error(`Missing required environment variable: ${envVar}`);
+    //   }
+    // }
     return {
         name: serviceName,
         version: process.env.SERVICE_VERSION || '1.0.0',

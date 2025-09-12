@@ -1,11 +1,6 @@
 # Schema Design Document
 ## UptiqAI HRM Microservices Architecture
 
-**Document Version:** 1.0  
-**Date:** December 2024  
-**Author:** System Architecture Team  
-**Status:** Draft  
-
 ---
 
 ## Table of Contents

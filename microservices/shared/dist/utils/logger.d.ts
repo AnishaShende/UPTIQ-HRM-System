@@ -1,4 +1,3 @@
-import winston from 'winston';
-declare const createLogger: (serviceName: string) => winston.Logger;
+declare const createLogger: (serviceName: string) => any;
 export { createLogger };
 //# sourceMappingURL=logger.d.ts.map

@@ -1,11 +1,6 @@
 # Software Requirements Specification (SRS)
 ## UptiqAI HRM Microservices Architecture
 
-**Document Version:** 1.0  
-**Date:** December 2024  
-**Author:** Product Management Team  
-**Status:** Approved  
-
 ---
 
 ## Table of Contents
@@ -90,10 +85,8 @@ The UptiqAI HRM system is a cloud-native, microservices-based platform that repl
 
 ### Design and Implementation Constraints
 - **Technology Stack**: Node.js, TypeScript, React, PostgreSQL
-- **Security Standards**: OWASP Top 10 compliance
 - **Performance**: Sub-200ms API response times
 - **Availability**: 99.9% uptime SLA
-- **Compliance**: GDPR, SOX, HIPAA (as applicable)
 
 ---
 
@@ -601,7 +594,3 @@ The system will deliver a world-class HRM platform that meets current needs whil
 
 **Document Control**
 - **Version**: 1.0
-- **Last Updated**: December 2024
-- **Next Review**: March 2025
-- **Approved By**: Product Management Team
-- **Stakeholders**: Engineering, QA, Operations, Compliance
