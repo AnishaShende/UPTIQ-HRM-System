@@ -1,24 +1,30 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { User } from "@/types";
-import { authApi } from "@/lib/api";
-import { toast } from "sonner";
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { jwtDecode } from 'jwt-decode';
+
+interface User {
+  id: string;
+  email: string;
+  name: string;
+  role: string;
+}
+
+interface JWTPayload {
+  sub: string;
+  email: string;
+  name: string;
+  role: string;
+  exp: number;
+  iat: number;
+}
 
 interface AuthContextType {
   user: User | null;
-  isLoading: boolean;
+  token: string | null;
   isAuthenticated: boolean;
+  isLoading: boolean;
   login: (email: string, password: string) => Promise<void>;
-  register: (userData: {
-    email: string;
-    password: string;
-    firstName: string;
-    lastName: string;
-  }) => Promise<void>;
-  logout: () => Promise<void>;
-  forgotPassword: (email: string) => Promise<void>;
-  resetPassword: (token: string, password: string) => Promise<void>;
-  verifyEmail: (token: string) => Promise<void>;
-  resendVerification: (email: string) => Promise<void>;
+  logout: () => void;
+  refreshToken: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -26,147 +32,159 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (context === undefined) {
-    throw new Error("useAuth must be used within an AuthProvider");
+    throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
 };
 
-interface AuthProviderProps {
-  children: React.ReactNode;
-}
-
-export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [token, setToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const isAuthenticated = !!user;
+  // Check if token is expired
+  const isTokenExpired = (token: string): boolean => {
+    try {
+      const decoded: JWTPayload = jwtDecode(token);
+      const currentTime = Date.now() / 1000;
+      return decoded.exp < currentTime;
+    } catch {
+      return true;
+    }
+  };
 
+  // Decode token and set user
+  const setAuthFromToken = (token: string) => {
+    try {
+      const decoded: JWTPayload = jwtDecode(token);
+      const userData: User = {
+        id: decoded.sub,
+        email: decoded.email,
+        name: decoded.name,
+        role: decoded.role,
+      };
+      setUser(userData);
+      setToken(token);
+      localStorage.setItem('authToken', token);
+    } catch (error) {
+      console.error('Invalid token:', error);
+      logout();
+    }
+  };
+
+  // Login function
+  const login = async (email: string, password: string): Promise<void> => {
+    try {
+      const response = await fetch('http://localhost:8000/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Login failed');
+      }
+
+      const data = await response.json();
+      setAuthFromToken(data.token);
+    } catch (error) {
+      console.error('Login error:', error);
+      throw error;
+    }
+  };
+
+  // Logout function
+  const logout = () => {
+    setUser(null);
+    setToken(null);
+    localStorage.removeItem('authToken');
+  };
+
+  // Refresh token function
+  const refreshToken = async (): Promise<void> => {
+    try {
+      const currentToken = localStorage.getItem('authToken');
+      if (!currentToken) {
+        throw new Error('No token available');
+      }
+
+      const response = await fetch('http://localhost:8000/api/auth/refresh', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${currentToken}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Token refresh failed');
+      }
+
+      const data = await response.json();
+      setAuthFromToken(data.token);
+    } catch (error) {
+      console.error('Token refresh error:', error);
+      logout();
+    }
+  };
+
+  // Initialize auth state
   useEffect(() => {
+    const initializeAuth = () => {
+      const storedToken = localStorage.getItem('authToken');
+      
+      if (storedToken) {
+        if (isTokenExpired(storedToken)) {
+          // Token expired, try to refresh
+          refreshToken().finally(() => setIsLoading(false));
+        } else {
+          // Token valid, set auth state
+          setAuthFromToken(storedToken);
+          setIsLoading(false);
+        }
+      } else {
+        setIsLoading(false);
+      }
+    };
+
     initializeAuth();
   }, []);
 
-  const initializeAuth = async () => {
-    try {
-      const token = localStorage.getItem("accessToken");
-      if (token) {
-        // Verify token and get user data
-        const response = await authApi.me();
-        setUser(response.user);
-      }
-    } catch (error) {
-      // Token is invalid, remove it
-      localStorage.removeItem("accessToken");
-      localStorage.removeItem("refreshToken");
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  // Auto refresh token before expiry
+  useEffect(() => {
+    if (!token) return;
 
-  const login = async (email: string, password: string) => {
-    try {
-      setIsLoading(true);
-      const response = await authApi.login({ email, password });
+    const decoded: JWTPayload = jwtDecode(token);
+    const expiryTime = decoded.exp * 1000;
+    const currentTime = Date.now();
+    const timeUntilExpiry = expiryTime - currentTime;
+    
+    // Refresh 5 minutes before expiry
+    const refreshTime = Math.max(timeUntilExpiry - 5 * 60 * 1000, 0);
 
-      const { user: userData, accessToken, refreshToken } = response;
+    const refreshTimer = setTimeout(() => {
+      refreshToken();
+    }, refreshTime);
 
-      localStorage.setItem("accessToken", accessToken);
-      localStorage.setItem("refreshToken", refreshToken);
-      setUser(userData);
-
-      toast.success("Welcome back!");
-    } catch (error: any) {
-      throw error;
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const register = async (userData: {
-    email: string;
-    password: string;
-    firstName: string;
-    lastName: string;
-  }) => {
-    try {
-      setIsLoading(true);
-      const response = await authApi.register(userData);
-
-      console.log(response);
-
-      toast.success(
-        "Registration successful! Please check your email to verify your account.",
-      );
-    } catch (error: any) {
-      throw error;
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const logout = async () => {
-    try {
-      await authApi.logout();
-    } catch (error) {
-      // Even if logout fails on server, we still want to clear local state
-      console.error("Logout error:", error);
-    } finally {
-      localStorage.removeItem("accessToken");
-      localStorage.removeItem("refreshToken");
-      setUser(null);
-      toast.success("Logged out successfully");
-    }
-  };
-
-  const forgotPassword = async (email: string) => {
-    try {
-      await authApi.forgotPassword(email);
-      toast.success("Password reset email sent! Please check your inbox.");
-    } catch (error: any) {
-      throw error;
-    }
-  };
-
-  const resetPassword = async (token: string, password: string) => {
-    try {
-      await authApi.resetPassword(token, password);
-      toast.success(
-        "Password reset successful! You can now log in with your new password.",
-      );
-    } catch (error: any) {
-      throw error;
-    }
-  };
-
-  const verifyEmail = async (token: string) => {
-    try {
-      await authApi.verifyEmail(token);
-      toast.success("Email verified successfully! You can now log in.");
-    } catch (error: any) {
-      throw error;
-    }
-  };
-
-  const resendVerification = async (email: string) => {
-    try {
-      await authApi.resendVerification(email);
-      toast.success("Verification email sent! Please check your inbox.");
-    } catch (error: any) {
-      throw error;
-    }
-  };
+    return () => clearTimeout(refreshTimer);
+  }, [token]);
 
   const value: AuthContextType = {
     user,
+    token,
+    isAuthenticated: !!user && !!token,
     isLoading,
-    isAuthenticated,
     login,
-    register,
     logout,
-    forgotPassword,
-    resetPassword,
-    verifyEmail,
-    resendVerification,
+    refreshToken,
   };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={value}>
+      {children}
+    </AuthContext.Provider>
+  );
 };

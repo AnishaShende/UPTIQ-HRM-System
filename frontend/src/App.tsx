@@ -62,7 +62,6 @@ const AppLayout: React.FC = () => {
     </div>
   );
 };
-
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
