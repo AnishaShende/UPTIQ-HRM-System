@@ -75,10 +75,30 @@ services:
     restart: unless-stopped
     command: npm run dev
 
+  # RAG FastAPI Service
+  rag-service:
+    build:
+      context: ./rag_service
+      dockerfile: Dockerfile
+    container_name: hrm-rag-service
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      RAG_DATA_DIR: /workspace/rag/uptiq_hr_policies
+      RAG_PERSIST_DIR: /data/chroma
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./rag/uptiq_hr_policies:/workspace/rag/uptiq_hr_policies:ro
+      - rag_chroma_data:/data
+    networks:
+      - hrm-network
+    restart: unless-stopped
+
 volumes:
   postgres_data:
   redis_data:
   uploads_data:
+  rag_chroma_data:
 
 networks:
   hrm-network:
