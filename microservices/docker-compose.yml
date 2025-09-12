@@ -122,7 +122,7 @@ services:
     build:
       context: .
       dockerfile: ./auth-service/Dockerfile
-      target: production
+      target: dev
     container_name: hrm-auth-service
     environment:
       NODE_ENV: development
@@ -155,13 +155,13 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-    command: ["npm", "start"]
+    command: ["npm", "run", "dev"]
 
   employee-service:
     build:
       context: .
       dockerfile: ./employee-service/Dockerfile
-      target: production
+      target: dev
     container_name: hrm-employee-service
     environment:
       NODE_ENV: development
@@ -193,7 +193,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-    command: ["npm", "start"]
+    command: ["npm", "run", "dev"]
 
   # leave-service:
   #   build:

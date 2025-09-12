@@ -1,28 +1,34 @@
 # Multi-stage build for production optimization
-FROM node:20-alpine AS base
+FROM node:20-slim AS base
 
 # Set working directory
 WORKDIR /app
 
 # Install system dependencies for building native modules and curl
-RUN apk add --no-cache libc6-compat curl
+RUN apt-get update && apt-get install -y \
+  curl \
+  openssl \
+  && rm -rf /var/lib/apt/lists/*
 
-# Copy shared package first
+# Copy and build shared package first
 COPY shared ./shared
 WORKDIR /app/shared
-RUN npm ci && npm run build
+COPY shared/package*.json ./
+RUN npm install && npm run build
 
-# Set working directory back to app
+# Set working directory back to employee-service
 WORKDIR /app/employee-service
 
-# Copy package files for employee service
+
+# Copy package files for employee-service
 COPY employee-service/package*.json ./
 COPY employee-service/tsconfig*.json ./
+
 
 # Development stage
 FROM base AS dev
 ENV NODE_ENV=development
-RUN npm ci
+RUN npm install
 COPY employee-service/ .
 EXPOSE 3002
 CMD ["npm", "run", "dev"]
@@ -30,7 +36,7 @@ CMD ["npm", "run", "dev"]
 # Build stage
 FROM base AS builder
 ENV NODE_ENV=production
-RUN npm ci --only=production && npm cache clean --force
+RUN npm install --only=production && npm cache clean --force
 COPY employee-service/ .
 RUN npx prisma generate
 RUN npm run build
@@ -40,8 +46,8 @@ FROM node:20-alpine AS production
 ENV NODE_ENV=production
 WORKDIR /app
 
-# Install curl for health checks
-RUN apk add --no-cache curl
+# Install dependencies
+RUN apk add --no-cache curl openssl
 
 # Create app user
 RUN addgroup --system --gid 1001 nodejs

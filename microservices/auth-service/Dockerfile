@@ -1,16 +1,20 @@
 # Multi-stage build for production optimization
-FROM node:20-alpine AS base
+FROM node:20-slim AS base
 
 # Set working directory
 WORKDIR /app
 
 # Install system dependencies for building native modules and curl
-RUN apk add --no-cache libc6-compat curl
+# RUN apk add --no-cache libc6-compat curl
+RUN apt-get update && apt-get install -y \
+  curl \
+  openssl \
+  && rm -rf /var/lib/apt/lists/*
 
 # Copy shared package first
 COPY shared ./shared
 WORKDIR /app/shared
-RUN npm ci && npm run build
+RUN npm install && npm run build
 
 # Set working directory back to auth-service
 WORKDIR /app/auth-service
@@ -22,7 +26,7 @@ COPY auth-service/tsconfig*.json ./
 # Development stage
 FROM base AS dev
 ENV NODE_ENV=development
-RUN npm ci
+RUN npm install
 COPY auth-service/ .
 EXPOSE 3001
 CMD ["npm", "run", "dev"]
@@ -30,7 +34,7 @@ CMD ["npm", "run", "dev"]
 # Build stage
 FROM base AS builder
 ENV NODE_ENV=production
-RUN npm ci --only=production && npm cache clean --force
+RUN npm install --only=production && npm cache clean --force
 COPY auth-service/ .
 RUN npx prisma generate
 RUN npm run build
