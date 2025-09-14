@@ -432,3 +432,14 @@ Meta: {
   "ip": "::ffff:127.0.0.1",
   "userAgent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:142.0) Gecko/20100101 Firefox/142.0"
 }
+2025-09-14 22:25:21 [ERROR]: Error closing HTTP server: Server is not running.
+Stack: Error [ERR_SERVER_NOT_RUNNING]: Server is not running.
+    at Server.close (node:net:2359:12)
+    at Object.onceWrapper (node:events:632:28)
+    at Server.emit (node:events:518:28)
+    at emitCloseNT (node:net:2419:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+Meta: {
+  "service": "hrm-backend",
+  "code": "ERR_SERVER_NOT_RUNNING"
+}
