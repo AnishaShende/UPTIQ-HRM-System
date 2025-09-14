@@ -2758,3 +2758,250 @@ Meta: {
 Meta: {
   "service": "hrm-backend"
 }
+2025-09-14 21:59:32 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-14 21:59:32 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 21:59:32 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "2ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-14 21:59:32 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 21:59:32 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 21:59:32 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 21:59:32 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 21:59:32 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 21:59:32 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 21:59:32 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 21:59:32 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:00:44 [INFO]: GET /api-docs 301 158 - 4.805 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:00:44 [INFO]: GET /api-docs/ 200 - - 4.417 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:00:44 [INFO]: GET /api-docs/swagger-ui-init.js 200 - - 0.784 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:00:44 [INFO]: GET /api-docs/swagger-ui-bundle.js 304 - - 15.893 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:00:44 [INFO]: GET /api-docs/swagger-ui-standalone-preset.js 304 - - 7.451 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:00:44 [INFO]: GET /api-docs/swagger-ui.css 200 - - 25.638 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:00:44 [INFO]: GET /api-docs/favicon-32x32.png - - - - ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:00:58 [INFO]: GET /health 200 254 - 2.213 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:00:58 [INFO]: GET /favicon.ico 404 124 - 2.124 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:01:16 [INFO]: GET /api/v1 200 287 - 2.044 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:01:16 [INFO]: GET /favicon.ico 404 124 - 1.159 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:02:04 [INFO]: GET /api-docs/ 200 - - 1.296 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:02:04 [INFO]: GET /api-docs/swagger-ui-bundle.js 304 - - 1.399 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:02:04 [INFO]: GET /api-docs/swagger-ui-standalone-preset.js 304 - - 2.404 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:02:04 [INFO]: GET /api-docs/swagger-ui-init.js 304 - - 1.102 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:02:04 [INFO]: GET /api-docs/swagger-ui.css 200 - - 12.274 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:02:04 [INFO]: GET /api-docs/favicon-32x32.png - - - - ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:03:15 [INFO]: User registered successfully
+Meta: {
+  "service": "hrm-backend",
+  "userId": "cmfjwz9js0000fcvbfaqammap",
+  "email": "anisha@example.com",
+  "role": "EMPLOYEE"
+}
+2025-09-14 22:03:15 [INFO]: Registration successful
+Meta: {
+  "service": "hrm-backend",
+  "email": "anisha@example.com"
+}
+2025-09-14 22:03:15 [INFO]: POST /api/v1/auth/register 201 281 - 639.104 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:04:28 [ERROR]: Login failed
+Meta: {
+  "service": "hrm-backend",
+  "email": "anishashende@example.com",
+  "error": "Invalid email or password"
+}
+2025-09-14 22:04:28 [ERROR]: Unexpected Error Invalid email or password
+Stack: Error: Invalid email or password
+    at AuthService.login (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/auth.service.ts:177:15)
+    at async login (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/auth.controller.ts:10:22)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/auth/login",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:142.0) Gecko/20100101 Firefox/142.0"
+}
+2025-09-14 22:04:28 [INFO]: POST /api/v1/auth/login 500 501 - 13.392 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:05:01 [INFO]: User logged in successfully
+Meta: {
+  "service": "hrm-backend",
+  "userId": "cmfjwz9js0000fcvbfaqammap",
+  "email": "anisha@example.com"
+}
+2025-09-14 22:05:01 [INFO]: Login successful
+Meta: {
+  "service": "hrm-backend",
+  "email": "anisha@example.com"
+}
+2025-09-14 22:05:01 [INFO]: POST /api/v1/auth/login 200 870 - 577.334 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:05:54 [INFO]: User logged out successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:05:54 [INFO]: Logout successful
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:05:54 [INFO]: POST /api/v1/auth/logout 200 46 - 6.728 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:06:14 [INFO]: User logged out successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:06:14 [INFO]: Logout successful
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:06:14 [INFO]: POST /api/v1/auth/logout 200 46 - 3.421 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:06:53 [INFO]: GET /api/v1/auth/me 401 42 - 0.650 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:07:36 [INFO]: User logged in successfully
+Meta: {
+  "service": "hrm-backend",
+  "userId": "cmfjwz9js0000fcvbfaqammap",
+  "email": "anisha@example.com"
+}
+2025-09-14 22:07:36 [INFO]: Login successful
+Meta: {
+  "service": "hrm-backend",
+  "email": "anisha@example.com"
+}
+2025-09-14 22:07:36 [INFO]: POST /api/v1/auth/login 200 892 - 494.020 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:07:40 [INFO]: GET /api/v1/auth/me 401 42 - 0.370 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:08:53 [INFO]: Employees retrieved successfully
+Meta: {
+  "service": "hrm-backend",
+  "total": 0,
+  "page": 1
+}
+2025-09-14 22:08:53 [INFO]: GET /api/v1/employees?page=1&limit=1 200 176 - 43.111 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 22:10:48 [ERROR]: Failed to create employee
+Meta: {
+  "service": "hrm-backend",
+  "email": "anishashende@example.com",
+  "error": "Department not found"
+}
+2025-09-14 22:10:48 [ERROR]: Unexpected Error Department not found
+Stack: Error: Department not found
+    at EmployeeService.createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:93:15)
+    at async createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/employee.controller.ts:62:22)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/employees",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:142.0) Gecko/20100101 Firefox/142.0"
+}
+2025-09-14 22:10:48 [INFO]: POST /api/v1/employees 500 520 - 13.478 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}

@@ -398,3 +398,37 @@ Meta: {
   ],
   "service": "hrm-backend"
 }
+2025-09-14 22:04:28 [ERROR]: Login failed
+Meta: {
+  "service": "hrm-backend",
+  "email": "anishashende@example.com",
+  "error": "Invalid email or password"
+}
+2025-09-14 22:04:28 [ERROR]: Unexpected Error Invalid email or password
+Stack: Error: Invalid email or password
+    at AuthService.login (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/auth.service.ts:177:15)
+    at async login (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/auth.controller.ts:10:22)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/auth/login",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:142.0) Gecko/20100101 Firefox/142.0"
+}
+2025-09-14 22:10:48 [ERROR]: Failed to create employee
+Meta: {
+  "service": "hrm-backend",
+  "email": "anishashende@example.com",
+  "error": "Department not found"
+}
+2025-09-14 22:10:48 [ERROR]: Unexpected Error Department not found
+Stack: Error: Department not found
+    at EmployeeService.createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:93:15)
+    at async createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/employee.controller.ts:62:22)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/employees",
+  "ip": "::ffff:127.0.0.1",
+  "userAgent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:142.0) Gecko/20100101 Firefox/142.0"
+}

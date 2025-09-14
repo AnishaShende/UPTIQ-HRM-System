@@ -1,0 +1,282 @@
+{
+  "designSystem": {
+    "name": "Modern HR Dashboard Design System",
+    "version": "1.0.0",
+    "description": "A comprehensive design system for HR management interfaces with soft gradients, rounded components, and clean typography"
+  },
+  
+  "colorPalette": {
+    "primary": {
+      "purple": {
+        "light": "#E8DCFF",
+        "medium": "#C4A9FF", 
+        "dark": "#8B5FBF"
+      },
+      "green": {
+        "light": "#D4F4DD",
+        "medium": "#A8E6C1",
+        "dark": "#4CAF50"
+      },
+      "orange": {
+        "light": "#FFE4D6",
+        "medium": "#FFB08A",
+        "dark": "#FF7043"
+      },
+      "blue": {
+        "light": "#E3F2FD",
+        "medium": "#90CAF9",
+        "dark": "#2196F3"
+      }
+    },
+    "neutral": {
+      "white": "#FFFFFF",
+      "background": "#F8F9FA",
+      "cardBackground": "#FFFFFF",
+      "text": {
+        "primary": "#2C3E50",
+        "secondary": "#7F8C8D",
+        "muted": "#BDC3C7"
+      },
+      "border": "#E9ECEF",
+      "shadow": "rgba(0, 0, 0, 0.08)"
+    },
+    "accent": {
+      "success": "#27AE60",
+      "warning": "#F39C12",
+      "error": "#E74C3C",
+      "info": "#3498DB"
+    }
+  },
+  
+  "typography": {
+    "fontFamily": {
+      "primary": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+      "fallback": "system-ui, sans-serif"
+    },
+    "fontSizes": {
+      "xs": "12px",
+      "sm": "14px",
+      "base": "16px",
+      "lg": "18px",
+      "xl": "20px",
+      "2xl": "24px",
+      "3xl": "32px"
+    },
+    "fontWeights": {
+      "regular": 400,
+      "medium": 500,
+      "semibold": 600,
+      "bold": 700
+    },
+    "lineHeight": {
+      "tight": 1.2,
+      "normal": 1.5,
+      "relaxed": 1.6
+    }
+  },
+  
+  "spacing": {
+    "scale": [2, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96],
+    "component": {
+      "xs": "8px",
+      "sm": "12px",
+      "md": "16px",
+      "lg": "24px",
+      "xl": "32px"
+    }
+  },
+  
+  "borderRadius": {
+    "none": "0px",
+    "sm": "4px",
+    "md": "8px",
+    "lg": "12px",
+    "xl": "16px",
+    "2xl": "24px",
+    "full": "9999px"
+  },
+  
+  "shadows": {
+    "none": "none",
+    "sm": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+    "md": "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+    "lg": "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+    "card": "0 4px 20px 0 rgba(0, 0, 0, 0.08)"
+  },
+  
+  "layout": {
+    "containerMaxWidth": "1200px",
+    "sidebar": {
+      "width": "240px",
+      "collapsedWidth": "64px"
+    },
+    "header": {
+      "height": "64px"
+    },
+    "grid": {
+      "columns": 12,
+      "gap": "24px"
+    }
+  },
+  
+  "components": {
+    "card": {
+      "style": "elevated",
+      "background": "white",
+      "borderRadius": "xl",
+      "shadow": "card",
+      "padding": "lg",
+      "border": "none"
+    },
+    
+    "statsCard": {
+      "background": "gradient",
+      "borderRadius": "xl",
+      "padding": "md",
+      "textColor": "white",
+      "iconStyle": "outlined",
+      "numberSize": "3xl",
+      "labelSize": "sm",
+      "variants": {
+        "purple": "linear-gradient(135deg, #E8DCFF 0%, #C4A9FF 100%)",
+        "green": "linear-gradient(135deg, #D4F4DD 0%, #A8E6C1 100%)",
+        "orange": "linear-gradient(135deg, #FFE4D6 0%, #FFB08A 100%)",
+        "blue": "linear-gradient(135deg, #E3F2FD 0%, #90CAF9 100%)"
+      }
+    },
+    
+    "sidebar": {
+      "background": "white",
+      "borderRadius": "none",
+      "shadow": "none",
+      "itemPadding": "sm",
+      "itemBorderRadius": "md",
+      "activeItemBackground": "#F0F8E8",
+      "activeItemColor": "#4CAF50",
+      "hoverEffect": "background-change"
+    },
+    
+    "button": {
+      "borderRadius": "lg",
+      "padding": {
+        "sm": "8px 16px",
+        "md": "12px 24px",
+        "lg": "16px 32px"
+      },
+      "variants": {
+        "primary": {
+          "background": "#4CAF50",
+          "color": "white",
+          "hoverBackground": "#45A049"
+        },
+        "secondary": {
+          "background": "#F8F9FA",
+          "color": "#2C3E50",
+          "border": "1px solid #E9ECEF"
+        }
+      }
+    },
+    
+    "list": {
+      "itemPadding": "md",
+      "itemBorderRadius": "md",
+      "separatorColor": "#F1F3F4",
+      "avatarSize": "40px",
+      "hoverBackground": "#F8F9FA"
+    },
+    
+    "chart": {
+      "colors": ["#E8DCFF", "#A8E6C1", "#FFB08A", "#90CAF9"],
+      "borderRadius": "lg",
+      "background": "white",
+      "shadow": "card"
+    }
+  },
+  
+  "patterns": {
+    "dashboard": {
+      "layout": "sidebar-main",
+      "headerStyle": "clean-minimal",
+      "cardGrid": "responsive-auto-fit",
+      "contentSpacing": "lg"
+    },
+    
+    "dataVisualization": {
+      "preferredCharts": ["donut", "bar", "line"],
+      "colorScheme": "pastel-gradients",
+      "labelsStyle": "minimal"
+    },
+    
+    "navigation": {
+      "style": "icon-text-vertical",
+      "activeState": "background-highlight",
+      "grouping": "visual-separation"
+    },
+    
+    "contentSections": {
+      "headerStyle": "title-with-action",
+      "cardStyle": "elevated-rounded",
+      "listStyle": "avatar-with-metadata"
+    }
+  },
+  
+  "interactions": {
+    "hover": {
+      "transition": "all 0.2s ease-in-out",
+      "scale": "none",
+      "backgroundChange": true,
+      "shadowChange": false
+    },
+    
+    "focus": {
+      "outline": "2px solid #4CAF50",
+      "outlineOffset": "2px"
+    },
+    
+    "active": {
+      "scale": "0.98",
+      "transition": "transform 0.1s ease-in-out"
+    }
+  },
+  
+  "responsive": {
+    "breakpoints": {
+      "sm": "640px",
+      "md": "768px",
+      "lg": "1024px",
+      "xl": "1280px"
+    },
+    
+    "behavior": {
+      "sidebar": "collapsible-mobile",
+      "cards": "stack-mobile",
+      "tables": "horizontal-scroll"
+    }
+  },
+  
+  "designPrinciples": {
+    "visual": [
+      "Soft, pastel color gradients for statistical displays",
+      "High contrast white backgrounds for content cards",
+      "Generous use of whitespace and padding",
+      "Consistent rounded corners throughout interface",
+      "Subtle shadows for depth without heaviness"
+    ],
+    
+    "functional": [
+      "Clear information hierarchy with proper typography scaling",
+      "Intuitive navigation with visual feedback",
+      "Responsive grid system for various screen sizes",
+      "Accessible color contrast ratios",
+      "Consistent spacing and alignment"
+    ],
+    
+    "behavioral": [
+      "Smooth transitions for all interactive elements",
+      "Clear visual states for active/inactive items",
+      "Contextual actions placed near relevant content",
+      "Progressive disclosure of information",
+      "Scannable layouts with proper grouping"
+    ]
+  }
+}

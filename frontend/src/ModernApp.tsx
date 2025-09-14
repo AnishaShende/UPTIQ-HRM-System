@@ -8,7 +8,7 @@ import { AuthProvider, useAuth } from "./contexts/AuthContext";
 
 // Pages
 import { ModernDashboard } from "./pages/ModernDashboard";
-import { ModernEmployees } from "./pages/ModernEmployees";
+import { Employees } from "./pages/Employees";
 import { Departments } from "./pages/Departments";
 import { Leaves } from "./pages/Leaves";
 import { Login } from "./pages/Login";
@@ -35,10 +35,10 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
   
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="min-h-screen flex items-center justify-center bg-neutral-background">
         <div className="text-center">
           <Spinner size="lg" />
-          <p className="mt-4 text-gray-600">Loading your workspace...</p>
+          <p className="mt-4 text-text-secondary">Loading your workspace...</p>
         </div>
       </div>
     );
@@ -53,13 +53,17 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
 
 // Modern App Layout Component
 const ModernAppLayout: React.FC = () => {
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
   return (
-    <div className="flex h-screen bg-gray-50 overflow-hidden">
+    <div className="flex h-screen bg-neutral-background overflow-hidden">
       {/* Desktop Sidebar */}
       <div className="hidden lg:flex">
-        <ModernSidebar />
+        <ModernSidebar className={cn(
+          "transition-all duration-300 ease-in-out",
+          sidebarCollapsed ? "w-16" : "w-72"
+        )} />
       </div>
 
       {/* Mobile Sidebar Overlay */}
@@ -88,7 +92,7 @@ const ModernAppLayout: React.FC = () => {
           <div className="container mx-auto p-6 max-w-7xl">
             <Routes>
               <Route path="/dashboard" element={<ModernDashboard />} />
-              <Route path="/employees" element={<ModernEmployees />} />
+              <Route path="/employees" element={<Employees />} />
               <Route path="/departments" element={<Departments />} />
               <Route path="/leaves" element={<Leaves />} />
               
