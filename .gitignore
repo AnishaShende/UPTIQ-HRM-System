@@ -18,6 +18,8 @@ microservices/api-gateway/.env
 microservices/employee-service/.env
 microservices/auth-service/.env
 rag/myenv
+rag/.ipynb_checkpoints
+
 
 # AI
 AI/.pytest_cache
