@@ -18,3 +18,13 @@ microservices/api-gateway/.env
 microservices/employee-service/.env
 microservices/auth-service/.env
 rag/myenv
+
+# AI
+AI/.pytest_cache
+AI/app/__pycache__
+AI/checkpoint
+AI/src/__pycache__
+AI/venv
+AI/.env
+AI/test/__pycache__
+

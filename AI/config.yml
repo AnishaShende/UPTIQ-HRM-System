@@ -1,0 +1,29 @@
+# RAG Pipeline Configuration
+
+# API Keys (set via environment variables or here)
+groq_api_key: ""
+gemini_api_key: ""
+
+# Document settings
+documents_path: "rag/uptiq_hr_policies"
+chunk_size: 200
+chunk_overlap: 20
+
+# Model settings
+embedding_model: "all-MiniLM-L6-v2"
+llm_model: "deepseek-r1-distill-llama-70b"
+
+# Retrieval settings
+top_k: 4
+rerank_threshold: 0.7
+
+# Query transformation settings
+enable_multi_query: true
+enable_rag_fusion: true
+enable_decomposition: true
+enable_step_back: true
+enable_hyde: true
+
+# Routing settings
+enable_logical_routing: true
+enable_semantic_routing: true

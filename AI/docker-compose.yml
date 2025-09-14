@@ -1,0 +1,47 @@
+version: "3.8"
+
+services:
+  rag-api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - DOCUMENTS_PATH=${DOCUMENTS_PATH:-rag/uptiq_hr_policies}
+      - CHUNK_SIZE=${CHUNK_SIZE:-200}
+      - CHUNK_OVERLAP=${CHUNK_OVERLAP:-20}
+      - EMBEDDING_MODEL=${EMBEDDING_MODEL:-all-MiniLM-L6-v2}
+      - LLM_MODEL=${LLM_MODEL:-deepseek-r1-distill-llama-70b}
+      - TOP_K=${TOP_K:-4}
+      - RERANK_THRESHOLD=${RERANK_THRESHOLD:-0.7}
+      - ENABLE_MULTI_QUERY=${ENABLE_MULTI_QUERY:-true}
+      - ENABLE_RAG_FUSION=${ENABLE_RAG_FUSION:-true}
+      - ENABLE_DECOMPOSITION=${ENABLE_DECOMPOSITION:-true}
+      - ENABLE_STEP_BACK=${ENABLE_STEP_BACK:-true}
+      - ENABLE_HYDE=${ENABLE_HYDE:-true}
+      - ENABLE_LOGICAL_ROUTING=${ENABLE_LOGICAL_ROUTING:-true}
+      - ENABLE_SEMANTIC_ROUTING=${ENABLE_SEMANTIC_ROUTING:-true}
+    volumes:
+      - ./rag/uptiq_hr_policies:/app/rag/uptiq_hr_policies:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Add ChromaDB as a separate service for production
+  # chromadb:
+  #   image: chromadb/chroma:latest
+  #   ports:
+  #     - "8001:8000"
+  #   volumes:
+  #     - chroma_data:/chroma/chroma
+  #   environment:
+  #     - CHROMA_SERVER_HOST=0.0.0.0
+  #     - CHROMA_SERVER_HTTP_PORT=8000
+  #   restart: unless-stopped
+# volumes:
+#   chroma_data:

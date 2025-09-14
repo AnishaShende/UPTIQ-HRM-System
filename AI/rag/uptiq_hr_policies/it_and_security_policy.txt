@@ -1,0 +1,37 @@
+Uptiq - IT & Security Policy
+
+Last Updated: January 2025
+
+Introduction:
+Uptiq prioritizes the security of its digital infrastructure and confidential information. This policy outlines IT and security protocols for all employees.
+
+1. Device Usage
+   - Company-issued laptops must be used for official work.
+   - Unauthorized use of personal devices for accessing sensitive data is prohibited.
+
+2. Password Security
+   - Strong passwords (minimum 12 characters) are mandatory.
+   - Passwords must include uppercase, lowercase, numbers, and special characters.
+   - Passwords must be changed every 90 days.
+
+3. Email & Communication
+   - Official communication must be conducted via company email accounts.
+   - Sharing confidential data through personal emails is prohibited.
+
+4. Data Protection
+   - All data must be stored in company-approved cloud systems.
+   - External storage devices (USBs, hard drives) are restricted unless approved by IT.
+
+5. Cybersecurity Training
+   - Employees must undergo annual cybersecurity training.
+   - Simulated phishing tests will be conducted quarterly.
+
+6. Reporting Incidents
+   - Any suspected breach, device theft, or unauthorized access must be reported within 2 hours.
+   - IT will conduct investigations and may escalate severe incidents to legal authorities.
+
+7. Software Usage
+   - Only licensed, IT-approved software may be installed on company devices.
+   - Employees must not download unauthorized applications that compromise security.
+
+This policy ensures data protection, regulatory compliance, and safe digital practices across Uptiq’s workforce.

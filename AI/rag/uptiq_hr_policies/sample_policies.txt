@@ -1,0 +1,25 @@
+# Example HR Policy Documents
+
+## Leave Policy
+Each employee is entitled to 18 paid annual leave days per calendar year. Applications must be made at least 5 days in advance, except in emergencies. A maximum of 6 unused days can be carried forward to the next year.
+
+## Sick Leave Policy
+Employees receive 10 paid sick leave days annually. A medical certificate is required for absences exceeding 2 consecutive days. Unused sick leaves cannot be encashed or carried forward.
+
+## Casual Leave Policy
+Employees are granted 7 casual leave days each year. Applications should be submitted at least 2 days in advance, except in emergencies.
+
+## Performance Review Policy
+Performance reviews are conducted twice annually in June and December. The evaluation criteria include technical skills, productivity, collaboration, innovation, and alignment with company values. The process utilizes 360-degree feedback including peer, manager, and self-assessment.
+
+## Work From Home Policy
+Employees may work from home up to 2 days per week with manager approval. Internet charges up to INR 1,500 per month are reimbursed with valid bills. A dedicated workspace is required for remote work.
+
+## Employee Code of Conduct
+Employees must maintain professional standards in all interactions. Dress code is business casual unless specified otherwise. Confidentiality of company information must be maintained at all times.
+
+## IT and Security Policy
+Company laptops must be secured when not in use. Passwords must be changed every 90 days. Report any security incidents immediately to the IT department. Personal devices are not permitted for company work.
+
+## Payroll and Compensation Policy
+Salary is paid on the last working day of each month. The salary structure includes Basic Salary, House Rent Allowance (HRA), Special Allowances, Performance Bonus, and Provident Fund & Gratuity as per statutory regulations.
