@@ -1,6 +1,6 @@
 # UptiqAI HRM System
 
-A comprehensive Human Resource Management (HRM) system built with modern technologies.
+A comprehensive Human Resource Management (HRM) system built with modern technologies, featuring a complete microservices architecture, AI-powered RAG pipeline, and modern React frontend.
 
 ## 🚀 Features
 
@@ -17,12 +17,30 @@ A comprehensive Human Resource Management (HRM) system built with modern technol
 
 ### Frontend (React + TypeScript + Tailwind CSS)
 
-- **Modern UI**: Built with Shadcn/ui design system
-- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Modern UI**: Built with custom design system following soft, pastel gradients
+- **Responsive Design**: Mobile-first approach with collapsible sidebar
 - **State Management**: TanStack Query for server state, Context API for client state
 - **Dark Mode**: System-aware theme switching
 - **Type Safety**: Full TypeScript coverage
 - **Performance**: Optimized with Vite build tool
+- **Accessibility**: WCAG compliant with screen reader support
+
+### Microservices Architecture
+
+- **API Gateway**: Central routing and authentication
+- **Auth Service**: User authentication and authorization
+- **Employee Service**: Employee management operations
+- **Service Discovery**: Health monitoring and load balancing
+- **Database Per Service**: Independent PostgreSQL databases
+- **Docker Containerization**: Production-ready deployment
+
+### AI Integration (RAG Pipeline)
+
+- **Document Processing**: HR policy document analysis
+- **Intelligent Query**: Context-aware responses
+- **Multiple LLM Support**: GROQ and Gemini API integration
+- **Production API**: FastAPI with Docker deployment
+- **Monitoring**: Health checks and metrics
 
 ## 🛠️ Tech Stack
 
@@ -34,7 +52,7 @@ A comprehensive Human Resource Management (HRM) system built with modern technol
 - **Database**: PostgreSQL
 - **ORM**: Prisma
 - **Authentication**: JWT + bcrypt
-- **Validation**: Joi
+- **Validation**: Zod
 - **Logging**: Winston
 - **Documentation**: Swagger/OpenAPI
 - **Security**: Helmet, CORS, Rate limiting
@@ -43,41 +61,36 @@ A comprehensive Human Resource Management (HRM) system built with modern technol
 
 - **Framework**: React 18
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **UI Components**: Shadcn/ui
+- **Styling**: Tailwind CSS + Custom Design System
+- **UI Components**: Radix UI + Custom components
 - **Routing**: React Router 6
 - **State Management**: TanStack Query + Context API
 - **Build Tool**: Vite
 - **Icons**: Lucide React
+- **Charts**: Recharts
+
+### Infrastructure
+
+- **Containerization**: Docker + Docker Compose
+- **Microservices**: Independent service architecture
+- **API Gateway**: Centralized routing
+- **Monitoring**: Health checks and metrics
+- **AI**: Python FastAPI RAG pipeline
 
 ## 📦 Project Structure
 
 ```
-uptiqai/
-├── backend/                 # Backend API server
-│   ├── src/
-│   │   ├── config/         # Configuration files
-│   │   ├── middleware/     # Express middleware
-│   │   ├── utils/          # Utility functions
-│   │   ├── app.ts          # Express app setup
-│   │   └── server.ts       # Server entry point
-│   ├── package.json
-│   └── tsconfig.json
-│
-└── frontend/               # React frontend application
-    ├── src/
-    │   ├── components/     # Reusable UI components
-    │   │   ├── ui/         # Base UI components (Shadcn/ui)
-    │   │   └── layout/     # Layout components
-    │   ├── pages/          # Page components
-    │   ├── hooks/          # Custom React hooks
-    │   ├── contexts/       # React contexts
-    │   ├── lib/            # Utility libraries
-    │   ├── types/          # TypeScript type definitions
-    │   ├── App.tsx         # Main app component
-    │   └── main.tsx        # React entry point
-    ├── package.json
-    └── vite.config.ts
+uptiqai-hrm-system/
+├── backend/                 # Monolithic backend (legacy)
+├── frontend/               # Modern React application
+├── microservices/          # Microservices architecture
+│   ├── api-gateway/        # Central API gateway
+│   ├── auth-service/       # Authentication service
+│   ├── employee-service/   # Employee management
+│   └── shared/             # Shared utilities
+├── AI/                     # RAG pipeline system
+├── docs/                   # Comprehensive documentation
+└── rag/                    # HR policy documents
 ```
 
 ## 🚀 Getting Started
@@ -86,181 +99,243 @@ uptiqai/
 
 - Node.js 18+ and npm
 - PostgreSQL database
+- Docker and Docker Compose
+- Python 3.9+ (for AI features)
 - Git
 
-### Backend Setup
+### Quick Start (Microservices)
 
-1. **Navigate to backend**:
-
+1. **Clone and setup**:
    ```bash
-   cd backend
+   git clone <repository-url>
+   cd uptiqai-hrm-system/Human-Resource-Management-System
    ```
 
-2. **Install dependencies**:
-
+2. **Start with Docker**:
    ```bash
-   npm install
-   ```
-
-3. **Environment setup**:
-
-   ```bash
+   cd microservices
    cp .env.example .env
-   # Edit .env with your database credentials and JWT secrets
+   # Edit .env with your configuration
+   docker-compose up -d
    ```
 
-4. **Start development server**:
+3. **Access the application**:
+   - **API Gateway**: http://localhost:3000
+   - **Frontend**: http://localhost:5173
+   - **API Documentation**: http://localhost:3000/api-docs
 
-   ```bash
-   npm run dev
-   ```
+### Development Setup
 
-   The API server will be running at `http://localhost:5000`
+#### Backend Development
+```bash
+cd backend
+npm install
+cp .env.example .env
+npm run dev
+```
 
-### Frontend Setup
+#### Frontend Development
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-1. **Navigate to frontend**:
-
-   ```bash
-   cd frontend
-   ```
-
-2. **Install dependencies**:
-
-   ```bash
-   npm install
-   ```
-
-3. **Environment setup**:
-
-   ```bash
-   # Create .env file with:
-   VITE_API_URL=http://localhost:5000/api
-   ```
-
-4. **Start development server**:
-
-   ```bash
-   npm run dev
-   ```
-
-   The frontend will be running at `http://localhost:5173`
+#### AI RAG Pipeline
+```bash
+cd AI
+pip install -r requirements.txt
+cp env.example .env
+# Add your GROQ_API_KEY and GEMINI_API_KEY
+uvicorn app.main:app --reload
+```
 
 ## 🔧 Configuration
 
-### Backend Environment Variables
+### Environment Variables
 
+#### Backend/Microservices
 ```env
 DATABASE_URL="postgresql://username:password@localhost:5432/hrm_db"
-JWT_ACCESS_SECRET="your-access-token-secret"
-JWT_REFRESH_SECRET="your-refresh-token-secret"
+JWT_SECRET="your-super-secret-jwt-key"
 JWT_ACCESS_EXPIRY="15m"
 JWT_REFRESH_EXPIRY="7d"
-BCRYPT_ROUNDS=12
 NODE_ENV="development"
-PORT=5000
+PORT=3000
 ```
 
-### Frontend Environment Variables
-
+#### Frontend
 ```env
-VITE_API_URL=http://localhost:5000/api
+VITE_API_URL=http://localhost:3000/api
 VITE_APP_NAME="UptiqAI HRM"
-VITE_APP_VERSION="1.0.0"
+VITE_APP_VERSION="2.0.0"
+```
+
+#### AI Pipeline
+```env
+GROQ_API_KEY=your_groq_api_key
+GEMINI_API_KEY=your_gemini_api_key
+DOCUMENTS_PATH=rag/uptiq_hr_policies
+CHUNK_SIZE=200
+CHUNK_OVERLAP=20
 ```
 
 ## 🎯 Current Status
 
-### ✅ Backend (Completed)
+### ✅ Completed Features
 
+#### Backend Infrastructure
 - [x] Express.js setup with TypeScript
-- [x] Environment configuration with validation
-- [x] Database configuration ready (Prisma)
-- [x] JWT authentication middleware
-- [x] Error handling middleware
-- [x] Input validation middleware
-- [x] Logging with Winston
-- [x] Security headers with Helmet
-- [x] CORS configuration
-- [x] Rate limiting
+- [x] Microservices architecture with API Gateway
+- [x] Database integration with Prisma ORM
+- [x] JWT authentication and authorization
+- [x] Comprehensive error handling
+- [x] API documentation with Swagger
+- [x] Docker containerization
+- [x] Health monitoring
 
-### ✅ Frontend (Completed)
+#### Frontend Application
+- [x] Modern React 18 + TypeScript setup
+- [x] Custom design system implementation
+- [x] Responsive layout with collapsible sidebar
+- [x] Dashboard with interactive charts
+- [x] Employee management interface
+- [x] Authentication flow
+- [x] Dark/Light theme support
+- [x] Mobile-responsive design
 
-- [x] React 18 + TypeScript setup
-- [x] Vite configuration
-- [x] Tailwind CSS setup
-- [x] Shadcn/ui components
-- [x] React Router setup
-- [x] TanStack Query configuration
-- [x] Authentication context
-- [x] Theme context (Dark/Light mode)
-- [x] Layout components (Dashboard & Auth)
-- [x] Dashboard page with mock data
-- [x] Utility functions
-- [x] Custom hooks
-- [x] API client setup
-- [x] TypeScript type definitions
+#### AI Integration
+- [x] RAG pipeline for HR document processing
+- [x] Multiple LLM integration (GROQ, Gemini)
+- [x] Production-ready API
+- [x] Docker deployment
+- [x] Comprehensive testing
 
-### 🚧 Next Steps
+### 🚧 In Progress
 
-- [ ] Complete authentication pages (Login, Register, etc.)
-- [ ] Connect backend and frontend with real API calls
-- [ ] Employee management pages
+- [ ] Complete API integration between frontend and backend
+- [ ] Advanced employee management features
 - [ ] Leave management system
-- [ ] Payroll management
-- [ ] Attendance tracking
-- [ ] Performance review system
+- [ ] Payroll processing
+- [ ] Performance review workflows
 - [ ] Recruitment management
-- [ ] Reports and analytics
-- [ ] Settings and configuration
+- [ ] Advanced analytics and reporting
 
 ## 🏗️ Architecture
 
-### Backend Architecture
-
-- **Layered Architecture**: Controllers → Services → Data Access
-- **Middleware Stack**: Authentication, Validation, Error Handling, Logging
-- **Database**: PostgreSQL with Prisma ORM (ready for implementation)
-- **Security**: JWT tokens, bcrypt hashing, input sanitization
-- **Logging**: Structured logging with Winston
+### Microservices Architecture
+- **API Gateway**: Central entry point with routing and authentication
+- **Service Discovery**: Health monitoring and load balancing
+- **Independent Databases**: Each service has its own PostgreSQL instance
+- **Docker Containers**: Production-ready containerization
+- **Horizontal Scaling**: Services can be scaled independently
 
 ### Frontend Architecture
-
-- **Component-Based**: Reusable React components
-- **State Management**: Server state (TanStack Query) + Client state (Context API)
-- **Design System**: Consistent UI with Shadcn/ui components
-- **Type Safety**: Full TypeScript coverage
+- **Component-Based**: Reusable React components with design system
+- **State Management**: TanStack Query for server state, Context API for client state
 - **Performance**: Code splitting, lazy loading, optimized builds
+- **Accessibility**: WCAG compliant with keyboard navigation
+
+### AI Architecture
+- **RAG Pipeline**: Document retrieval and generation
+- **Multi-Model Support**: Flexible LLM integration
+- **Caching**: Efficient embedding and response caching
+- **API First**: RESTful API design
 
 ## 🔒 Security Features
 
-- JWT-based authentication (implemented)
-- Password hashing with bcrypt (ready)
-- Input validation and sanitization (implemented)
-- Rate limiting (implemented)
-- CORS protection (implemented)
-- Security headers with Helmet (implemented)
-- SQL injection prevention with Prisma (ready)
-- XSS protection (implemented)
+- JWT-based authentication with refresh tokens
+- Role-based access control (RBAC)
+- Input validation and sanitization with Zod
+- Rate limiting and CORS protection
+- Security headers with Helmet
+- SQL injection prevention with Prisma ORM
+- XSS protection and content security policy
 
-## 📱 Responsive Design
+## 📱 Design System
 
-The frontend is built with a mobile-first approach:
+### Color Palette
+- **Primary Purple**: #E8DCFF → #C4A9FF → #8B5FBF
+- **Primary Green**: #D4F4DD → #A8E6C1 → #4CAF50
+- **Primary Orange**: #FFE4D6 → #FFB08A → #FF7043
+- **Primary Blue**: #E3F2FD → #90CAF9 → #2196F3
 
-- **Mobile**: Optimized for smartphones
-- **Tablet**: Responsive layout for tablets
-- **Desktop**: Full-featured desktop interface
-- **Dark Mode**: System-aware theme switching
+### Features
+- **Soft Gradients**: Pastel color transitions for statistics
+- **High Contrast**: White backgrounds for content readability
+- **Consistent Spacing**: 8px grid system throughout
+- **Typography**: Inter font family with proper hierarchy
+- **Responsive**: Mobile-first design approach
 
-## 🎉 What's Working Now
+## 🚀 Deployment
 
-✅ **Backend**: Fully functional API server foundation with authentication, middleware, and security
-✅ **Frontend**: Modern React application with routing, state management, and beautiful UI
-✅ **Integration Ready**: Both backend and frontend are ready for feature implementation
+### Production Deployment
+```bash
+# Microservices
+cd microservices
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 
-### Available URLs:
+# AI Pipeline
+cd AI
+docker build -t rag-pipeline .
+docker run -p 8000:8000 --env-file .env rag-pipeline
+```
 
+### Service URLs
+- **API Gateway**: http://localhost:3000
 - **Frontend**: http://localhost:5173
-- **Backend**: http://localhost:5000 (when started)
+- **AI Pipeline**: http://localhost:8000
+- **API Documentation**: http://localhost:3000/api-docs
+- **Health Status**: http://localhost:3000/health
 
-The system provides a solid foundation for building a comprehensive HRM solution with modern development practices and scalable architecture.
+## 📚 Documentation
+
+- [**Architecture Guide**](docs/ARCHITECTURE.md) - System architecture overview
+- [**Deployment Guide**](docs/DEPLOYMENT_GUIDE.md) - Production deployment
+- [**Development Guide**](docs/others/DEVELOPMENT_GUIDE.md) - Development setup
+- [**API Testing Guide**](docs/others/API_TESTING_GUIDE.md) - API testing procedures
+- [**Frontend README**](docs/HRM_FRONTEND_README.md) - Frontend documentation
+- [**Microservices README**](microservices/README.md) - Microservices architecture
+- [**AI Pipeline README**](AI/README.md) - RAG system documentation
+
+## 🧪 Testing
+
+### Backend Testing
+```bash
+cd backend
+npm test
+npm run test:coverage
+```
+
+### Frontend Testing
+```bash
+cd frontend
+npm test
+npm run test:e2e
+```
+
+### AI Pipeline Testing
+```bash
+cd AI
+pytest
+pytest --cov=src --cov-report=html
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### Code Standards
+- TypeScript for type safety
+- ESLint and Prettier for code formatting
+- Comprehensive testing coverage
+- Documentation for new features
+- Follow existing architectural patterns
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
