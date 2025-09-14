@@ -3017,3 +3017,92 @@ Meta: {
 Meta: {
   "service": "hrm-backend"
 }
+2025-09-14 23:21:15 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-14 23:21:15 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 23:21:15 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "15ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-14 23:21:15 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 23:21:15 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 23:21:15 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 23:21:15 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 23:21:15 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 23:21:15 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 23:21:15 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 23:21:15 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 23:21:36 [INFO]: GET /api-docs 301 158 - 4.792 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 23:21:36 [INFO]: GET /api-docs/ 304 - - 5.305 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 23:21:36 [INFO]: GET /api-docs/swagger-ui.css 304 - - 4.302 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 23:21:36 [INFO]: GET /api-docs/swagger-ui-standalone-preset.js 304 - - 1.975 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 23:21:36 [INFO]: GET /api-docs/swagger-ui-bundle.js 304 - - 4.232 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 23:21:36 [INFO]: GET /api-docs/swagger-ui-init.js 200 - - 2.187 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 23:21:37 [INFO]: GET /api-docs/favicon-32x32.png - - - - ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 23:29:13 [INFO]: Received SIGINT, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 23:29:13 [INFO]: SIGINT received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-14 23:29:13 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}

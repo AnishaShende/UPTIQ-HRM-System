@@ -21,10 +21,10 @@ import { sanitizeInput } from "@/middleware/validation.middleware";
 // Import routes
 import authRoutes from '@/routes/auth.routes';
 import employeeRoutes from '@/routes/employee.routes';
+import leaveRoutes from '@/routes/leave.routes';
+import payrollRoutes from '@/routes/payroll.routes';
+import recruitmentRoutes from '@/routes/recruitment.routes';
 // import departmentRoutes from '@/routes/department.routes';
-// import leaveRoutes from '@/routes/leave.routes';
-// import payrollRoutes from '@/routes/payroll.routes';
-// import recruitmentRoutes from '@/routes/recruitment.routes';
 // import reportRoutes from '@/routes/report.routes';
 
 const app = express();
@@ -223,10 +223,12 @@ apiRouter.get("/", (req, res) => {
     endpoints: {
       auth: `${config.api.baseUrl}/auth`,
       employees: `${config.api.baseUrl}/employees`,
+      admin: {
+        leaves: `${config.api.baseUrl}/admin/leaves`,
+        payroll: `${config.api.baseUrl}/admin/payroll`,
+        recruitment: `${config.api.baseUrl}/admin/recruitment`
+      },
       departments: `${config.api.baseUrl}/departments`,
-      leaves: `${config.api.baseUrl}/leaves`,
-      payroll: `${config.api.baseUrl}/payroll`,
-      recruitment: `${config.api.baseUrl}/recruitment`,
       reports: `${config.api.baseUrl}/reports`,
     },
   });
@@ -238,10 +240,10 @@ app.use(config.api.baseUrl, apiRouter);
 // Mount feature routes
 app.use(`${config.api.baseUrl}/auth`, authRoutes);
 app.use(`${config.api.baseUrl}/employees`, employeeRoutes);
+app.use(`${config.api.baseUrl}/admin/leaves`, leaveRoutes);
+app.use(`${config.api.baseUrl}/admin/payroll`, payrollRoutes);
+app.use(`${config.api.baseUrl}/admin/recruitment`, recruitmentRoutes);
 // app.use(`${config.api.baseUrl}/departments`, departmentRoutes);
-// app.use(`${config.api.baseUrl}/leaves`, leaveRoutes);
-// app.use(`${config.api.baseUrl}/payroll`, payrollRoutes);
-// app.use(`${config.api.baseUrl}/recruitment`, recruitmentRoutes);
 // app.use(`${config.api.baseUrl}/reports`, reportRoutes);
 
 // 404 handler for undefined routes

@@ -443,3 +443,14 @@ Meta: {
   "service": "hrm-backend",
   "code": "ERR_SERVER_NOT_RUNNING"
 }
+2025-09-14 23:29:13 [ERROR]: Error closing HTTP server: Server is not running.
+Stack: Error [ERR_SERVER_NOT_RUNNING]: Server is not running.
+    at Server.close (node:net:2359:12)
+    at Object.onceWrapper (node:events:632:28)
+    at Server.emit (node:events:518:28)
+    at emitCloseNT (node:net:2419:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+Meta: {
+  "service": "hrm-backend",
+  "code": "ERR_SERVER_NOT_RUNNING"
+}
