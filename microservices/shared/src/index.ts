@@ -6,6 +6,7 @@ export * from './errors';
 
 // Middleware
 export * from './middleware/auth';
+export * from './middleware/auth-client';
 export * from './middleware/error';
 export * from './middleware/request';
 

@@ -14,12 +14,20 @@ import {
   requestLogger,
   sanitizeInput,
   authenticateToken,
-  ResponseHelper
-} from '@hrm/shared';
+  ResponseHelper,
+  authorize
+} from './utils';
 
 import { routeToService, createServiceProxy } from './middleware/proxy';
 import { HealthChecker } from './services/health-checker';
 import { serviceConfig } from './config/services';
+import { setupSwagger } from './middleware/swagger';
+import { 
+  autoValidate, 
+  validateContentType, 
+  validateRequestSize, 
+  validateHeaders 
+} from './middleware/validation';
 
 const logger = createLogger('api-gateway');
 const config = createServiceConfig('api-gateway');
@@ -27,7 +35,7 @@ const config = createServiceConfig('api-gateway');
 const app = express();
 
 // Initialize health checker
-const healthChecker = new HealthChecker(30000); // Check every 30 seconds
+const healthChecker = new HealthChecker();
 
 // Trust proxy (important for rate limiting and IP detection)
 app.set('trust proxy', 1);
@@ -97,11 +105,22 @@ app.use(addResponseTime);
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
+// Request validation middleware
+app.use(validateRequestSize);
+app.use(validateContentType);
+app.use(validateHeaders);
+
 // Input sanitization
 app.use(sanitizeInput);
 
 // Request logging
 app.use(requestLogger);
+
+// Setup Swagger documentation
+setupSwagger(app);
+
+// Auto-validation middleware for API routes
+app.use('/api/v1', autoValidate);
 
 // Health check endpoint for the gateway itself
 app.get('/health', (req, res) => {
@@ -147,6 +166,12 @@ app.use('/api/v1', (req, res, next) => {
   // Apply authentication for all other routes
   authenticateToken(req, res, next);
 });
+
+// Role-based authorization for specific routes
+app.use('/api/v1/payroll*', authorize(['admin', 'hr_manager']));
+app.use('/api/v1/recruitment*', authorize(['admin', 'hr_manager', 'recruiter']));
+app.use('/api/v1/employees*', authorize(['admin', 'hr_manager', 'employee']));
+app.use('/api/v1/leaves*', authorize(['admin', 'hr_manager', 'employee']));
 
 // Route to appropriate microservice
 app.use('/api/v1/*', routeToService, (req, res, next) => {

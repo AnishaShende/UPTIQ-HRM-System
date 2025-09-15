@@ -103,6 +103,17 @@ app.use(sanitizeInput);
 // Request logging
 app.use(requestLogger);
 
+// Setup Swagger documentation
+if (process.env.NODE_ENV !== 'production') {
+  try {
+    const { setupSwagger } = require('./config/swagger');
+    setupSwagger(app);
+    logger.info('Swagger documentation enabled at /api-docs');
+  } catch (error) {
+    logger.warn('Swagger setup failed - documentation will not be available', { error });
+  }
+}
+
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({
@@ -119,7 +130,7 @@ app.get('/health', (req, res) => {
 });
 
 // API Routes
-app.use('/api/v1/auth', authRoutes);
+app.use('/api/auth', authRoutes);
 
 // 404 handler for undefined routes
 app.use(notFoundHandler);

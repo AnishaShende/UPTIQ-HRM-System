@@ -20,6 +20,7 @@ export interface LoginResponse {
 }
 
 export interface RegisterRequest {
+  name?: string;
   email: string;
   password: string;
   role?: string;
@@ -51,6 +52,7 @@ export const loginSchema = z.object({
 });
 
 export const registerSchema = z.object({
+  name: z.string().min(1, 'Name is required').max(100, 'Name must be less than 100 characters').optional(),
   email: z.string().email('Invalid email format'),
   password: z.string().min(8, 'Password must be at least 8 characters'),
   role: z.enum(['SUPER_ADMIN', 'HR_ADMIN', 'HR_MANAGER', 'MANAGER', 'EMPLOYEE', 'READONLY']).optional(),

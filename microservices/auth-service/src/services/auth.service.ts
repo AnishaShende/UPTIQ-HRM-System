@@ -23,13 +23,23 @@ const prisma = new PrismaClient();
 
 export class AuthService {
   private jwtSecret: string;
+  private jwtRefreshSecret: string;
   private jwtExpiresIn: string;
   private refreshExpiresIn: string;
+  private bcryptRounds: number;
 
   constructor() {
     this.jwtSecret = process.env.JWT_SECRET || 'hrm-dev-secret-1234567890abcdefghijklmnopqrstuvwxyz';
+    this.jwtRefreshSecret = process.env.JWT_REFRESH_SECRET || this.jwtSecret;
     this.jwtExpiresIn = process.env.JWT_EXPIRES_IN || '15m';
     this.refreshExpiresIn = process.env.JWT_REFRESH_EXPIRES_IN || '7d';
+    this.bcryptRounds = parseInt(process.env.BCRYPT_ROUNDS || '12', 10);
+
+    // Validate required secrets
+    if (this.jwtSecret.length < 32) {
+      logger.error('JWT_SECRET must be at least 32 characters long');
+      throw new Error('Invalid JWT_SECRET configuration');
+    }
   }
 
   async login(data: LoginRequest, ipAddress: string, userAgent?: string): Promise<LoginResponse> {
@@ -109,11 +119,12 @@ export class AuthService {
       }
 
       // Hash password
-      const hashedPassword = await bcrypt.hash(data.password, 12);
+      const hashedPassword = await bcrypt.hash(data.password, this.bcryptRounds);
 
       // Create user
       const user = await prisma.user.create({
         data: {
+          name: data.name,
           email: data.email.toLowerCase(),
           password: hashedPassword,
           role: (data.role as UserRole) || UserRole.EMPLOYEE,
@@ -139,7 +150,15 @@ export class AuthService {
 
   async refreshToken(refreshToken: string): Promise<{ accessToken: string; refreshToken: string }> {
     try {
-      // Find and validate refresh token
+      // Verify and decode refresh token
+      let decoded;
+      try {
+        decoded = jwt.verify(refreshToken, this.jwtRefreshSecret) as any;
+      } catch (jwtError) {
+        throw new UnauthorizedError('Invalid refresh token');
+      }
+
+      // Find refresh token in database
       const tokenRecord = await prisma.refreshToken.findUnique({
         where: { token: refreshToken },
         include: { user: true }
@@ -162,6 +181,8 @@ export class AuthService {
         where: { id: tokenRecord.id },
         data: { isRevoked: true }
       });
+
+      logger.info('Tokens refreshed successfully', { userId: tokenRecord.user.id });
 
       return tokens;
     } catch (error) {
@@ -188,7 +209,7 @@ export class AuthService {
       }
 
       // Hash new password
-      const hashedNewPassword = await bcrypt.hash(data.newPassword, 12);
+      const hashedNewPassword = await bcrypt.hash(data.newPassword, this.bcryptRounds);
 
       // Update password and revoke all refresh tokens
       await prisma.$transaction([
@@ -256,7 +277,7 @@ export class AuthService {
       }
 
       // Hash new password
-      const hashedPassword = await bcrypt.hash(data.newPassword, 12);
+      const hashedPassword = await bcrypt.hash(data.newPassword, this.bcryptRounds);
 
       // Update password and clear reset token, revoke all refresh tokens
       await prisma.$transaction([
@@ -317,14 +338,23 @@ export class AuthService {
       expiresIn: this.jwtExpiresIn
     } as jwt.SignOptions);
 
-    // Generate refresh token
-    const refreshTokenValue = crypto.randomBytes(32).toString('hex');
+    // Generate refresh token with a different secret if available
+    const refreshTokenPayload = {
+      userId: user.id,
+      type: 'refresh'
+    };
+
+    const refreshTokenJWT = jwt.sign(refreshTokenPayload, this.jwtRefreshSecret, {
+      expiresIn: this.refreshExpiresIn
+    } as jwt.SignOptions);
+
+    // Store refresh token in database
     const refreshExpiresAt = new Date();
     refreshExpiresAt.setTime(refreshExpiresAt.getTime() + 7 * 24 * 60 * 60 * 1000); // 7 days
 
     await prisma.refreshToken.create({
       data: {
-        token: refreshTokenValue,
+        token: refreshTokenJWT,
         userId: user.id,
         expiresAt: refreshExpiresAt
       }
@@ -332,7 +362,7 @@ export class AuthService {
 
     return {
       accessToken,
-      refreshToken: refreshTokenValue
+      refreshToken: refreshTokenJWT
     };
   }
 

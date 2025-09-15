@@ -10,31 +10,31 @@ export const serviceConfig: Record<string, ServiceConfig> = {
     name: 'auth-service',
     url: process.env.AUTH_SERVICE_URL || 'http://localhost:3001',
     healthCheck: '/health',
-    timeout: 5000
+    timeout: parseInt(process.env.SERVICE_TIMEOUT || '5000')
   },
   employee: {
     name: 'employee-service',
     url: process.env.EMPLOYEE_SERVICE_URL || 'http://localhost:3002',
     healthCheck: '/health',
-    timeout: 5000
+    timeout: parseInt(process.env.SERVICE_TIMEOUT || '5000')
   },
   leave: {
     name: 'leave-service',
     url: process.env.LEAVE_SERVICE_URL || 'http://localhost:3003',
     healthCheck: '/health',
-    timeout: 5000
+    timeout: parseInt(process.env.SERVICE_TIMEOUT || '5000')
   },
   payroll: {
     name: 'payroll-service',
     url: process.env.PAYROLL_SERVICE_URL || 'http://localhost:3004',
     healthCheck: '/health',
-    timeout: 5000
+    timeout: parseInt(process.env.SERVICE_TIMEOUT || '5000')
   },
   recruitment: {
     name: 'recruitment-service',
     url: process.env.RECRUITMENT_SERVICE_URL || 'http://localhost:3005',
     healthCheck: '/health',
-    timeout: 5000
+    timeout: parseInt(process.env.SERVICE_TIMEOUT || '5000')
   }
 };
 

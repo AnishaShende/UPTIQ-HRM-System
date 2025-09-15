@@ -103,7 +103,9 @@ export class AuthController {
       isActive: user.isActive,
       lastLoginAt: user.lastLoginAt,
       emailVerified: user.emailVerified,
-      twoFactorEnabled: user.twoFactorEnabled
+      twoFactorEnabled: user.twoFactorEnabled,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt
     };
     
     ResponseHelper.success(res, profile);

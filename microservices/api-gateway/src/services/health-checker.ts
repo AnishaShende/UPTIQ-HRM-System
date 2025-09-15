@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { serviceConfig } from '../config/services';
-import { createLogger } from '@hrm/shared';
+import { createLogger } from '../utils';
 
 const logger = createLogger('health-checker');
 
@@ -16,7 +16,7 @@ export class HealthChecker {
   private healthStatus: Map<string, ServiceHealth> = new Map();
   private checkInterval: NodeJS.Timeout | null = null;
 
-  constructor(private intervalMs: number = 30000) {
+  constructor(private intervalMs: number = parseInt(process.env.HEALTH_CHECK_INTERVAL || '30000')) {
     this.startHealthChecks();
   }
 
