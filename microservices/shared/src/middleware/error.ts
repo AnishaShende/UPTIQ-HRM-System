@@ -11,6 +11,19 @@ export const errorHandler = (
   res: Response,
   next: NextFunction
 ): Response | void => {
+  // If response has already been sent, we can't send another one
+  if (res.headersSent) {
+    logger.error('Error occurred after response was sent:', {
+      error: error.message,
+      stack: error.stack,
+      requestId: req.requestId,
+      url: req.originalUrl,
+      method: req.method,
+      userId: req.user?.userId
+    });
+    return next(error);
+  }
+
   // Log the error
   logger.error('Error occurred:', {
     error: error.message,
@@ -42,7 +55,12 @@ export const errorHandler = (
   return ResponseHelper.internalError(res, message);
 };
 
-export const notFoundHandler = (req: Request, res: Response): Response => {
+export const notFoundHandler = (req: Request, res: Response): Response | void => {
+  // If response has already been sent, we can't send another one
+  if (res.headersSent) {
+    return;
+  }
+  
   return ResponseHelper.notFound(res, `Route ${req.originalUrl} not found`);
 };
 

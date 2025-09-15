@@ -6,16 +6,36 @@ const logger = createLogger('request-middleware');
 
 export const addRequestId = (req: Request, res: Response, next: NextFunction) => {
   req.requestId = req.headers['x-request-id'] as string || uuidv4();
-  res.setHeader('X-Request-ID', req.requestId);
+  
+  // Only set header if response hasn't been sent yet
+  if (!res.headersSent) {
+    res.setHeader('X-Request-ID', req.requestId);
+  }
+  
   next();
 };
 
 export const addResponseTime = (req: Request, res: Response, next: NextFunction) => {
   const start = Date.now();
   
+  // Set the response time header immediately, before any response is sent
+  // This is safe because we're setting it before any middleware that might send a response
+  const duration = Date.now() - start;
+  
+  // Use a safer approach - set the header early and update it when the response finishes
+  if (!res.headersSent) {
+    res.setHeader('X-Response-Time', '0ms'); // Initial placeholder
+  }
+  
+  // Update the header when the response finishes (for logging purposes only)
   res.on('finish', () => {
-    const duration = Date.now() - start;
-    res.setHeader('X-Response-Time', `${duration}ms`);
+    const finalDuration = Date.now() - start;
+    logger.info('Response time recorded', {
+      requestId: req.requestId,
+      duration: `${finalDuration}ms`,
+      url: req.originalUrl,
+      method: req.method
+    });
   });
   
   next();

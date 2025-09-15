@@ -27,7 +27,11 @@ export class ResponseHelper {
     data: T,
     statusCode: number = 200,
     meta?: any
-  ): Response {
+  ): Response | void {
+    if (res.headersSent) {
+      return;
+    }
+    
     const response: ApiResponse<T> = {
       success: true,
       data,
@@ -41,7 +45,11 @@ export class ResponseHelper {
     message: string,
     statusCode: number = 500,
     details?: any
-  ): Response {
+  ): Response | void {
+    if (res.headersSent) {
+      return;
+    }
+    
     const response: ApiResponse = {
       success: false,
       error: {
@@ -54,39 +62,42 @@ export class ResponseHelper {
     return res.status(statusCode).json(response);
   }
 
-  static created<T>(res: Response, data: T): Response {
+  static created<T>(res: Response, data: T): Response | void {
     return this.success(res, data, 201);
   }
 
-  static noContent(res: Response): Response {
+  static noContent(res: Response): Response | void {
+    if (res.headersSent) {
+      return;
+    }
     return res.status(204).send();
   }
 
-  static badRequest(res: Response, message: string = 'Bad Request', details?: any): Response {
+  static badRequest(res: Response, message: string = 'Bad Request', details?: any): Response | void {
     return this.error(res, message, 400, details);
   }
 
-  static unauthorized(res: Response, message: string = 'Unauthorized'): Response {
+  static unauthorized(res: Response, message: string = 'Unauthorized'): Response | void {
     return this.error(res, message, 401);
   }
 
-  static forbidden(res: Response, message: string = 'Forbidden'): Response {
+  static forbidden(res: Response, message: string = 'Forbidden'): Response | void {
     return this.error(res, message, 403);
   }
 
-  static notFound(res: Response, message: string = 'Not Found'): Response {
+  static notFound(res: Response, message: string = 'Not Found'): Response | void {
     return this.error(res, message, 404);
   }
 
-  static conflict(res: Response, message: string = 'Conflict'): Response {
+  static conflict(res: Response, message: string = 'Conflict'): Response | void {
     return this.error(res, message, 409);
   }
 
-  static internalError(res: Response, message: string = 'Internal Server Error'): Response {
+  static internalError(res: Response, message: string = 'Internal Server Error'): Response | void {
     return this.error(res, message, 500);
   }
 
-  static serviceUnavailable(res: Response, message: string = 'Service Unavailable'): Response {
+  static serviceUnavailable(res: Response, message: string = 'Service Unavailable'): Response | void {
     return this.error(res, message, 503);
   }
 }

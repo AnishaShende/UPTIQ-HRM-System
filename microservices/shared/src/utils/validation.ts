@@ -25,9 +25,10 @@ export const validateRequest = (schema: {
           path: err.path.join('.'),
           message: err.message
         }));
-        throw new ValidationError('Validation failed', validationErrors);
+        const validationError = new ValidationError('Validation failed', validationErrors);
+        return next(validationError); // Pass to error handler instead of throwing
       }
-      throw error;
+      return next(error); // Pass other errors to error handler
     }
   };
 };

@@ -18,12 +18,12 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
     const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
 
     if (!token) {
-      throw new UnauthorizedError('Access token required');
+      return next(new UnauthorizedError('Access token required'));
     }
 
     const jwtSecret = process.env.JWT_SECRET;
     if (!jwtSecret) {
-      throw new Error('JWT_SECRET not configured');
+      return next(new Error('JWT_SECRET not configured'));
     }
 
     const decoded = jwt.verify(token, jwtSecret) as JWTPayload;
@@ -31,12 +31,12 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
     next();
   } catch (error) {
     if (error instanceof jwt.JsonWebTokenError) {
-      throw new UnauthorizedError('Invalid access token');
+      return next(new UnauthorizedError('Invalid access token'));
     }
     if (error instanceof jwt.TokenExpiredError) {
-      throw new UnauthorizedError('Access token expired');
+      return next(new UnauthorizedError('Access token expired'));
     }
-    throw error;
+    return next(error);
   }
 };
 
@@ -46,11 +46,11 @@ export const authMiddleware = authenticateToken;
 export const authorizeRoles = (...roles: UserRole[]) => {
   return (req: Request, res: Response, next: NextFunction) => {
     if (!req.user) {
-      throw new UnauthorizedError('Authentication required');
+      return next(new UnauthorizedError('Authentication required'));
     }
 
     if (!roles.includes(req.user.role)) {
-      throw new ForbiddenError('Insufficient permissions');
+      return next(new ForbiddenError('Insufficient permissions'));
     }
 
     next();

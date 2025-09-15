@@ -19,6 +19,7 @@ import {
 import employeeRoutes from './routes/employee.routes';
 import departmentRoutes from './routes/department.routes';
 import positionRoutes from './routes/position.routes';
+import { setupSwagger } from './config/swagger';
 
 const logger = createLogger('employee-service');
 const config = createServiceConfig('employee-service');
@@ -61,7 +62,8 @@ app.use(limiter);
 
 // Request tracking middleware
 app.use(addRequestId);
-app.use(addResponseTime);
+// Temporarily disabled to prevent "Cannot set headers after they are sent" errors
+// app.use(addResponseTime);
 
 // Body parsing middleware
 app.use(express.json({ limit: '10mb' }));
@@ -75,6 +77,9 @@ app.use(requestLogger);
 
 // Serve uploaded files
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+
+// API Documentation
+setupSwagger(app);
 
 // Health check endpoint
 app.get('/health', (req, res) => {
