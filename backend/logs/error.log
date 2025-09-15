@@ -454,3 +454,97 @@ Meta: {
   "service": "hrm-backend",
   "code": "ERR_SERVER_NOT_RUNNING"
 }
+2025-09-15 10:54:32 [ERROR]: Unexpected Error [
+  {
+    "code": "custom",
+    "message": "Half day period is required when requesting half day leave",
+    "path": [
+      "halfDayPeriod"
+    ]
+  }
+]
+Stack: ZodError: [
+  {
+    "code": "custom",
+    "message": "Half day period is required when requesting half day leave",
+    "path": [
+      "halfDayPeriod"
+    ]
+  }
+]
+    at get error (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/zod/v3/types.cjs:45:31)
+    at ZodEffects.parse (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/zod/v3/types.cjs:120:22)
+    at createLeaveRequest (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/leave.controller.ts:25:45)
+    at Layer.handle [as handle_request] (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/express/lib/router/index.js:280:10)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/admin/leaves/requests",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 10:54:52 [ERROR]: Error creating leave request
+Meta: {
+  "service": "hrm-backend",
+  "error": {
+    "statusCode": 404,
+    "isOperational": true,
+    "timestamp": "2025-09-15T05:24:52.558Z"
+  },
+  "data": {
+    "employeeId": "emp_123",
+    "leaveTypeId": "leave_type_456",
+    "startDate": "2024-01-15",
+    "endDate": "2024-01-17",
+    "isHalfDay": false,
+    "reason": "Personal vacation with family",
+    "attachments": []
+  }
+}
+2025-09-15 10:54:52 [ERROR]: Application Error Employee not found not found
+Stack: Error: Employee not found not found
+    at LeaveService.createLeaveRequest (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/leave.service.ts:84:15)
+    at async createLeaveRequest (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/leave.controller.ts:26:28)
+Meta: {
+  "service": "hrm-backend",
+  "statusCode": 404,
+  "isOperational": true,
+  "method": "POST",
+  "url": "/api/v1/admin/leaves/requests",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 10:56:03 [ERROR]: Failed to create employee
+Meta: {
+  "service": "hrm-backend",
+  "email": "anisha@example.com",
+  "error": "Department not found"
+}
+2025-09-15 10:56:03 [ERROR]: Unexpected Error Department not found
+Stack: Error: Department not found
+    at EmployeeService.createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:93:15)
+    at async createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/employee.controller.ts:62:22)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/employees",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 10:59:55 [ERROR]: Error closing HTTP server: Server is not running.
+Stack: Error [ERR_SERVER_NOT_RUNNING]: Server is not running.
+    at Server.close (node:net:2359:12)
+    at Object.onceWrapper (node:events:632:28)
+    at Server.emit (node:events:518:28)
+    at emitCloseNT (node:net:2419:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+Meta: {
+  "service": "hrm-backend",
+  "code": "ERR_SERVER_NOT_RUNNING"
+}

@@ -3106,3 +3106,195 @@ Meta: {
 Meta: {
   "service": "hrm-backend"
 }
+2025-09-15 10:48:25 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-15 10:48:25 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 10:48:25 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "13ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-15 10:48:25 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 10:48:25 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 10:48:25 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 10:48:25 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 10:48:25 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 10:48:25 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 10:48:25 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 10:48:25 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 10:48:33 [INFO]: GET /api-docs 301 158 - 6.916 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 10:48:33 [INFO]: GET /api-docs/ 200 - - 7.028 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 10:48:34 [INFO]: GET /api-docs/swagger-ui-init.js 200 - - 1.138 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 10:48:34 [INFO]: GET /api-docs/swagger-ui.css 200 - - 12.140 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 10:48:34 [INFO]: GET /api-docs/swagger-ui-standalone-preset.js 200 - - 10.645 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 10:48:34 [INFO]: GET /api-docs/swagger-ui-bundle.js 200 - - 9.726 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 10:48:35 [INFO]: GET /api-docs/favicon-32x32.png 200 628 - 3.624 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 10:54:32 [ERROR]: Unexpected Error [
+  {
+    "code": "custom",
+    "message": "Half day period is required when requesting half day leave",
+    "path": [
+      "halfDayPeriod"
+    ]
+  }
+]
+Stack: ZodError: [
+  {
+    "code": "custom",
+    "message": "Half day period is required when requesting half day leave",
+    "path": [
+      "halfDayPeriod"
+    ]
+  }
+]
+    at get error (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/zod/v3/types.cjs:45:31)
+    at ZodEffects.parse (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/zod/v3/types.cjs:120:22)
+    at createLeaveRequest (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/leave.controller.ts:25:45)
+    at Layer.handle [as handle_request] (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/express/lib/router/index.js:280:10)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/admin/leaves/requests",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 10:54:32 [INFO]: POST /api/v1/admin/leaves/requests 500 - - 13.567 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 10:54:52 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT \"public\".\"employees\".\"id\", \"public\".\"employees\".\"employeeId\", \"public\".\"employees\".\"firstName\", \"public\".\"employees\".\"lastName\", \"public\".\"employees\".\"email\", \"public\".\"employees\".\"phone\", \"public\".\"employees\".\"dateOfBirth\", \"public\".\"employees\".\"hireDate\", \"public\".\"employees\".\"terminationDate\", \"public\".\"employees\".\"status\"::text, \"public\".\"employees\".\"profilePicture\", \"public\".\"employees\".\"personalInfo\", \"public\".\"employees\".\"departmentId\", \"public\".\"employees\".\"positionId\", \"public\".\"employees\".\"managerId\", \"public\".\"employees\".\"employmentType\"::text, \"public\".\"employees\".\"workLocation\"::text, \"public\".\"employees\".\"salaryGrade\", \"public\".\"employees\".\"baseSalary\", \"public\".\"employees\".\"currency\", \"public\".\"employees\".\"bankInfo\", \"public\".\"employees\".\"createdAt\", \"public\".\"employees\".\"updatedAt\", \"public\".\"employees\".\"createdById\", \"public\".\"employees\".\"updatedById\" FROM \"public\".\"employees\" WHERE (\"public\".\"employees\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3",
+  "params": "[\"emp_123\",1,0]",
+  "duration": "5ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-15 10:54:52 [ERROR]: Error creating leave request
+Meta: {
+  "service": "hrm-backend",
+  "error": {
+    "statusCode": 404,
+    "isOperational": true,
+    "timestamp": "2025-09-15T05:24:52.558Z"
+  },
+  "data": {
+    "employeeId": "emp_123",
+    "leaveTypeId": "leave_type_456",
+    "startDate": "2024-01-15",
+    "endDate": "2024-01-17",
+    "isHalfDay": false,
+    "reason": "Personal vacation with family",
+    "attachments": []
+  }
+}
+2025-09-15 10:54:52 [ERROR]: Application Error Employee not found not found
+Stack: Error: Employee not found not found
+    at LeaveService.createLeaveRequest (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/leave.service.ts:84:15)
+    at async createLeaveRequest (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/leave.controller.ts:26:28)
+Meta: {
+  "service": "hrm-backend",
+  "statusCode": 404,
+  "isOperational": true,
+  "method": "POST",
+  "url": "/api/v1/admin/leaves/requests",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 10:54:52 [INFO]: POST /api/v1/admin/leaves/requests 404 124 - 73.150 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 10:56:03 [ERROR]: Failed to create employee
+Meta: {
+  "service": "hrm-backend",
+  "email": "anisha@example.com",
+  "error": "Department not found"
+}
+2025-09-15 10:56:03 [ERROR]: Unexpected Error Department not found
+Stack: Error: Department not found
+    at EmployeeService.createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:93:15)
+    at async createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/employee.controller.ts:62:22)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/employees",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 10:56:03 [INFO]: POST /api/v1/employees 500 520 - 125.244 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 10:59:55 [INFO]: Received SIGINT, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 10:59:55 [INFO]: SIGINT received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 10:59:55 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}

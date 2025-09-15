@@ -10,7 +10,8 @@
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
-    "db:seed": "tsx src/prisma/seed.ts",
+    "db:seed": "tsx prisma/seed.ts",
+    "db:seed:test": "./scripts/test-seed.sh",
     "db:studio": "prisma studio",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -53,7 +54,7 @@
   "devDependencies": {
     "@types/jest": "^29.5.8",
     "@types/jsonwebtoken": "^9.0.10",
-    "@types/node": "^20.8.0",
+    "@types/node": "^20.19.14",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@typescript-eslint/parser": "^6.9.0",
     "eslint": "^8.52.0",
