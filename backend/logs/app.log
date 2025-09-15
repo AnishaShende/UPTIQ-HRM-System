@@ -3298,3 +3298,1622 @@ Meta: {
 Meta: {
   "service": "hrm-backend"
 }
+2025-09-15 12:22:21 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-15 12:22:21 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:22:21 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-15 12:22:21 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:22:21 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:22:21 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:22:21 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:22:21 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:22:21 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:22:21 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:22:21 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:22:28 [INFO]: GET /api-docs/ 304 - - 6.209 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:22:28 [INFO]: GET /api-docs/swagger-ui.css 304 - - 3.281 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:22:28 [INFO]: GET /api-docs/swagger-ui-bundle.js 304 - - 4.964 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:22:28 [INFO]: GET /api-docs/swagger-ui-standalone-preset.js 304 - - 4.535 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:22:28 [INFO]: GET /api-docs/swagger-ui-init.js 304 - - 2.473 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:22:29 [INFO]: GET /api-docs/favicon-32x32.png 304 - - 1.598 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:23:00 [INFO]: Employees retrieved successfully
+Meta: {
+  "service": "hrm-backend",
+  "total": 10,
+  "page": 1
+}
+2025-09-15 12:23:00 [INFO]: GET /api/v1/employees?page=1&limit=5 200 - - 139.367 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:24:39 [ERROR]: Failed to create employee
+Meta: {
+  "service": "hrm-backend",
+  "email": "anisha@example.com",
+  "error": "Position not found"
+}
+2025-09-15 12:24:39 [ERROR]: Unexpected Error Position not found
+Stack: Error: Position not found
+    at EmployeeService.createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:102:15)
+    at async createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/employee.controller.ts:62:22)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/employees",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 12:24:39 [INFO]: POST /api/v1/employees 500 517 - 42.668 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:25:08 [ERROR]: Failed to create employee
+Meta: {
+  "service": "hrm-backend",
+  "email": "anisha@example.com",
+  "error": "\nInvalid `tx.employee.create()` invocation in\n/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:130:44\n\n  127 // Create employee in transaction\n  128 const result = await prisma.$transaction(async (tx) => {\n  129   // Create employee\n→ 130   const employee = await tx.employee.create({\n          data: {\n            employeeId: \"EMP011\",\n            firstName: \"anisha\",\n            lastName: \"shende\",\n            email: \"anisha@example.com\",\n            dateOfBirth: undefined,\n            hireDate: undefined,\n            departmentId: \"cmfkr3xdn0002b70e6u4nz0x4\",\n            positionId: \"cmfkr3xe7000bb70ez74wwe1u\",\n            managerId: undefined,\n            employmentType: undefined,\n            workLocation: undefined,\n            baseSalary: undefined,\n            currency: \"USD\",\n            salaryGrade: undefined,\n            personalInfo: undefined,\n            bankInfo: undefined,\n        +   phone: String\n          },\n          include: {\n            department: true,\n            position: true,\n            manager: {\n              select: {\n                id: true,\n                firstName: true,\n                lastName: true,\n                employeeId: true\n              }\n            }\n          }\n        })\n\nArgument `phone` is missing."
+}
+2025-09-15 12:25:08 [ERROR]: Unexpected Error 
+Invalid `tx.employee.create()` invocation in
+/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:130:44
+
+  127 // Create employee in transaction
+  128 const result = await prisma.$transaction(async (tx) => {
+  129   // Create employee
+→ 130   const employee = await tx.employee.create({
+          data: {
+            employeeId: "EMP011",
+            firstName: "anisha",
+            lastName: "shende",
+            email: "anisha@example.com",
+            dateOfBirth: undefined,
+            hireDate: undefined,
+            departmentId: "cmfkr3xdn0002b70e6u4nz0x4",
+            positionId: "cmfkr3xe7000bb70ez74wwe1u",
+            managerId: undefined,
+            employmentType: undefined,
+            workLocation: undefined,
+            baseSalary: undefined,
+            currency: "USD",
+            salaryGrade: undefined,
+            personalInfo: undefined,
+            bankInfo: undefined,
+        +   phone: String
+          },
+          include: {
+            department: true,
+            position: true,
+            manager: {
+              select: {
+                id: true,
+                firstName: true,
+                lastName: true,
+                employeeId: true
+              }
+            }
+          }
+        })
+
+Argument `phone` is missing.
+Stack: PrismaClientValidationError: 
+Invalid `tx.employee.create()` invocation in
+/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:130:44
+
+  127 // Create employee in transaction
+  128 const result = await prisma.$transaction(async (tx) => {
+  129   // Create employee
+→ 130   const employee = await tx.employee.create({
+          data: {
+            employeeId: "EMP011",
+            firstName: "anisha",
+            lastName: "shende",
+            email: "anisha@example.com",
+            dateOfBirth: undefined,
+            hireDate: undefined,
+            departmentId: "cmfkr3xdn0002b70e6u4nz0x4",
+            positionId: "cmfkr3xe7000bb70ez74wwe1u",
+            managerId: undefined,
+            employmentType: undefined,
+            workLocation: undefined,
+            baseSalary: undefined,
+            currency: "USD",
+            salaryGrade: undefined,
+            personalInfo: undefined,
+            bankInfo: undefined,
+        +   phone: String
+          },
+          include: {
+            department: true,
+            position: true,
+            manager: {
+              select: {
+                id: true,
+                firstName: true,
+                lastName: true,
+                employeeId: true
+              }
+            }
+          }
+        })
+
+Argument `phone` is missing.
+    at wn (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async <anonymous> (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:130:26)
+    at async Proxy._transactionWithCallback (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:130:8000)
+    at async EmployeeService.createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:128:22)
+    at async createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/employee.controller.ts:62:22)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/employees",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 12:25:08 [INFO]: POST /api/v1/employees 400 117 - 55.654 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:25:47 [INFO]: Received SIGINT, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:25:47 [INFO]: SIGINT received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:25:47 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:26:58 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-15 12:26:58 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:26:58 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-15 12:26:58 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:26:58 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:26:58 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:26:58 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:26:58 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:26:58 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:26:58 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:26:58 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:26:58 [INFO]: Received SIGINT, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:26:58 [INFO]: SIGINT received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:26:58 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:27:06 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-15 12:27:07 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:27:07 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-15 12:27:07 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:27:07 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:27:07 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:27:07 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:27:07 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:27:07 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:27:07 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:27:07 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:28:57 [ERROR]: Failed to create employee
+Meta: {
+  "service": "hrm-backend",
+  "email": "anisha@example.com",
+  "error": "\nInvalid `prisma.department.findUnique()` invocation in\n/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:88:50\n\n  85 }\n  86 \n  87 // Verify department exists\n→ 88 const department = await prisma.department.findUnique({\n       where: {\n         id: undefined,\n     ?   name?: String,\n     ?   AND?: DepartmentWhereInput | DepartmentWhereInput[],\n     ?   OR?: DepartmentWhereInput[],\n     ?   NOT?: DepartmentWhereInput | DepartmentWhereInput[],\n     ?   description?: StringNullableFilter | String | Null,\n     ?   managerId?: StringNullableFilter | String | Null,\n     ?   parentDepartmentId?: StringNullableFilter | String | Null,\n     ?   status?: EnumStatusFilter | Status,\n     ?   createdAt?: DateTimeFilter | DateTime,\n     ?   updatedAt?: DateTimeFilter | DateTime,\n     ?   createdById?: StringNullableFilter | String | Null,\n     ?   updatedById?: StringNullableFilter | String | Null,\n     ?   manager?: EmployeeNullableRelationFilter | EmployeeWhereInput | Null,\n     ?   parentDepartment?: DepartmentNullableRelationFilter | DepartmentWhereInput | Null,\n     ?   subDepartments?: DepartmentListRelationFilter,\n     ?   employees?: EmployeeListRelationFilter,\n     ?   positions?: PositionListRelationFilter,\n     ?   jobPostings?: JobPostingListRelationFilter\n       }\n     })\n\nArgument `where` of type DepartmentWhereUniqueInput needs at least one of `id` or `name` arguments. Available options are marked with ?."
+}
+2025-09-15 12:28:57 [ERROR]: Unexpected Error 
+Invalid `prisma.department.findUnique()` invocation in
+/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:88:50
+
+  85 }
+  86 
+  87 // Verify department exists
+→ 88 const department = await prisma.department.findUnique({
+       where: {
+         id: undefined,
+     ?   name?: String,
+     ?   AND?: DepartmentWhereInput | DepartmentWhereInput[],
+     ?   OR?: DepartmentWhereInput[],
+     ?   NOT?: DepartmentWhereInput | DepartmentWhereInput[],
+     ?   description?: StringNullableFilter | String | Null,
+     ?   managerId?: StringNullableFilter | String | Null,
+     ?   parentDepartmentId?: StringNullableFilter | String | Null,
+     ?   status?: EnumStatusFilter | Status,
+     ?   createdAt?: DateTimeFilter | DateTime,
+     ?   updatedAt?: DateTimeFilter | DateTime,
+     ?   createdById?: StringNullableFilter | String | Null,
+     ?   updatedById?: StringNullableFilter | String | Null,
+     ?   manager?: EmployeeNullableRelationFilter | EmployeeWhereInput | Null,
+     ?   parentDepartment?: DepartmentNullableRelationFilter | DepartmentWhereInput | Null,
+     ?   subDepartments?: DepartmentListRelationFilter,
+     ?   employees?: EmployeeListRelationFilter,
+     ?   positions?: PositionListRelationFilter,
+     ?   jobPostings?: JobPostingListRelationFilter
+       }
+     })
+
+Argument `where` of type DepartmentWhereUniqueInput needs at least one of `id` or `name` arguments. Available options are marked with ?.
+Stack: PrismaClientValidationError: 
+Invalid `prisma.department.findUnique()` invocation in
+/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:88:50
+
+  85 }
+  86 
+  87 // Verify department exists
+→ 88 const department = await prisma.department.findUnique({
+       where: {
+         id: undefined,
+     ?   name?: String,
+     ?   AND?: DepartmentWhereInput | DepartmentWhereInput[],
+     ?   OR?: DepartmentWhereInput[],
+     ?   NOT?: DepartmentWhereInput | DepartmentWhereInput[],
+     ?   description?: StringNullableFilter | String | Null,
+     ?   managerId?: StringNullableFilter | String | Null,
+     ?   parentDepartmentId?: StringNullableFilter | String | Null,
+     ?   status?: EnumStatusFilter | Status,
+     ?   createdAt?: DateTimeFilter | DateTime,
+     ?   updatedAt?: DateTimeFilter | DateTime,
+     ?   createdById?: StringNullableFilter | String | Null,
+     ?   updatedById?: StringNullableFilter | String | Null,
+     ?   manager?: EmployeeNullableRelationFilter | EmployeeWhereInput | Null,
+     ?   parentDepartment?: DepartmentNullableRelationFilter | DepartmentWhereInput | Null,
+     ?   subDepartments?: DepartmentListRelationFilter,
+     ?   employees?: EmployeeListRelationFilter,
+     ?   positions?: PositionListRelationFilter,
+     ?   jobPostings?: JobPostingListRelationFilter
+       }
+     })
+
+Argument `where` of type DepartmentWhereUniqueInput needs at least one of `id` or `name` arguments. Available options are marked with ?.
+    at wn (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async EmployeeService.createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:88:26)
+    at async createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/employee.controller.ts:62:22)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/employees",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 12:28:57 [INFO]: POST /api/v1/employees 400 117 - 139.232 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:29:36 [ERROR]: Unexpected Error Expected ',' or '}' after property value in JSON at position 29 (line 3 column 3)
+Stack: SyntaxError: Expected ',' or '}' after property value in JSON at position 29 (line 3 column 3)
+    at JSON.parse (<anonymous>)
+    at parse (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/body-parser/lib/types/json.js:92:19)
+    at /home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/body-parser/lib/read.js:128:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:214:14)
+    at invokeCallback (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/raw-body/index.js:238:16)
+    at done (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/raw-body/index.js:227:7)
+    at IncomingMessage.onEnd (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/raw-body/index.js:287:7)
+    at IncomingMessage.emit (node:events:518:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/employees",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 12:29:44 [ERROR]: Failed to create employee
+Meta: {
+  "service": "hrm-backend",
+  "email": "anisha@example.com",
+  "error": "\nInvalid `prisma.department.findUnique()` invocation in\n/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:88:50\n\n  85 }\n  86 \n  87 // Verify department exists\n→ 88 const department = await prisma.department.findUnique({\n       where: {\n         id: undefined,\n     ?   name?: String,\n     ?   AND?: DepartmentWhereInput | DepartmentWhereInput[],\n     ?   OR?: DepartmentWhereInput[],\n     ?   NOT?: DepartmentWhereInput | DepartmentWhereInput[],\n     ?   description?: StringNullableFilter | String | Null,\n     ?   managerId?: StringNullableFilter | String | Null,\n     ?   parentDepartmentId?: StringNullableFilter | String | Null,\n     ?   status?: EnumStatusFilter | Status,\n     ?   createdAt?: DateTimeFilter | DateTime,\n     ?   updatedAt?: DateTimeFilter | DateTime,\n     ?   createdById?: StringNullableFilter | String | Null,\n     ?   updatedById?: StringNullableFilter | String | Null,\n     ?   manager?: EmployeeNullableRelationFilter | EmployeeWhereInput | Null,\n     ?   parentDepartment?: DepartmentNullableRelationFilter | DepartmentWhereInput | Null,\n     ?   subDepartments?: DepartmentListRelationFilter,\n     ?   employees?: EmployeeListRelationFilter,\n     ?   positions?: PositionListRelationFilter,\n     ?   jobPostings?: JobPostingListRelationFilter\n       }\n     })\n\nArgument `where` of type DepartmentWhereUniqueInput needs at least one of `id` or `name` arguments. Available options are marked with ?."
+}
+2025-09-15 12:29:44 [ERROR]: Unexpected Error 
+Invalid `prisma.department.findUnique()` invocation in
+/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:88:50
+
+  85 }
+  86 
+  87 // Verify department exists
+→ 88 const department = await prisma.department.findUnique({
+       where: {
+         id: undefined,
+     ?   name?: String,
+     ?   AND?: DepartmentWhereInput | DepartmentWhereInput[],
+     ?   OR?: DepartmentWhereInput[],
+     ?   NOT?: DepartmentWhereInput | DepartmentWhereInput[],
+     ?   description?: StringNullableFilter | String | Null,
+     ?   managerId?: StringNullableFilter | String | Null,
+     ?   parentDepartmentId?: StringNullableFilter | String | Null,
+     ?   status?: EnumStatusFilter | Status,
+     ?   createdAt?: DateTimeFilter | DateTime,
+     ?   updatedAt?: DateTimeFilter | DateTime,
+     ?   createdById?: StringNullableFilter | String | Null,
+     ?   updatedById?: StringNullableFilter | String | Null,
+     ?   manager?: EmployeeNullableRelationFilter | EmployeeWhereInput | Null,
+     ?   parentDepartment?: DepartmentNullableRelationFilter | DepartmentWhereInput | Null,
+     ?   subDepartments?: DepartmentListRelationFilter,
+     ?   employees?: EmployeeListRelationFilter,
+     ?   positions?: PositionListRelationFilter,
+     ?   jobPostings?: JobPostingListRelationFilter
+       }
+     })
+
+Argument `where` of type DepartmentWhereUniqueInput needs at least one of `id` or `name` arguments. Available options are marked with ?.
+Stack: PrismaClientValidationError: 
+Invalid `prisma.department.findUnique()` invocation in
+/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:88:50
+
+  85 }
+  86 
+  87 // Verify department exists
+→ 88 const department = await prisma.department.findUnique({
+       where: {
+         id: undefined,
+     ?   name?: String,
+     ?   AND?: DepartmentWhereInput | DepartmentWhereInput[],
+     ?   OR?: DepartmentWhereInput[],
+     ?   NOT?: DepartmentWhereInput | DepartmentWhereInput[],
+     ?   description?: StringNullableFilter | String | Null,
+     ?   managerId?: StringNullableFilter | String | Null,
+     ?   parentDepartmentId?: StringNullableFilter | String | Null,
+     ?   status?: EnumStatusFilter | Status,
+     ?   createdAt?: DateTimeFilter | DateTime,
+     ?   updatedAt?: DateTimeFilter | DateTime,
+     ?   createdById?: StringNullableFilter | String | Null,
+     ?   updatedById?: StringNullableFilter | String | Null,
+     ?   manager?: EmployeeNullableRelationFilter | EmployeeWhereInput | Null,
+     ?   parentDepartment?: DepartmentNullableRelationFilter | DepartmentWhereInput | Null,
+     ?   subDepartments?: DepartmentListRelationFilter,
+     ?   employees?: EmployeeListRelationFilter,
+     ?   positions?: PositionListRelationFilter,
+     ?   jobPostings?: JobPostingListRelationFilter
+       }
+     })
+
+Argument `where` of type DepartmentWhereUniqueInput needs at least one of `id` or `name` arguments. Available options are marked with ?.
+    at wn (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async EmployeeService.createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:88:26)
+    at async createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/employee.controller.ts:62:22)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/employees",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 12:29:44 [INFO]: POST /api/v1/employees 400 117 - 10.482 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:31:59 [ERROR]: Failed to create employee
+Meta: {
+  "service": "hrm-backend",
+  "email": "anisha@example.com",
+  "error": "Department not found"
+}
+2025-09-15 12:31:59 [ERROR]: Unexpected Error Department not found
+Stack: Error: Department not found
+    at EmployeeService.createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:93:15)
+    at async createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/employee.controller.ts:62:22)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/employees",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 12:31:59 [INFO]: POST /api/v1/employees 500 520 - 9.307 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:32:35 [ERROR]: Failed to create employee
+Meta: {
+  "service": "hrm-backend",
+  "email": "anisha@example.com",
+  "error": "\nInvalid `tx.employee.create()` invocation in\n/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:130:44\n\n  127 // Create employee in transaction\n  128 const result = await prisma.$transaction(async (tx) => {\n  129   // Create employee\n→ 130   const employee = await tx.employee.create({\n          data: {\n            employeeId: \"EMP011\",\n            firstName: \"Anisha\",\n            lastName: \"Shende\",\n            email: \"anisha@example.com\",\n            phone: \"9420853261\",\n            dateOfBirth: \"2004-12-01T00:00:00.000Z\",\n            hireDate: \"2025-08-21T00:00:00.000Z\",\n            departmentId: \"cmfkr3xcz0000b70egispsqh3\",\n            positionId: \"cmfkr3xf6000gb70exresiqf4\",\n            managerId: undefined,\n            employmentType: \"FULL_TIME\",\n            workLocation: \"ONSITE\",\n                          ~~~~~~~~\n            baseSalary: 60000,\n            currency: \"USD\",\n            salaryGrade: \"G7\",\n            personalInfo: {\n              address: \"Pune, India\",\n              gender: \"Female\",\n              maritalStatus: \"Single\"\n            },\n            bankInfo: {\n              accountNumber: \"1234567890\",\n              ifsc: \"HDFC0001234\",\n              bankName: \"HDFC Bank\"\n            }\n          },\n          include: {\n            department: true,\n            position: true,\n            manager: {\n              select: {\n                id: true,\n                firstName: true,\n                lastName: true,\n                employeeId: true\n              }\n            }\n          }\n        })\n\nInvalid value for argument `workLocation`. Expected WorkLocation."
+}
+2025-09-15 12:32:35 [ERROR]: Unexpected Error 
+Invalid `tx.employee.create()` invocation in
+/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:130:44
+
+  127 // Create employee in transaction
+  128 const result = await prisma.$transaction(async (tx) => {
+  129   // Create employee
+→ 130   const employee = await tx.employee.create({
+          data: {
+            employeeId: "EMP011",
+            firstName: "Anisha",
+            lastName: "Shende",
+            email: "anisha@example.com",
+            phone: "9420853261",
+            dateOfBirth: "2004-12-01T00:00:00.000Z",
+            hireDate: "2025-08-21T00:00:00.000Z",
+            departmentId: "cmfkr3xcz0000b70egispsqh3",
+            positionId: "cmfkr3xf6000gb70exresiqf4",
+            managerId: undefined,
+            employmentType: "FULL_TIME",
+            workLocation: "ONSITE",
+                          ~~~~~~~~
+            baseSalary: 60000,
+            currency: "USD",
+            salaryGrade: "G7",
+            personalInfo: {
+              address: "Pune, India",
+              gender: "Female",
+              maritalStatus: "Single"
+            },
+            bankInfo: {
+              accountNumber: "1234567890",
+              ifsc: "HDFC0001234",
+              bankName: "HDFC Bank"
+            }
+          },
+          include: {
+            department: true,
+            position: true,
+            manager: {
+              select: {
+                id: true,
+                firstName: true,
+                lastName: true,
+                employeeId: true
+              }
+            }
+          }
+        })
+
+Invalid value for argument `workLocation`. Expected WorkLocation.
+Stack: PrismaClientValidationError: 
+Invalid `tx.employee.create()` invocation in
+/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:130:44
+
+  127 // Create employee in transaction
+  128 const result = await prisma.$transaction(async (tx) => {
+  129   // Create employee
+→ 130   const employee = await tx.employee.create({
+          data: {
+            employeeId: "EMP011",
+            firstName: "Anisha",
+            lastName: "Shende",
+            email: "anisha@example.com",
+            phone: "9420853261",
+            dateOfBirth: "2004-12-01T00:00:00.000Z",
+            hireDate: "2025-08-21T00:00:00.000Z",
+            departmentId: "cmfkr3xcz0000b70egispsqh3",
+            positionId: "cmfkr3xf6000gb70exresiqf4",
+            managerId: undefined,
+            employmentType: "FULL_TIME",
+            workLocation: "ONSITE",
+                          ~~~~~~~~
+            baseSalary: 60000,
+            currency: "USD",
+            salaryGrade: "G7",
+            personalInfo: {
+              address: "Pune, India",
+              gender: "Female",
+              maritalStatus: "Single"
+            },
+            bankInfo: {
+              accountNumber: "1234567890",
+              ifsc: "HDFC0001234",
+              bankName: "HDFC Bank"
+            }
+          },
+          include: {
+            department: true,
+            position: true,
+            manager: {
+              select: {
+                id: true,
+                firstName: true,
+                lastName: true,
+                employeeId: true
+              }
+            }
+          }
+        })
+
+Invalid value for argument `workLocation`. Expected WorkLocation.
+    at wn (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async <anonymous> (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:130:26)
+    at async Proxy._transactionWithCallback (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:130:8000)
+    at async EmployeeService.createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:128:22)
+    at async createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/employee.controller.ts:62:22)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/employees",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 12:32:35 [INFO]: POST /api/v1/employees 400 117 - 39.156 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:34:44 [INFO]: Employee created successfully
+Meta: {
+  "service": "hrm-backend",
+  "employeeId": "cmfks3zon0005b6ku079n7j6g",
+  "employeeNumber": "EMP011",
+  "email": "anisha@example.com"
+}
+2025-09-15 12:34:44 [INFO]: Employee created successfully
+Meta: {
+  "service": "hrm-backend",
+  "employeeId": "cmfks3zon0005b6ku079n7j6g",
+  "employeeNumber": "EMP011"
+}
+2025-09-15 12:34:44 [INFO]: POST /api/v1/employees 201 - - 68.937 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:43:21 [INFO]: POST /api-docs/ 200 - - 1.077 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:43:37 [INFO]: POST /api-docs/ 200 - - 0.777 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:44:14 [ERROR]: Failed to create employee
+Meta: {
+  "service": "hrm-backend",
+  "email": "aparna.badhe@example.com",
+  "error": "Department not found"
+}
+2025-09-15 12:44:14 [ERROR]: Unexpected Error Department not found
+Stack: Error: Department not found
+    at EmployeeService.createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:93:15)
+    at async createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/employee.controller.ts:62:22)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/employees",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.46.0"
+}
+2025-09-15 12:44:14 [INFO]: POST /api/v1/employees 500 520 - 39.907 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:44:47 [INFO]: Employee created successfully
+Meta: {
+  "service": "hrm-backend",
+  "employeeId": "cmfksgwwi0008b6kuuak3ltaj",
+  "employeeNumber": "EMP012",
+  "email": "aparna.badhe@example.com"
+}
+2025-09-15 12:44:47 [INFO]: Employee created successfully
+Meta: {
+  "service": "hrm-backend",
+  "employeeId": "cmfksgwwi0008b6kuuak3ltaj",
+  "employeeNumber": "EMP012"
+}
+2025-09-15 12:44:47 [INFO]: POST /api/v1/employees 201 - - 49.219 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:46:54 [INFO]: Employees retrieved successfully
+Meta: {
+  "service": "hrm-backend",
+  "total": 12,
+  "page": 2
+}
+2025-09-15 12:46:54 [INFO]: GET /api/v1/employees?page=2&limit=4 200 - - 20.080 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:49:10 [INFO]: Employees retrieved successfully
+Meta: {
+  "service": "hrm-backend",
+  "total": 12,
+  "page": 2
+}
+2025-09-15 12:49:10 [INFO]: GET /api/v1/employees?page=2&limit=4 200 - - 14.581 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:50:29 [ERROR]: Failed to get employee
+Meta: {
+  "service": "hrm-backend",
+  "id": "EMP011",
+  "error": "Employee not found"
+}
+2025-09-15 12:50:29 [ERROR]: Unexpected Error Employee not found
+Stack: Error: Employee not found
+    at EmployeeService.getEmployeeById (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:251:15)
+    at async getEmployeeById (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/employee.controller.ts:45:24)
+Meta: {
+  "service": "hrm-backend",
+  "method": "GET",
+  "url": "/api/v1/employees/EMP011",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 12:50:29 [INFO]: GET /api/v1/employees/EMP011 500 519 - 38.118 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:22 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:22 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:22 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:22 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:27 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-15 12:55:27 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:27 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-15 12:55:27 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:27 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:27 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:27 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:27 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:27 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:27 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:27 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:35 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:35 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:35 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:35 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:37 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-15 12:55:37 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:37 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-15 12:55:37 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:37 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:37 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:37 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:37 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:37 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:37 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:55:37 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:58:31 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:58:31 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:58:31 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:58:31 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:58:33 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-15 12:58:34 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:58:34 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "2ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-15 12:58:34 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:58:34 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:58:34 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:58:34 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:58:34 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:58:34 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:58:34 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:58:34 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:58:39 [ERROR]: Failed to get employee
+Meta: {
+  "service": "hrm-backend",
+  "id": "EMP011",
+  "error": "Employee not found"
+}
+2025-09-15 12:58:39 [ERROR]: Unexpected Error Employee not found
+Stack: Error: Employee not found
+    at EmployeeService.getEmployeeById (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:251:15)
+    at async getEmployeeById (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/employee.controller.ts:45:24)
+Meta: {
+  "service": "hrm-backend",
+  "method": "GET",
+  "url": "/api/v1/employees/EMP011",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 12:58:39 [INFO]: GET /api/v1/employees/EMP011 500 519 - 139.259 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:59:53 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:59:53 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:59:53 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:59:53 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:59:56 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-15 12:59:56 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:59:56 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-15 12:59:56 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:59:56 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:59:56 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:59:56 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:59:56 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:59:56 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:59:56 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 12:59:56 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:01:57 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:01:57 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:01:57 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:01:57 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:01:59 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-15 13:01:59 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:01:59 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-15 13:01:59 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:01:59 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:01:59 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:01:59 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:01:59 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:01:59 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:01:59 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:01:59 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:02:44 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:02:44 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:02:44 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:02:44 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:02:46 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-15 13:02:46 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:02:46 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-15 13:02:46 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:02:46 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:02:46 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:02:46 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:02:46 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:02:46 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:02:46 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:02:46 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:04:11 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:04:11 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:04:11 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:04:11 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:04:13 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-15 13:04:13 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:04:13 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "0ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-15 13:04:13 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:04:13 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:04:13 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:04:13 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:04:13 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:04:13 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:04:13 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:04:13 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:05:26 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:05:26 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:05:26 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:05:26 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:05:28 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-15 13:05:28 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:05:28 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-15 13:05:28 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:05:28 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:05:28 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:05:28 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:05:28 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:05:28 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:05:28 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:05:28 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:05:28 [INFO]: Received SIGINT, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:05:28 [INFO]: SIGINT received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:05:28 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:32:23 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-15 13:32:23 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:32:23 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-15 13:32:23 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:32:23 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:32:23 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:32:23 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:32:23 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:32:23 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:32:23 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:32:23 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:32:53 [ERROR]: Failed to update employee
+Meta: {
+  "service": "hrm-backend",
+  "employeeId": "EMP011",
+  "error": "Employee not found"
+}
+2025-09-15 13:32:53 [ERROR]: Unexpected Error Employee not found
+Stack: Error: Employee not found
+    at EmployeeService.updateEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:401:15)
+    at async updateEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/employee.controller.ts:84:24)
+Meta: {
+  "service": "hrm-backend",
+  "method": "PUT",
+  "url": "/api/v1/employees/EMP011",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 13:32:53 [INFO]: PUT /api/v1/employees/EMP011 500 517 - 113.575 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:37:03 [INFO]: Received SIGINT, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:37:03 [INFO]: SIGINT received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:37:03 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:52:28 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-15 13:52:28 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:52:28 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "19ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-15 13:52:28 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:52:28 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:52:28 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:52:28 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:52:28 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:52:28 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:52:28 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:52:28 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:53:17 [INFO]: GET /api-docs?id=403073ab-2dd8-41b1-b1c6-32436af18eea&vscodeBrowserReqId=1757924597103 301 235 - 4.805 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:53:17 [INFO]: GET /api-docs/?id=403073ab-2dd8-41b1-b1c6-32436af18eea&vscodeBrowserReqId=1757924597103 200 - - 8.473 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:54:14 [INFO]: GET /api-docs/ 304 - - 2.388 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:54:14 [INFO]: GET /api-docs/swagger-ui.css 304 - - 3.332 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:54:15 [INFO]: GET /api-docs/swagger-ui-bundle.js 304 - - 3.396 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:54:15 [INFO]: GET /api-docs/swagger-ui-standalone-preset.js 304 - - 5.888 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:54:15 [INFO]: GET /api-docs/swagger-ui-init.js 200 - - 2.332 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:54:16 [INFO]: GET /api-docs/favicon-32x32.png 304 - - 1.727 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:56:30 [ERROR]: Login failed
+Meta: {
+  "service": "hrm-backend",
+  "email": "user@company.com",
+  "error": "Invalid email or password"
+}
+2025-09-15 13:56:30 [ERROR]: Unexpected Error Invalid email or password
+Stack: Error: Invalid email or password
+    at AuthService.login (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/auth.service.ts:177:15)
+    at async login (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/auth.controller.ts:10:22)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/auth/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 13:56:30 [INFO]: POST /api/v1/auth/login 500 501 - 149.921 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:56:51 [ERROR]: Login failed
+Meta: {
+  "service": "hrm-backend",
+  "email": "david.rodriguez@company.com",
+  "error": "Invalid email or password"
+}
+2025-09-15 13:56:51 [ERROR]: Unexpected Error Invalid email or password
+Stack: Error: Invalid email or password
+    at AuthService.login (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/auth.service.ts:191:15)
+    at async login (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/auth.controller.ts:10:22)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/auth/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 13:56:51 [INFO]: POST /api/v1/auth/login 500 501 - 278.800 ms - User: anonymous
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:56:58 [INFO]: Received SIGTERM, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:56:58 [INFO]: SIGTERM received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:56:58 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:56:58 [INFO]: ✅ Database disconnected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:57:01 [INFO]: Prisma Info Starting a postgresql pool with 21 connections.
+Meta: {
+  "service": "hrm-backend",
+  "target": "quaint::pooled"
+}
+2025-09-15 13:57:01 [INFO]: ✅ Database connected successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:57:01 [DEBUG]: Prisma Query
+Meta: {
+  "service": "hrm-backend",
+  "query": "SELECT 1",
+  "params": "[]",
+  "duration": "1ms",
+  "target": "quaint::connector::metrics"
+}
+2025-09-15 13:57:01 [DEBUG]: Database health check passed
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:57:01 [INFO]: ✅ Database connection established
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:57:01 [INFO]: ✅ Server startup completed successfully
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:57:01 [INFO]: 🚀 Server is running on port 3001
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:57:01 [INFO]: � Environment: development
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:57:01 [INFO]: �📚 API Documentation: http://localhost:3001/api-docs
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:57:01 [INFO]: 🏥 Health Check: http://localhost:3001/health
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 13:57:01 [INFO]: 🔗 API Base URL: http://localhost:3001/api/v1
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 14:03:03 [INFO]: Received SIGINT, closing database connection...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 14:03:03 [INFO]: SIGINT received, starting graceful shutdown...
+Meta: {
+  "service": "hrm-backend"
+}
+2025-09-15 14:03:03 [INFO]: ✅ HTTP server closed
+Meta: {
+  "service": "hrm-backend"
+}

@@ -548,3 +548,611 @@ Meta: {
   "service": "hrm-backend",
   "code": "ERR_SERVER_NOT_RUNNING"
 }
+2025-09-15 12:24:39 [ERROR]: Failed to create employee
+Meta: {
+  "service": "hrm-backend",
+  "email": "anisha@example.com",
+  "error": "Position not found"
+}
+2025-09-15 12:24:39 [ERROR]: Unexpected Error Position not found
+Stack: Error: Position not found
+    at EmployeeService.createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:102:15)
+    at async createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/employee.controller.ts:62:22)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/employees",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 12:25:08 [ERROR]: Failed to create employee
+Meta: {
+  "service": "hrm-backend",
+  "email": "anisha@example.com",
+  "error": "\nInvalid `tx.employee.create()` invocation in\n/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:130:44\n\n  127 // Create employee in transaction\n  128 const result = await prisma.$transaction(async (tx) => {\n  129   // Create employee\n→ 130   const employee = await tx.employee.create({\n          data: {\n            employeeId: \"EMP011\",\n            firstName: \"anisha\",\n            lastName: \"shende\",\n            email: \"anisha@example.com\",\n            dateOfBirth: undefined,\n            hireDate: undefined,\n            departmentId: \"cmfkr3xdn0002b70e6u4nz0x4\",\n            positionId: \"cmfkr3xe7000bb70ez74wwe1u\",\n            managerId: undefined,\n            employmentType: undefined,\n            workLocation: undefined,\n            baseSalary: undefined,\n            currency: \"USD\",\n            salaryGrade: undefined,\n            personalInfo: undefined,\n            bankInfo: undefined,\n        +   phone: String\n          },\n          include: {\n            department: true,\n            position: true,\n            manager: {\n              select: {\n                id: true,\n                firstName: true,\n                lastName: true,\n                employeeId: true\n              }\n            }\n          }\n        })\n\nArgument `phone` is missing."
+}
+2025-09-15 12:25:08 [ERROR]: Unexpected Error 
+Invalid `tx.employee.create()` invocation in
+/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:130:44
+
+  127 // Create employee in transaction
+  128 const result = await prisma.$transaction(async (tx) => {
+  129   // Create employee
+→ 130   const employee = await tx.employee.create({
+          data: {
+            employeeId: "EMP011",
+            firstName: "anisha",
+            lastName: "shende",
+            email: "anisha@example.com",
+            dateOfBirth: undefined,
+            hireDate: undefined,
+            departmentId: "cmfkr3xdn0002b70e6u4nz0x4",
+            positionId: "cmfkr3xe7000bb70ez74wwe1u",
+            managerId: undefined,
+            employmentType: undefined,
+            workLocation: undefined,
+            baseSalary: undefined,
+            currency: "USD",
+            salaryGrade: undefined,
+            personalInfo: undefined,
+            bankInfo: undefined,
+        +   phone: String
+          },
+          include: {
+            department: true,
+            position: true,
+            manager: {
+              select: {
+                id: true,
+                firstName: true,
+                lastName: true,
+                employeeId: true
+              }
+            }
+          }
+        })
+
+Argument `phone` is missing.
+Stack: PrismaClientValidationError: 
+Invalid `tx.employee.create()` invocation in
+/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:130:44
+
+  127 // Create employee in transaction
+  128 const result = await prisma.$transaction(async (tx) => {
+  129   // Create employee
+→ 130   const employee = await tx.employee.create({
+          data: {
+            employeeId: "EMP011",
+            firstName: "anisha",
+            lastName: "shende",
+            email: "anisha@example.com",
+            dateOfBirth: undefined,
+            hireDate: undefined,
+            departmentId: "cmfkr3xdn0002b70e6u4nz0x4",
+            positionId: "cmfkr3xe7000bb70ez74wwe1u",
+            managerId: undefined,
+            employmentType: undefined,
+            workLocation: undefined,
+            baseSalary: undefined,
+            currency: "USD",
+            salaryGrade: undefined,
+            personalInfo: undefined,
+            bankInfo: undefined,
+        +   phone: String
+          },
+          include: {
+            department: true,
+            position: true,
+            manager: {
+              select: {
+                id: true,
+                firstName: true,
+                lastName: true,
+                employeeId: true
+              }
+            }
+          }
+        })
+
+Argument `phone` is missing.
+    at wn (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async <anonymous> (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:130:26)
+    at async Proxy._transactionWithCallback (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:130:8000)
+    at async EmployeeService.createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:128:22)
+    at async createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/employee.controller.ts:62:22)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/employees",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 12:25:47 [ERROR]: Error closing HTTP server: Server is not running.
+Stack: Error [ERR_SERVER_NOT_RUNNING]: Server is not running.
+    at Server.close (node:net:2359:12)
+    at Object.onceWrapper (node:events:632:28)
+    at Server.emit (node:events:518:28)
+    at emitCloseNT (node:net:2419:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+Meta: {
+  "service": "hrm-backend",
+  "code": "ERR_SERVER_NOT_RUNNING"
+}
+2025-09-15 12:26:58 [ERROR]: Error closing HTTP server: Server is not running.
+Stack: Error [ERR_SERVER_NOT_RUNNING]: Server is not running.
+    at Server.close (node:net:2359:12)
+    at Object.onceWrapper (node:events:632:28)
+    at Server.emit (node:events:518:28)
+    at emitCloseNT (node:net:2419:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+Meta: {
+  "service": "hrm-backend",
+  "code": "ERR_SERVER_NOT_RUNNING"
+}
+2025-09-15 12:28:57 [ERROR]: Failed to create employee
+Meta: {
+  "service": "hrm-backend",
+  "email": "anisha@example.com",
+  "error": "\nInvalid `prisma.department.findUnique()` invocation in\n/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:88:50\n\n  85 }\n  86 \n  87 // Verify department exists\n→ 88 const department = await prisma.department.findUnique({\n       where: {\n         id: undefined,\n     ?   name?: String,\n     ?   AND?: DepartmentWhereInput | DepartmentWhereInput[],\n     ?   OR?: DepartmentWhereInput[],\n     ?   NOT?: DepartmentWhereInput | DepartmentWhereInput[],\n     ?   description?: StringNullableFilter | String | Null,\n     ?   managerId?: StringNullableFilter | String | Null,\n     ?   parentDepartmentId?: StringNullableFilter | String | Null,\n     ?   status?: EnumStatusFilter | Status,\n     ?   createdAt?: DateTimeFilter | DateTime,\n     ?   updatedAt?: DateTimeFilter | DateTime,\n     ?   createdById?: StringNullableFilter | String | Null,\n     ?   updatedById?: StringNullableFilter | String | Null,\n     ?   manager?: EmployeeNullableRelationFilter | EmployeeWhereInput | Null,\n     ?   parentDepartment?: DepartmentNullableRelationFilter | DepartmentWhereInput | Null,\n     ?   subDepartments?: DepartmentListRelationFilter,\n     ?   employees?: EmployeeListRelationFilter,\n     ?   positions?: PositionListRelationFilter,\n     ?   jobPostings?: JobPostingListRelationFilter\n       }\n     })\n\nArgument `where` of type DepartmentWhereUniqueInput needs at least one of `id` or `name` arguments. Available options are marked with ?."
+}
+2025-09-15 12:28:57 [ERROR]: Unexpected Error 
+Invalid `prisma.department.findUnique()` invocation in
+/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:88:50
+
+  85 }
+  86 
+  87 // Verify department exists
+→ 88 const department = await prisma.department.findUnique({
+       where: {
+         id: undefined,
+     ?   name?: String,
+     ?   AND?: DepartmentWhereInput | DepartmentWhereInput[],
+     ?   OR?: DepartmentWhereInput[],
+     ?   NOT?: DepartmentWhereInput | DepartmentWhereInput[],
+     ?   description?: StringNullableFilter | String | Null,
+     ?   managerId?: StringNullableFilter | String | Null,
+     ?   parentDepartmentId?: StringNullableFilter | String | Null,
+     ?   status?: EnumStatusFilter | Status,
+     ?   createdAt?: DateTimeFilter | DateTime,
+     ?   updatedAt?: DateTimeFilter | DateTime,
+     ?   createdById?: StringNullableFilter | String | Null,
+     ?   updatedById?: StringNullableFilter | String | Null,
+     ?   manager?: EmployeeNullableRelationFilter | EmployeeWhereInput | Null,
+     ?   parentDepartment?: DepartmentNullableRelationFilter | DepartmentWhereInput | Null,
+     ?   subDepartments?: DepartmentListRelationFilter,
+     ?   employees?: EmployeeListRelationFilter,
+     ?   positions?: PositionListRelationFilter,
+     ?   jobPostings?: JobPostingListRelationFilter
+       }
+     })
+
+Argument `where` of type DepartmentWhereUniqueInput needs at least one of `id` or `name` arguments. Available options are marked with ?.
+Stack: PrismaClientValidationError: 
+Invalid `prisma.department.findUnique()` invocation in
+/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:88:50
+
+  85 }
+  86 
+  87 // Verify department exists
+→ 88 const department = await prisma.department.findUnique({
+       where: {
+         id: undefined,
+     ?   name?: String,
+     ?   AND?: DepartmentWhereInput | DepartmentWhereInput[],
+     ?   OR?: DepartmentWhereInput[],
+     ?   NOT?: DepartmentWhereInput | DepartmentWhereInput[],
+     ?   description?: StringNullableFilter | String | Null,
+     ?   managerId?: StringNullableFilter | String | Null,
+     ?   parentDepartmentId?: StringNullableFilter | String | Null,
+     ?   status?: EnumStatusFilter | Status,
+     ?   createdAt?: DateTimeFilter | DateTime,
+     ?   updatedAt?: DateTimeFilter | DateTime,
+     ?   createdById?: StringNullableFilter | String | Null,
+     ?   updatedById?: StringNullableFilter | String | Null,
+     ?   manager?: EmployeeNullableRelationFilter | EmployeeWhereInput | Null,
+     ?   parentDepartment?: DepartmentNullableRelationFilter | DepartmentWhereInput | Null,
+     ?   subDepartments?: DepartmentListRelationFilter,
+     ?   employees?: EmployeeListRelationFilter,
+     ?   positions?: PositionListRelationFilter,
+     ?   jobPostings?: JobPostingListRelationFilter
+       }
+     })
+
+Argument `where` of type DepartmentWhereUniqueInput needs at least one of `id` or `name` arguments. Available options are marked with ?.
+    at wn (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async EmployeeService.createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:88:26)
+    at async createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/employee.controller.ts:62:22)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/employees",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 12:29:36 [ERROR]: Unexpected Error Expected ',' or '}' after property value in JSON at position 29 (line 3 column 3)
+Stack: SyntaxError: Expected ',' or '}' after property value in JSON at position 29 (line 3 column 3)
+    at JSON.parse (<anonymous>)
+    at parse (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/body-parser/lib/types/json.js:92:19)
+    at /home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/body-parser/lib/read.js:128:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:214:14)
+    at invokeCallback (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/raw-body/index.js:238:16)
+    at done (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/raw-body/index.js:227:7)
+    at IncomingMessage.onEnd (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/raw-body/index.js:287:7)
+    at IncomingMessage.emit (node:events:518:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/employees",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 12:29:44 [ERROR]: Failed to create employee
+Meta: {
+  "service": "hrm-backend",
+  "email": "anisha@example.com",
+  "error": "\nInvalid `prisma.department.findUnique()` invocation in\n/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:88:50\n\n  85 }\n  86 \n  87 // Verify department exists\n→ 88 const department = await prisma.department.findUnique({\n       where: {\n         id: undefined,\n     ?   name?: String,\n     ?   AND?: DepartmentWhereInput | DepartmentWhereInput[],\n     ?   OR?: DepartmentWhereInput[],\n     ?   NOT?: DepartmentWhereInput | DepartmentWhereInput[],\n     ?   description?: StringNullableFilter | String | Null,\n     ?   managerId?: StringNullableFilter | String | Null,\n     ?   parentDepartmentId?: StringNullableFilter | String | Null,\n     ?   status?: EnumStatusFilter | Status,\n     ?   createdAt?: DateTimeFilter | DateTime,\n     ?   updatedAt?: DateTimeFilter | DateTime,\n     ?   createdById?: StringNullableFilter | String | Null,\n     ?   updatedById?: StringNullableFilter | String | Null,\n     ?   manager?: EmployeeNullableRelationFilter | EmployeeWhereInput | Null,\n     ?   parentDepartment?: DepartmentNullableRelationFilter | DepartmentWhereInput | Null,\n     ?   subDepartments?: DepartmentListRelationFilter,\n     ?   employees?: EmployeeListRelationFilter,\n     ?   positions?: PositionListRelationFilter,\n     ?   jobPostings?: JobPostingListRelationFilter\n       }\n     })\n\nArgument `where` of type DepartmentWhereUniqueInput needs at least one of `id` or `name` arguments. Available options are marked with ?."
+}
+2025-09-15 12:29:44 [ERROR]: Unexpected Error 
+Invalid `prisma.department.findUnique()` invocation in
+/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:88:50
+
+  85 }
+  86 
+  87 // Verify department exists
+→ 88 const department = await prisma.department.findUnique({
+       where: {
+         id: undefined,
+     ?   name?: String,
+     ?   AND?: DepartmentWhereInput | DepartmentWhereInput[],
+     ?   OR?: DepartmentWhereInput[],
+     ?   NOT?: DepartmentWhereInput | DepartmentWhereInput[],
+     ?   description?: StringNullableFilter | String | Null,
+     ?   managerId?: StringNullableFilter | String | Null,
+     ?   parentDepartmentId?: StringNullableFilter | String | Null,
+     ?   status?: EnumStatusFilter | Status,
+     ?   createdAt?: DateTimeFilter | DateTime,
+     ?   updatedAt?: DateTimeFilter | DateTime,
+     ?   createdById?: StringNullableFilter | String | Null,
+     ?   updatedById?: StringNullableFilter | String | Null,
+     ?   manager?: EmployeeNullableRelationFilter | EmployeeWhereInput | Null,
+     ?   parentDepartment?: DepartmentNullableRelationFilter | DepartmentWhereInput | Null,
+     ?   subDepartments?: DepartmentListRelationFilter,
+     ?   employees?: EmployeeListRelationFilter,
+     ?   positions?: PositionListRelationFilter,
+     ?   jobPostings?: JobPostingListRelationFilter
+       }
+     })
+
+Argument `where` of type DepartmentWhereUniqueInput needs at least one of `id` or `name` arguments. Available options are marked with ?.
+Stack: PrismaClientValidationError: 
+Invalid `prisma.department.findUnique()` invocation in
+/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:88:50
+
+  85 }
+  86 
+  87 // Verify department exists
+→ 88 const department = await prisma.department.findUnique({
+       where: {
+         id: undefined,
+     ?   name?: String,
+     ?   AND?: DepartmentWhereInput | DepartmentWhereInput[],
+     ?   OR?: DepartmentWhereInput[],
+     ?   NOT?: DepartmentWhereInput | DepartmentWhereInput[],
+     ?   description?: StringNullableFilter | String | Null,
+     ?   managerId?: StringNullableFilter | String | Null,
+     ?   parentDepartmentId?: StringNullableFilter | String | Null,
+     ?   status?: EnumStatusFilter | Status,
+     ?   createdAt?: DateTimeFilter | DateTime,
+     ?   updatedAt?: DateTimeFilter | DateTime,
+     ?   createdById?: StringNullableFilter | String | Null,
+     ?   updatedById?: StringNullableFilter | String | Null,
+     ?   manager?: EmployeeNullableRelationFilter | EmployeeWhereInput | Null,
+     ?   parentDepartment?: DepartmentNullableRelationFilter | DepartmentWhereInput | Null,
+     ?   subDepartments?: DepartmentListRelationFilter,
+     ?   employees?: EmployeeListRelationFilter,
+     ?   positions?: PositionListRelationFilter,
+     ?   jobPostings?: JobPostingListRelationFilter
+       }
+     })
+
+Argument `where` of type DepartmentWhereUniqueInput needs at least one of `id` or `name` arguments. Available options are marked with ?.
+    at wn (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async EmployeeService.createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:88:26)
+    at async createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/employee.controller.ts:62:22)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/employees",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 12:31:59 [ERROR]: Failed to create employee
+Meta: {
+  "service": "hrm-backend",
+  "email": "anisha@example.com",
+  "error": "Department not found"
+}
+2025-09-15 12:31:59 [ERROR]: Unexpected Error Department not found
+Stack: Error: Department not found
+    at EmployeeService.createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:93:15)
+    at async createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/employee.controller.ts:62:22)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/employees",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 12:32:35 [ERROR]: Failed to create employee
+Meta: {
+  "service": "hrm-backend",
+  "email": "anisha@example.com",
+  "error": "\nInvalid `tx.employee.create()` invocation in\n/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:130:44\n\n  127 // Create employee in transaction\n  128 const result = await prisma.$transaction(async (tx) => {\n  129   // Create employee\n→ 130   const employee = await tx.employee.create({\n          data: {\n            employeeId: \"EMP011\",\n            firstName: \"Anisha\",\n            lastName: \"Shende\",\n            email: \"anisha@example.com\",\n            phone: \"9420853261\",\n            dateOfBirth: \"2004-12-01T00:00:00.000Z\",\n            hireDate: \"2025-08-21T00:00:00.000Z\",\n            departmentId: \"cmfkr3xcz0000b70egispsqh3\",\n            positionId: \"cmfkr3xf6000gb70exresiqf4\",\n            managerId: undefined,\n            employmentType: \"FULL_TIME\",\n            workLocation: \"ONSITE\",\n                          ~~~~~~~~\n            baseSalary: 60000,\n            currency: \"USD\",\n            salaryGrade: \"G7\",\n            personalInfo: {\n              address: \"Pune, India\",\n              gender: \"Female\",\n              maritalStatus: \"Single\"\n            },\n            bankInfo: {\n              accountNumber: \"1234567890\",\n              ifsc: \"HDFC0001234\",\n              bankName: \"HDFC Bank\"\n            }\n          },\n          include: {\n            department: true,\n            position: true,\n            manager: {\n              select: {\n                id: true,\n                firstName: true,\n                lastName: true,\n                employeeId: true\n              }\n            }\n          }\n        })\n\nInvalid value for argument `workLocation`. Expected WorkLocation."
+}
+2025-09-15 12:32:35 [ERROR]: Unexpected Error 
+Invalid `tx.employee.create()` invocation in
+/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:130:44
+
+  127 // Create employee in transaction
+  128 const result = await prisma.$transaction(async (tx) => {
+  129   // Create employee
+→ 130   const employee = await tx.employee.create({
+          data: {
+            employeeId: "EMP011",
+            firstName: "Anisha",
+            lastName: "Shende",
+            email: "anisha@example.com",
+            phone: "9420853261",
+            dateOfBirth: "2004-12-01T00:00:00.000Z",
+            hireDate: "2025-08-21T00:00:00.000Z",
+            departmentId: "cmfkr3xcz0000b70egispsqh3",
+            positionId: "cmfkr3xf6000gb70exresiqf4",
+            managerId: undefined,
+            employmentType: "FULL_TIME",
+            workLocation: "ONSITE",
+                          ~~~~~~~~
+            baseSalary: 60000,
+            currency: "USD",
+            salaryGrade: "G7",
+            personalInfo: {
+              address: "Pune, India",
+              gender: "Female",
+              maritalStatus: "Single"
+            },
+            bankInfo: {
+              accountNumber: "1234567890",
+              ifsc: "HDFC0001234",
+              bankName: "HDFC Bank"
+            }
+          },
+          include: {
+            department: true,
+            position: true,
+            manager: {
+              select: {
+                id: true,
+                firstName: true,
+                lastName: true,
+                employeeId: true
+              }
+            }
+          }
+        })
+
+Invalid value for argument `workLocation`. Expected WorkLocation.
+Stack: PrismaClientValidationError: 
+Invalid `tx.employee.create()` invocation in
+/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:130:44
+
+  127 // Create employee in transaction
+  128 const result = await prisma.$transaction(async (tx) => {
+  129   // Create employee
+→ 130   const employee = await tx.employee.create({
+          data: {
+            employeeId: "EMP011",
+            firstName: "Anisha",
+            lastName: "Shende",
+            email: "anisha@example.com",
+            phone: "9420853261",
+            dateOfBirth: "2004-12-01T00:00:00.000Z",
+            hireDate: "2025-08-21T00:00:00.000Z",
+            departmentId: "cmfkr3xcz0000b70egispsqh3",
+            positionId: "cmfkr3xf6000gb70exresiqf4",
+            managerId: undefined,
+            employmentType: "FULL_TIME",
+            workLocation: "ONSITE",
+                          ~~~~~~~~
+            baseSalary: 60000,
+            currency: "USD",
+            salaryGrade: "G7",
+            personalInfo: {
+              address: "Pune, India",
+              gender: "Female",
+              maritalStatus: "Single"
+            },
+            bankInfo: {
+              accountNumber: "1234567890",
+              ifsc: "HDFC0001234",
+              bankName: "HDFC Bank"
+            }
+          },
+          include: {
+            department: true,
+            position: true,
+            manager: {
+              select: {
+                id: true,
+                firstName: true,
+                lastName: true,
+                employeeId: true
+              }
+            }
+          }
+        })
+
+Invalid value for argument `workLocation`. Expected WorkLocation.
+    at wn (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async <anonymous> (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:130:26)
+    at async Proxy._transactionWithCallback (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/node_modules/@prisma/client/runtime/library.js:130:8000)
+    at async EmployeeService.createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:128:22)
+    at async createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/employee.controller.ts:62:22)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/employees",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 12:44:14 [ERROR]: Failed to create employee
+Meta: {
+  "service": "hrm-backend",
+  "email": "aparna.badhe@example.com",
+  "error": "Department not found"
+}
+2025-09-15 12:44:14 [ERROR]: Unexpected Error Department not found
+Stack: Error: Department not found
+    at EmployeeService.createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:93:15)
+    at async createEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/employee.controller.ts:62:22)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/employees",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.46.0"
+}
+2025-09-15 12:50:29 [ERROR]: Failed to get employee
+Meta: {
+  "service": "hrm-backend",
+  "id": "EMP011",
+  "error": "Employee not found"
+}
+2025-09-15 12:50:29 [ERROR]: Unexpected Error Employee not found
+Stack: Error: Employee not found
+    at EmployeeService.getEmployeeById (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:251:15)
+    at async getEmployeeById (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/employee.controller.ts:45:24)
+Meta: {
+  "service": "hrm-backend",
+  "method": "GET",
+  "url": "/api/v1/employees/EMP011",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 12:58:39 [ERROR]: Failed to get employee
+Meta: {
+  "service": "hrm-backend",
+  "id": "EMP011",
+  "error": "Employee not found"
+}
+2025-09-15 12:58:39 [ERROR]: Unexpected Error Employee not found
+Stack: Error: Employee not found
+    at EmployeeService.getEmployeeById (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:251:15)
+    at async getEmployeeById (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/employee.controller.ts:45:24)
+Meta: {
+  "service": "hrm-backend",
+  "method": "GET",
+  "url": "/api/v1/employees/EMP011",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 13:05:28 [ERROR]: Error closing HTTP server: Server is not running.
+Stack: Error [ERR_SERVER_NOT_RUNNING]: Server is not running.
+    at Server.close (node:net:2359:12)
+    at Object.onceWrapper (node:events:632:28)
+    at Server.emit (node:events:518:28)
+    at emitCloseNT (node:net:2419:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+Meta: {
+  "service": "hrm-backend",
+  "code": "ERR_SERVER_NOT_RUNNING"
+}
+2025-09-15 13:32:53 [ERROR]: Failed to update employee
+Meta: {
+  "service": "hrm-backend",
+  "employeeId": "EMP011",
+  "error": "Employee not found"
+}
+2025-09-15 13:32:53 [ERROR]: Unexpected Error Employee not found
+Stack: Error: Employee not found
+    at EmployeeService.updateEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/employee.service.ts:401:15)
+    at async updateEmployee (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/employee.controller.ts:84:24)
+Meta: {
+  "service": "hrm-backend",
+  "method": "PUT",
+  "url": "/api/v1/employees/EMP011",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 13:37:03 [ERROR]: Error closing HTTP server: Server is not running.
+Stack: Error [ERR_SERVER_NOT_RUNNING]: Server is not running.
+    at Server.close (node:net:2359:12)
+    at Object.onceWrapper (node:events:632:28)
+    at Server.emit (node:events:518:28)
+    at emitCloseNT (node:net:2419:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+Meta: {
+  "service": "hrm-backend",
+  "code": "ERR_SERVER_NOT_RUNNING"
+}
+2025-09-15 13:56:30 [ERROR]: Login failed
+Meta: {
+  "service": "hrm-backend",
+  "email": "user@company.com",
+  "error": "Invalid email or password"
+}
+2025-09-15 13:56:30 [ERROR]: Unexpected Error Invalid email or password
+Stack: Error: Invalid email or password
+    at AuthService.login (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/auth.service.ts:177:15)
+    at async login (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/auth.controller.ts:10:22)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/auth/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 13:56:51 [ERROR]: Login failed
+Meta: {
+  "service": "hrm-backend",
+  "email": "david.rodriguez@company.com",
+  "error": "Invalid email or password"
+}
+2025-09-15 13:56:51 [ERROR]: Unexpected Error Invalid email or password
+Stack: Error: Invalid email or password
+    at AuthService.login (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/services/auth.service.ts:191:15)
+    at async login (/home/anisha/Desktop/Projects/hrms_fullstack/uptiqai-hrm-system/Human-Resource-Management-System/backend/src/controllers/auth.controller.ts:10:22)
+Meta: {
+  "service": "hrm-backend",
+  "method": "POST",
+  "url": "/api/v1/auth/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-15 14:03:03 [ERROR]: Error closing HTTP server: Server is not running.
+Stack: Error [ERR_SERVER_NOT_RUNNING]: Server is not running.
+    at Server.close (node:net:2359:12)
+    at Object.onceWrapper (node:events:632:28)
+    at Server.emit (node:events:518:28)
+    at emitCloseNT (node:net:2419:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+Meta: {
+  "service": "hrm-backend",
+  "code": "ERR_SERVER_NOT_RUNNING"
+}

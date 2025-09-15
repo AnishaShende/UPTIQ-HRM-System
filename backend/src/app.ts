@@ -222,8 +222,8 @@ apiRouter.get("/", (req, res) => {
     version: "1.0.0",
     endpoints: {
       auth: `${config.api.baseUrl}/auth`,
-      employees: `${config.api.baseUrl}/employees`,
       admin: {
+        employees: `${config.api.baseUrl}/admin/employees`,
         leaves: `${config.api.baseUrl}/admin/leaves`,
         payroll: `${config.api.baseUrl}/admin/payroll`,
         recruitment: `${config.api.baseUrl}/admin/recruitment`
@@ -239,7 +239,7 @@ app.use(config.api.baseUrl, apiRouter);
 
 // Mount feature routes
 app.use(`${config.api.baseUrl}/auth`, authRoutes);
-app.use(`${config.api.baseUrl}/employees`, employeeRoutes);
+app.use(`${config.api.baseUrl}/admin/employees`, employeeRoutes);
 app.use(`${config.api.baseUrl}/admin/leaves`, leaveRoutes);
 app.use(`${config.api.baseUrl}/admin/payroll`, payrollRoutes);
 app.use(`${config.api.baseUrl}/admin/recruitment`, recruitmentRoutes);
