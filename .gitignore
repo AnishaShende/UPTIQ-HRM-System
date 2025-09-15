@@ -30,3 +30,8 @@ AI/venv
 AI/.env
 AI/test/__pycache__
 
+# Microservices
+microservices/leave-service/node_modules
+microservices/leave-service/dist
+microservices/leave-service/.env
+

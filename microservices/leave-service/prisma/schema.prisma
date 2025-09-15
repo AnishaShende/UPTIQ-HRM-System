@@ -1,0 +1,215 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:root@localhost:5432/hrm_leave_db"
+}
+
+// Leave Type Configuration
+model LeaveType {
+  id                    String   @id @default(cuid())
+  name                  String   @unique
+  description           String?
+  defaultDaysAllowed    Int      @default(0)
+  maxDaysPerRequest     Int?
+  isCarryForward        Boolean  @default(false)
+  carryForwardLimit     Int?
+  requiredDocuments     String[] // Array of required document types
+  requiresApproval      Boolean  @default(true)
+  approvalWorkflow      Json?    // JSON field for approval workflow configuration
+  isActive              Boolean  @default(true)
+  color                 String?  // For UI representation
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+  createdById          String?
+  updatedById          String?
+
+  // Relations
+  leaves        Leave[]
+  leaveBalances LeaveBalance[]
+
+  @@map("leave_types")
+}
+
+// Employee Leave Balance
+model LeaveBalance {
+  id                String    @id @default(cuid())
+  employeeId        String
+  leaveTypeId       String
+  year              Int
+  totalDays         Float     @default(0)
+  usedDays          Float     @default(0)
+  pendingDays       Float     @default(0)
+  carriedForward    Float     @default(0)
+  availableDays     Float     @default(0)
+  lastUpdated       DateTime  @default(now())
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  createdById       String?
+  updatedById       String?
+
+  // Relations
+  leaveType LeaveType @relation(fields: [leaveTypeId], references: [id])
+  leaves    Leave[]   @relation("LeaveBalanceLeaves")
+
+  @@unique([employeeId, leaveTypeId, year])
+  @@map("leave_balances")
+}
+
+// Leave Request
+model Leave {
+  id                String      @id @default(cuid())
+  employeeId        String
+  leaveTypeId       String
+  leaveBalanceId    String?
+  startDate         DateTime
+  endDate           DateTime
+  totalDays         Float
+  reason            String
+  status            LeaveStatus @default(PENDING)
+  appliedDate       DateTime    @default(now())
+  approverId        String?
+  approvedDate      DateTime?
+  rejectedDate      DateTime?
+  rejectionReason   String?
+  cancelledDate     DateTime?
+  cancellationReason String?
+  comments          String?
+  attachments       String[]    // Array of file paths
+  isHalfDay         Boolean     @default(false)
+  halfDayPeriod     HalfDayPeriod?
+  emergencyContact  Json?       // Emergency contact during leave
+  delegatedTo       String?     // Employee ID for work delegation
+  returnDate        DateTime?   // Actual return date (for tracking)
+  extendedTo        DateTime?   // Extended leave end date
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+  createdById       String?
+  updatedById       String?
+
+  // Relations
+  leaveType    LeaveType     @relation(fields: [leaveTypeId], references: [id])
+  leaveBalance LeaveBalance? @relation("LeaveBalanceLeaves", fields: [leaveBalanceId], references: [id])
+  
+  @@map("leaves")
+}
+
+// Leave Approval History
+model LeaveApproval {
+  id            String           @id @default(cuid())
+  leaveId       String
+  approverId    String
+  level         Int              // Approval level (1, 2, 3, etc.)
+  status        ApprovalStatus
+  comments      String?
+  actionDate    DateTime         @default(now())
+  isActive      Boolean          @default(true)
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+
+  @@map("leave_approvals")
+}
+
+// Leave Policy Configuration
+model LeavePolicy {
+  id                     String   @id @default(cuid())
+  name                   String   @unique
+  description            String?
+  effectiveFrom          DateTime
+  effectiveTo            DateTime?
+  isActive               Boolean  @default(true)
+  policyRules            Json     // JSON field for complex policy rules
+  applicableToEmployees  String[] // Employee IDs or categories
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+  createdById            String?
+  updatedById            String?
+
+  @@map("leave_policies")
+}
+
+// Holiday Calendar
+model Holiday {
+  id          String      @id @default(cuid())
+  name        String
+  date        DateTime
+  description String?
+  type        HolidayType @default(PUBLIC)
+  isRecurring Boolean     @default(false)
+  locations   String[]    // Applicable locations/offices
+  isActive    Boolean     @default(true)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  createdById String?
+  updatedById String?
+
+  @@map("holidays")
+}
+
+// Leave Compensation (for overtime/comp-off)
+model LeaveCompensation {
+  id               String              @id @default(cuid())
+  employeeId       String
+  workDate         DateTime
+  hoursWorked      Float
+  compensationType CompensationType
+  reason           String
+  approvedBy       String?
+  approvedDate     DateTime?
+  status           CompensationStatus  @default(PENDING)
+  expiryDate       DateTime?
+  usedDate         DateTime?
+  comments         String?
+  createdAt        DateTime            @default(now())
+  updatedAt        DateTime            @updatedAt
+  createdById      String?
+  updatedById      String?
+
+  @@map("leave_compensations")
+}
+
+enum LeaveStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  CANCELLED
+  IN_PROGRESS
+  COMPLETED
+  EXTENDED
+}
+
+enum ApprovalStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  DELEGATED
+}
+
+enum HalfDayPeriod {
+  MORNING
+  AFTERNOON
+}
+
+enum HolidayType {
+  PUBLIC
+  OPTIONAL
+  RELIGIOUS
+  REGIONAL
+}
+
+enum CompensationType {
+  OVERTIME
+  WEEKEND_WORK
+  HOLIDAY_WORK
+  COMP_OFF
+}
+
+enum CompensationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  USED
+  EXPIRED
+}
