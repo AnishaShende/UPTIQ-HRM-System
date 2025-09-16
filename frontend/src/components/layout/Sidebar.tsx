@@ -10,6 +10,8 @@ import {
   BarChart3,
   Shield,
   User,
+  Building2,
+  Briefcase,
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
@@ -27,6 +29,8 @@ interface NavItem {
 const navItems: NavItem[] = [
   { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
   { icon: Users, label: "Employees", path: "/employees" },
+  { icon: Building2, label: "Departments", path: "/departments" },
+  { icon: Briefcase, label: "Positions", path: "/positions" },
   { icon: DollarSign, label: "Payroll", path: "/payroll" },
   { icon: UserPlus, label: "Recruitment", path: "/recruitment" },
   { icon: Calendar, label: "Leave Management", path: "/leave" },

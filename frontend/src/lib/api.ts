@@ -2,7 +2,7 @@ import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 import { toast } from "sonner";
 
 const API_BASE_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:3000/api/v1";
+  import.meta.env.VITE_API_URL || "http://localhost:3002/api/v1";
 
 class ApiClient {
   private instance: AxiosInstance;
@@ -178,21 +178,42 @@ export const authApi = {
 };
 
 export const employeeApi = {
+  // Employee endpoints
   getAll: (params?: any) => apiClient.get("/employees", { params }),
   getById: (id: string) => apiClient.get(`/employees/${id}`),
   create: (data: any) => apiClient.post("/employees", data),
   update: (id: string, data: any) => apiClient.put(`/employees/${id}`, data),
   delete: (id: string) => apiClient.delete(`/employees/${id}`),
-  uploadAvatar: (id: string, file: File) =>
-    apiClient.upload(`/employees/${id}/avatar`, file),
+  uploadProfilePicture: (id: string, file: File) => {
+    const formData = new FormData();
+    formData.append("profilePicture", file);
+    return apiClient.post(`/employees/${id}/profile-picture`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+  },
+  getSubordinates: (id: string) => apiClient.get(`/employees/${id}/subordinates`),
 };
 
 export const departmentApi = {
+  // Department endpoints
   getAll: () => apiClient.get("/departments"),
   getById: (id: string) => apiClient.get(`/departments/${id}`),
   create: (data: any) => apiClient.post("/departments", data),
   update: (id: string, data: any) => apiClient.put(`/departments/${id}`, data),
   delete: (id: string) => apiClient.delete(`/departments/${id}`),
+  getSubDepartments: (id: string) => apiClient.get(`/departments/${id}/sub-departments`),
+  getDepartmentEmployees: (id: string) => apiClient.get(`/departments/${id}/employees`),
+};
+
+export const positionApi = {
+  // Position endpoints
+  getAll: () => apiClient.get("/positions"),
+  getById: (id: string) => apiClient.get(`/positions/${id}`),
+  create: (data: any) => apiClient.post("/positions", data),
+  update: (id: string, data: any) => apiClient.put(`/positions/${id}`, data),
+  delete: (id: string) => apiClient.delete(`/positions/${id}`),
 };
 
 export const leaveApi = {

@@ -16,29 +16,61 @@ export interface User {
   updatedAt: string;
 }
 
-export interface Employee extends User {
+export type Status = "ACTIVE" | "INACTIVE" | "PENDING" | "DELETED";
+export type EmploymentType = "FULL_TIME" | "PART_TIME" | "CONTRACT" | "INTERN" | "TEMPORARY";
+export type WorkLocation = "OFFICE" | "REMOTE" | "HYBRID";
+
+export interface Employee {
+  id: string;
   employeeId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  dateOfBirth: Date | string;
+  hireDate: Date | string;
+  terminationDate?: Date | string;
+  status: Status;
+  profilePicture?: string;
+  
+  // Employment Information
+  departmentId: string;
+  department?: Department;
+  positionId: string;
+  position?: Position;
   managerId?: string;
-  manager?: User;
-  subordinates?: User[];
-  emergencyContact?: {
-    name: string;
-    relationship: string;
-    phone: string;
-    email?: string;
+  manager?: Employee;
+  subordinates?: Employee[];
+  employmentType: EmploymentType;
+  workLocation: WorkLocation;
+  baseSalary: number;
+  currency: string;
+  salaryGrade?: string;
+  
+  // Personal Information
+  personalInfo: {
+    address?: string;
+    emergencyContact?: {
+      name: string;
+      phone: string;
+      relationship: string;
+    };
+    nationalId?: string;
+    passportNumber?: string;
   };
-  address?: {
-    street: string;
-    city: string;
-    state: string;
-    zipCode: string;
-    country: string;
+  
+  // Bank Information
+  bankInfo?: {
+    bankName?: string;
+    accountNumber?: string;
+    routingNumber?: string;
+    swiftCode?: string;
   };
-  bankDetails?: {
-    accountNumber: string;
-    bankName: string;
-    routingNumber: string;
-  };
+  
+  createdAt: string;
+  updatedAt: string;
+  createdBy?: string;
+  updatedBy?: string;
 }
 
 export interface Department {
@@ -46,10 +78,34 @@ export interface Department {
   name: string;
   description?: string;
   managerId?: string;
-  manager?: User;
+  manager?: Employee;
+  parentDepartmentId?: string;
+  parentDepartment?: Department;
+  subDepartments?: Department[];
+  employees?: Employee[];
+  status: Status;
+  createdAt: string;
+  updatedAt: string;
+  createdBy?: string;
+  updatedBy?: string;
+}
+
+export interface Position {
+  id: string;
+  title: string;
+  description?: string;
+  departmentId: string;
+  department?: Department;
+  requirements: string[];
+  responsibilities: string[];
+  minSalary?: number;
+  maxSalary?: number;
+  status: Status;
   employees?: Employee[];
   createdAt: string;
   updatedAt: string;
+  createdBy?: string;
+  updatedBy?: string;
 }
 
 export interface LeaveRequest {

@@ -12,6 +12,19 @@ import { ForgotPasswordPage } from "@/pages/auth/ForgotPasswordPage";
 import { DashboardPage } from "@/pages/dashboard/DashboardPage";
 import { ProfilePage } from "@/pages/dashboard/ProfilePage";
 
+// Employee Pages
+import { EmployeeListPage } from "@/pages/employees/EmployeeListPage";
+import { EmployeeFormPage } from "@/pages/employees/EmployeeFormPage";
+import { EmployeeDetailPage } from "@/pages/employees/EmployeeDetailPage";
+
+// Department Pages
+import { DepartmentListPage } from "@/pages/departments/DepartmentListPage";
+import { DepartmentFormPage } from "@/pages/departments/DepartmentFormPage";
+
+// Position Pages
+import { PositionListPage } from "@/pages/positions/PositionListPage";
+import { PositionFormPage } from "@/pages/positions/PositionFormPage";
+
 // Payroll Pages
 import { PayrollPage } from "@/pages/payroll/PayrollPage";
 
@@ -40,6 +53,22 @@ export const AppRoutes = () => {
         <Route path="dashboard" element={<DashboardPage />} />
         <Route path="profile" element={<ProfilePage />} />
 
+        {/* Employee Routes */}
+        <Route path="employees" element={<EmployeeListPage />} />
+        <Route path="employees/new" element={<EmployeeFormPage mode="create" />} />
+        <Route path="employees/:id" element={<EmployeeDetailPage />} />
+        <Route path="employees/:id/edit" element={<EmployeeFormPage mode="edit" />} />
+
+        {/* Department Routes */}
+        <Route path="departments" element={<DepartmentListPage />} />
+        <Route path="departments/new" element={<DepartmentFormPage mode="create" />} />
+        <Route path="departments/:id/edit" element={<DepartmentFormPage mode="edit" />} />
+
+        {/* Position Routes */}
+        <Route path="positions" element={<PositionListPage />} />
+        <Route path="positions/new" element={<PositionFormPage mode="create" />} />
+        <Route path="positions/:id/edit" element={<PositionFormPage mode="edit" />} />
+
         {/* Payroll Routes */}
         <Route path="payroll" element={<PayrollPage />} />
 
@@ -53,15 +82,6 @@ export const AppRoutes = () => {
         <Route path="admin" element={<AdminPanelPage />} />
 
         {/* Additional Routes */}
-        <Route
-          path="employees"
-          element={
-            <div className="p-6">
-              <h1 className="text-2xl font-bold">Employees Page</h1>
-              <p>Coming soon...</p>
-            </div>
-          }
-        />
         <Route
           path="documents"
           element={

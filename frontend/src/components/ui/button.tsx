@@ -36,19 +36,26 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
+  loading?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, loading = false, children, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
     return (
       <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={cn(
+          buttonVariants({ variant, size, className }),
+          loading && "opacity-70 cursor-not-allowed" // optional styling while loading
+        )}
         ref={ref}
+        disabled={loading || props.disabled} // auto disable if loading
         {...props}
-      />
+      >
+        {loading ? "Loading..." : children}
+      </Comp>
     );
-  },
+  }
 );
 Button.displayName = "Button";
 

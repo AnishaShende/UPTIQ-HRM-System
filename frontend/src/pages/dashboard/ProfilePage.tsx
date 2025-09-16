@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Mail, Phone, MapPin, Edit, Save, X } from "lucide-react";
 import { Card } from "@/components/ui/Card";
-import { Button, Input, Textarea } from "@/components/ui/Form";
+import {Button} from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from "@/components/ui/textarea";
 
 export const ProfilePage: React.FC = () => {
   const [isEditing, setIsEditing] = useState(false);

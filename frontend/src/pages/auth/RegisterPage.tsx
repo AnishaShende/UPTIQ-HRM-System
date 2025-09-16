@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, Mail, Lock, User, Phone } from 'lucide-react';
-import { Button, Input } from '@/components/ui/Form';
+import {Button} from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+// import { Button, Input } from '@/components/ui/Form';
 import { Card } from '@/components/ui/Card';
 
 export const RegisterPage: React.FC = () => {
