@@ -26,7 +26,12 @@ import { PositionListPage } from "@/pages/positions/PositionListPage";
 import { PositionFormPage } from "@/pages/positions/PositionFormPage";
 
 // Payroll Pages
-import { PayrollPage } from "@/pages/payroll/PayrollPage";
+import { PayrollIndex } from "@/pages/payroll/index";
+import { PayrollDashboard } from "@/pages/payroll/PayrollDashboard";
+import { EmployeePayrollManagement } from "@/pages/payroll/EmployeePayrollManagement";
+import { PayslipGeneration } from "@/pages/payroll/PayslipGeneration";
+import { PayrollReports } from "@/pages/payroll/PayrollReports";
+import { PayrollPeriods } from "@/pages/payroll/PayrollPeriods";
 
 // Recruitment Pages
 import { RecruitmentPage } from "@/pages/recruitment/RecruitmentPage";
@@ -70,7 +75,12 @@ export const AppRoutes = () => {
         <Route path="positions/:id/edit" element={<PositionFormPage mode="edit" />} />
 
         {/* Payroll Routes */}
-        <Route path="payroll" element={<PayrollPage />} />
+        <Route path="payroll" element={<PayrollIndex />} />
+        <Route path="payroll/dashboard" element={<PayrollDashboard />} />
+        <Route path="payroll/employees" element={<EmployeePayrollManagement />} />
+        <Route path="payroll/payslips" element={<PayslipGeneration />} />
+        <Route path="payroll/reports" element={<PayrollReports />} />
+        <Route path="payroll/periods" element={<PayrollPeriods />} />
 
         {/* Recruitment Routes */}
         <Route path="recruitment" element={<RecruitmentPage />} />

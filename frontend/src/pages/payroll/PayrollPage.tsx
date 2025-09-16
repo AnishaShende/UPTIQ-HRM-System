@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Download, Eye, Calendar, DollarSign, TrendingUp } from 'lucide-react';
 import { Card, ListCard, ListItem } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Form';
+import { Button } from '@/components/ui/button';
 
 export const PayrollPage: React.FC = () => {
   const [selectedYear, setSelectedYear] = useState('2024');

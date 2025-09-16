@@ -5,12 +5,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import {
   User,
-  Building2,
   Briefcase,
   MapPin,
-  Phone,
-  Mail,
-  Calendar,
   DollarSign,
   Save,
   ArrowLeft,
@@ -24,7 +20,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { Spinner } from "@/components/ui/spinner";
 import { employeeApi, departmentApi, positionApi } from "@/lib/api";
-import { Employee, Department, Position, EmploymentType, WorkLocation, Status } from "@/types";
+import { Employee, Department, Position } from "@/types";
 import { toast } from "sonner";
 
 // Validation schema

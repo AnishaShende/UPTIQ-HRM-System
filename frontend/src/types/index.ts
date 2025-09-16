@@ -108,24 +108,175 @@ export interface Position {
   updatedBy?: string;
 }
 
+// ==================== LEAVE MANAGEMENT TYPES ====================
+
+export type LeaveStatus = 
+  | "PENDING" 
+  | "APPROVED" 
+  | "REJECTED" 
+  | "CANCELLED" 
+  | "IN_PROGRESS" 
+  | "COMPLETED" 
+  | "EXTENDED";
+
+export type HalfDayPeriod = "MORNING" | "AFTERNOON";
+
+export type ApprovalStatus = "PENDING" | "APPROVED" | "REJECTED" | "DELEGATED";
+
+export type HolidayType = "PUBLIC" | "OPTIONAL" | "RELIGIOUS" | "REGIONAL";
+
+export type CompensationType = "OVERTIME" | "WEEKEND_WORK" | "HOLIDAY_WORK" | "COMP_OFF";
+
+export type CompensationStatus = "PENDING" | "APPROVED" | "REJECTED" | "USED" | "EXPIRED";
+
+export interface LeaveType {
+  id: string;
+  name: string;
+  description?: string;
+  defaultDaysAllowed: number;
+  maxDaysPerRequest?: number;
+  isCarryForward: boolean;
+  carryForwardLimit?: number;
+  requiredDocuments: string[];
+  requiresApproval: boolean;
+  approvalWorkflow?: any; // JSON field
+  isActive: boolean;
+  color?: string;
+  createdAt: string;
+  updatedAt: string;
+  createdById?: string;
+  updatedById?: string;
+}
+
+export interface LeaveBalance {
+  id: string;
+  employeeId: string;
+  leaveTypeId: string;
+  leaveType?: LeaveType;
+  year: number;
+  totalDays: number;
+  usedDays: number;
+  pendingDays: number;
+  carriedForward: number;
+  availableDays: number;
+  lastUpdated: string;
+  createdAt: string;
+  updatedAt: string;
+  createdById?: string;
+  updatedById?: string;
+}
+
 export interface LeaveRequest {
   id: string;
   employeeId: string;
   employee?: Employee;
-  type:
-    | "VACATION"
-    | "SICK"
-    | "PERSONAL"
-    | "MATERNITY"
-    | "PATERNITY"
-    | "BEREAVEMENT";
+  leaveTypeId: string;
+  leaveType?: LeaveType;
+  leaveBalanceId?: string;
+  leaveBalance?: LeaveBalance;
   startDate: string;
   endDate: string;
+  totalDays: number;
   reason: string;
-  status: "PENDING" | "APPROVED" | "REJECTED" | "CANCELLED";
+  status: LeaveStatus;
+  appliedDate: string;
+  approverId?: string;
+  approver?: User;
+  approvedDate?: string;
+  rejectedDate?: string;
+  rejectionReason?: string;
+  cancelledDate?: string;
+  cancellationReason?: string;
+  comments?: string;
+  attachments: string[];
+  isHalfDay: boolean;
+  halfDayPeriod?: HalfDayPeriod;
+  emergencyContact?: {
+    name: string;
+    phone: string;
+    relationship: string;
+  };
+  delegatedTo?: string;
+  returnDate?: string;
+  extendedTo?: string;
+  createdAt: string;
+  updatedAt: string;
+  createdById?: string;
+  updatedById?: string;
+}
+
+export interface LeaveApproval {
+  id: string;
+  leaveId: string;
+  approverId: string;
+  approver?: User;
+  level: number;
+  status: ApprovalStatus;
+  comments?: string;
+  actionDate: string;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface LeavePolicy {
+  id: string;
+  name: string;
+  description?: string;
+  effectiveFrom: string;
+  effectiveTo?: string;
+  isActive: boolean;
+  policyRules: any; // JSON field
+  applicableToEmployees: string[];
+  createdAt: string;
+  updatedAt: string;
+  createdById?: string;
+  updatedById?: string;
+}
+
+export interface Holiday {
+  id: string;
+  name: string;
+  date: string;
+  description?: string;
+  type: HolidayType;
+  isRecurring: boolean;
+  locations: string[];
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+  createdById?: string;
+  updatedById?: string;
+}
+
+export interface LeaveCompensation {
+  id: string;
+  employeeId: string;
+  employee?: Employee;
+  workDate: string;
+  hoursWorked: number;
+  compensationType: CompensationType;
+  reason: string;
   approvedBy?: string;
   approver?: User;
-  rejectionReason?: string;
+  approvedDate?: string;
+  status: CompensationStatus;
+  expiryDate?: string;
+  usedDate?: string;
+  comments?: string;
+  createdAt: string;
+  updatedAt: string;
+  createdById?: string;
+  updatedById?: string;
+}
+
+export interface LeaveComment {
+  id: string;
+  leaveId: string;
+  userId: string;
+  user?: User;
+  content: string;
+  isInternal: boolean;
   createdAt: string;
   updatedAt: string;
 }
@@ -251,4 +402,213 @@ export interface DashboardStats {
   newHires: number;
   performanceReviews: number;
   openPositions: number;
+}
+
+// ==================== PAYROLL MANAGEMENT TYPES ====================
+
+export type PayrollPeriodStatus = "DRAFT" | "ACTIVE" | "PROCESSING" | "COMPLETED" | "CANCELLED";
+export type PayrollFrequency = "WEEKLY" | "BI_WEEKLY" | "MONTHLY" | "QUARTERLY" | "ANNUALLY";
+export type PaymentMethod = "BANK_TRANSFER" | "CHEQUE" | "CASH" | "DIGITAL_WALLET";
+export type PayslipStatus = "DRAFT" | "GENERATED" | "SENT" | "ACKNOWLEDGED" | "DISPUTED";
+export type Currency = "USD" | "EUR" | "GBP" | "INR" | "CAD" | "AUD";
+
+export interface PayrollPeriod {
+  id: string;
+  name: string;
+  description?: string;
+  startDate: string;
+  endDate: string;
+  payDate: string;
+  frequency: PayrollFrequency;
+  status: PayrollPeriodStatus;
+  totalEmployees: number;
+  totalGrossPay: number;
+  totalDeductions: number;
+  totalNetPay: number;
+  currency: Currency;
+  processedAt?: string;
+  processedBy?: string;
+  notes?: string;
+  createdAt: string;
+  updatedAt: string;
+  createdBy?: string;
+  updatedBy?: string;
+}
+
+export interface PaySlip {
+  id: string;
+  employeeId: string;
+  employee?: Employee;
+  payrollPeriodId: string;
+  payrollPeriod?: PayrollPeriod;
+  
+  // Basic Info
+  salaryMonth: string;
+  salaryYear: number;
+  workingDays: number;
+  actualWorkingDays: number;
+  
+  // Earnings
+  baseSalary: number;
+  overtimeHours: number;
+  overtimeRate: number;
+  overtimePay: number;
+  bonuses: number;
+  allowances: number;
+  commissions: number;
+  totalEarnings: number;
+  
+  // Deductions
+  federalTax: number;
+  stateTax: number;
+  socialSecurity: number;
+  medicare: number;
+  healthInsurance: number;
+  retirementContribution: number;
+  otherDeductions: number;
+  totalDeductions: number;
+  
+  // Final Amounts
+  grossPay: number;
+  netPay: number;
+  
+  // Payment Details
+  paymentMethod: PaymentMethod;
+  paymentDate?: string;
+  paymentReference?: string;
+  
+  // Status
+  status: PayslipStatus;
+  generatedAt: string;
+  sentAt?: string;
+  acknowledgedAt?: string;
+  
+  // Additional Info
+  notes?: string;
+  attachments: string[];
+  
+  createdAt: string;
+  updatedAt: string;
+  createdBy?: string;
+  updatedBy?: string;
+}
+
+export interface SalaryHistory {
+  id: string;
+  employeeId: string;
+  employee?: Employee;
+  
+  // Salary Details
+  baseSalary: number;
+  currency: Currency;
+  payFrequency: PayrollFrequency;
+  
+  // Additional Compensation
+  allowances: {
+    housing?: number;
+    transport?: number;
+    medical?: number;
+    food?: number;
+    other?: number;
+  };
+  
+  // Tax Information
+  taxExemptions: number;
+  taxFilingStatus: string;
+  
+  // Effective Dates
+  effectiveFrom: string;
+  effectiveTo?: string;
+  
+  // Change Information
+  changeReason?: string;
+  changeType?: "PROMOTION" | "ADJUSTMENT" | "ANNUAL_REVIEW" | "TRANSFER" | "CORRECTION";
+  previousSalary?: number;
+  salaryIncrease?: number;
+  increasePercentage?: number;
+  
+  // Approval
+  approvedBy?: string;
+  approver?: User;
+  approvedAt?: string;
+  
+  createdAt: string;
+  updatedAt: string;
+  createdBy?: string;
+  updatedBy?: string;
+}
+
+export interface PayrollStats {
+  totalEmployees: number;
+  totalGrossPay: number;
+  totalNetPay: number;
+  totalDeductions: number;
+  averageSalary: number;
+  medianSalary: number;
+  highestSalary: number;
+  lowestSalary: number;
+  
+  // Department breakdown
+  departmentStats: Array<{
+    departmentId: string;
+    departmentName: string;
+    employeeCount: number;
+    totalSalary: number;
+    averageSalary: number;
+  }>;
+  
+  // Salary range distribution
+  salaryRanges: Array<{
+    range: string;
+    count: number;
+    percentage: number;
+  }>;
+  
+  // Monthly trends
+  monthlyTrends: Array<{
+    month: string;
+    totalPay: number;
+    employeeCount: number;
+    averagePay: number;
+  }>;
+  
+  // Tax breakdown
+  taxBreakdown: {
+    federalTax: number;
+    stateTax: number;
+    socialSecurity: number;
+    medicare: number;
+    totalTaxes: number;
+  };
+}
+
+export interface EmployeeTaxInfo {
+  id: string;
+  employeeId: string;
+  employee?: Employee;
+  
+  // Personal Tax Information
+  socialSecurityNumber?: string;
+  taxIdNumber?: string;
+  filingStatus: "SINGLE" | "MARRIED_FILING_JOINTLY" | "MARRIED_FILING_SEPARATELY" | "HEAD_OF_HOUSEHOLD" | "QUALIFYING_WIDOW";
+  exemptions: number;
+  additionalWithholding: number;
+  
+  // State and Local Tax
+  stateOfResidence: string;
+  localTaxJurisdiction?: string;
+  
+  // Benefits and Deductions
+  healthInsurancePremium: number;
+  retirementContributionPercent: number;
+  retirementContributionAmount: number;
+  
+  // Effective Period
+  effectiveFrom: string;
+  effectiveTo?: string;
+  
+  createdAt: string;
+  updatedAt: string;
+  createdBy?: string;
+  updatedBy?: string;
 }

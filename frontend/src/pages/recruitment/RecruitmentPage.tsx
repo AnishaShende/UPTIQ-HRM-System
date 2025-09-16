@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Plus, Search, Filter, MapPin, Clock, Users, Eye, Edit, Trash2 } from 'lucide-react';
 import { Card, ListCard, ListItem } from '@/components/ui/Card';
-import { Button, Input, Select } from '@/components/ui/Form';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 export const RecruitmentPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -173,24 +174,30 @@ export const RecruitmentPage: React.FC = () => {
               <Input
                 placeholder="Search job postings..."
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
                 className="pl-10"
               />
             </div>
           </div>
           <div className="flex gap-4">
-            <Select
-              options={departments}
+            <select
               value={selectedDepartment}
-              onChange={(e) => setSelectedDepartment(e.target.value)}
-              className="min-w-40"
-            />
-            <Select
-              options={statuses}
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSelectedDepartment(e.target.value)}
+              className="min-w-40 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              {departments.map(dept => (
+                <option key={dept.value} value={dept.value}>{dept.label}</option>
+              ))}
+            </select>
+            <select
               value={selectedStatus}
-              onChange={(e) => setSelectedStatus(e.target.value)}
-              className="min-w-32"
-            />
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSelectedStatus(e.target.value)}
+              className="min-w-32 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              {statuses.map(status => (
+                <option key={status.value} value={status.value}>{status.label}</option>
+              ))}
+            </select>
             <Button variant="outline">
               <Filter className="w-4 h-4 mr-2" />
               More Filters
