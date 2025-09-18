@@ -27,3 +27,5 @@
 {"level":"info","message":"Employee service running on port 3002","service":"employee-service","timestamp":"2025-09-15 16:30:13"}
 {"level":"info","message":"Health check: http://localhost:3002/health","service":"employee-service","timestamp":"2025-09-15 16:30:13"}
 {"level":"info","message":"SIGINT received. Starting graceful shutdown...","service":"employee-service","timestamp":"2025-09-15 16:32:17"}
+{"level":"info","message":"Employee service running on port 3002","service":"employee-service","timestamp":"2025-09-18 11:44:47"}
+{"level":"info","message":"Health check: http://localhost:3002/health","service":"employee-service","timestamp":"2025-09-18 11:44:47"}

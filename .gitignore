@@ -17,6 +17,16 @@ microservices/auth-service/node_modules
 microservices/api-gateway/.env
 microservices/employee-service/.env
 microservices/auth-service/.env
+microservices/leave-service/dist
+microservices/leave-service/node_modules
+microservices/leave-service/.env
+microservices/recruitment-service/dist
+microservices/recruitment-service/node_modules
+microservices/recruitment-service/.env
+microservices/shared/dist
+microservices/shared/node_modules
+microservices/shared/.env
+
 rag/myenv
 rag/.ipynb_checkpoints
 
@@ -35,3 +45,6 @@ microservices/leave-service/node_modules
 microservices/leave-service/dist
 microservices/leave-service/.env
 
+Project/dist
+Project/node_modules
+Project/.env

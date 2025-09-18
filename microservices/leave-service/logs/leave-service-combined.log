@@ -1,0 +1,8 @@
+{"environment":"development","level":"info","message":"🚀 Leave Service is running on port 3003","port":3003,"service":"leave-service","timestamp":"2025-09-18 11:46:57"}
+{"level":"info","message":"📚 API Documentation available at http://localhost:3003/api-docs","service":"leave-service","timestamp":"2025-09-18 11:46:57"}
+{"level":"info","message":"📝 Available routes:","service":"leave-service","timestamp":"2025-09-18 11:46:57"}
+{"level":"info","message":"   GET    /health - Health check","service":"leave-service","timestamp":"2025-09-18 11:46:57"}
+{"level":"info","message":"   GET    /api-docs - API Documentation","service":"leave-service","timestamp":"2025-09-18 11:46:57"}
+{"level":"info","message":"   *      /api/v1/leaves - Leave management endpoints","service":"leave-service","timestamp":"2025-09-18 11:46:57"}
+{"level":"info","message":"   *      /api/v1/leave-types - Leave type management endpoints","service":"leave-service","timestamp":"2025-09-18 11:46:57"}
+{"level":"info","message":"   *      /api/v1/leave-balances - Leave balance management endpoints","service":"leave-service","timestamp":"2025-09-18 11:46:57"}
