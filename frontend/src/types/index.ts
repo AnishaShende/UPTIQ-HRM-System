@@ -17,8 +17,30 @@ export interface User {
 }
 
 export type Status = "ACTIVE" | "INACTIVE" | "PENDING" | "DELETED";
-export type EmploymentType = "FULL_TIME" | "PART_TIME" | "CONTRACT" | "INTERN" | "TEMPORARY";
+export type EmploymentType = "FULL_TIME" | "PART_TIME" | "CONTRACT" | "INTERN" | "TEMPORARY" | "FREELANCE";
 export type WorkLocation = "OFFICE" | "REMOTE" | "HYBRID";
+export type JobStatus = "DRAFT" | "PUBLISHED" | "CLOSED" | "CANCELLED" | "ON_HOLD";
+export type ExperienceLevel = "ENTRY_LEVEL" | "MID_LEVEL" | "SENIOR_LEVEL" | "EXECUTIVE";
+export type ApplicantStatus = "ACTIVE" | "INACTIVE" | "BLACKLISTED";
+export type ApplicationStatus = 
+  | "SUBMITTED" 
+  | "UNDER_REVIEW" 
+  | "INTERVIEW_SCHEDULED" 
+  | "INTERVIEWED" 
+  | "SECOND_INTERVIEW" 
+  | "FINAL_INTERVIEW" 
+  | "REFERENCE_CHECK" 
+  | "OFFER_EXTENDED" 
+  | "OFFER_ACCEPTED" 
+  | "OFFER_REJECTED" 
+  | "REJECTED" 
+  | "WITHDRAWN" 
+  | "HIRED"
+  | "APPLIED"
+  | "SCREENING"
+  | "INTERVIEW"
+  | "OFFER"
+  | "HIRED";
 
 export interface Employee {
   id: string;
@@ -334,42 +356,97 @@ export interface PerformanceReview {
 export interface JobPosting {
   id: string;
   title: string;
-  department: string;
   description: string;
   requirements: string[];
+  responsibilities: string[];
+  department: string;
+  location: string;
+  employmentType: EmploymentType;
+  workLocation: WorkLocation;
+  salaryMin?: number;
+  salaryMax?: number;
+  currency: string;
+  status: JobStatus;
+  isActive: boolean;
+  postedDate?: string;
+  closingDate?: string;
+  experienceLevel?: ExperienceLevel;
   benefits: string[];
-  salaryRange: {
+  skills: string[];
+  
+  // Approval workflow
+  isApproved: boolean;
+  approvedAt?: string;
+  approvedById?: string;
+  
+  // Metadata
+  createdAt: string;
+  updatedAt: string;
+  createdById?: string;
+  updatedById?: string;
+  
+  // Relations
+  applications?: Application[];
+  _count?: {
+    applications: number;
+  };
+  
+  // Legacy compatibility
+  salaryRange?: {
     min: number;
     max: number;
   };
-  location: string;
-  type: "FULL_TIME" | "PART_TIME" | "CONTRACT" | "INTERNSHIP";
-  status: "DRAFT" | "PUBLISHED" | "CLOSED";
-  postedBy: string;
+  type?: "FULL_TIME" | "PART_TIME" | "CONTRACT" | "INTERNSHIP" | "FREELANCE" | "TEMPORARY";
+  postedBy?: string;
   poster?: User;
-  createdAt: string;
-  updatedAt: string;
 }
 
-export interface JobApplication {
+export interface Application {
   id: string;
-  jobId: string;
-  job?: JobPosting;
-  candidateName: string;
-  candidateEmail: string;
-  candidatePhone: string;
-  resume: string;
+  jobPostingId: string;
+  applicantId: string;
+  
+  // Application specific details
   coverLetter?: string;
-  status:
-    | "APPLIED"
-    | "SCREENING"
-    | "INTERVIEW"
-    | "OFFER"
-    | "HIRED"
-    | "REJECTED";
-  notes?: string;
+  customResumeUrl?: string; // If they uploaded a job-specific resume
+  status: ApplicationStatus;
+  appliedAt: string;
+  
+  // Interview and evaluation
+  interviewDate?: string;
+  interviewNotes?: string;
+  evaluationScore?: number;
+  evaluationNotes?: string;
+  
+  // Decision tracking
+  rejectionReason?: string;
+  rejectedAt?: string;
+  rejectedById?: string;
+  
+  // Offer details
+  offerAmount?: number;
+  offerCurrency?: string;
+  offerDate?: string;
+  offerAcceptedAt?: string;
+  offerRejectedAt?: string;
+  
+  // Metadata
   createdAt: string;
   updatedAt: string;
+  updatedById?: string;
+  
+  // Relations
+  jobPosting?: JobPosting;
+  applicant?: Applicant;
+  
+  // Legacy compatibility for JobApplication
+  jobId?: string;
+  job?: JobPosting;
+  candidateName?: string;
+  candidateEmail?: string;
+  candidatePhone?: string;
+  resume?: string;
+  notes?: string;
 }
 
 export interface ApiResponse<T = any> {
@@ -402,6 +479,64 @@ export interface DashboardStats {
   newHires: number;
   performanceReviews: number;
   openPositions: number;
+}
+
+export interface RecruitmentStats {
+  totalJobPostings: number;
+  activeJobPostings: number;
+  draftJobPostings: number;
+  closedJobPostings: number;
+  totalApplicants: number;
+  totalApplications: number;
+  applicationsPerJob: number;
+  averageTimeToHire: number;
+  hireRate: number;
+  interviewRate: number;
+  offerAcceptanceRate: number;
+  
+  funnel: {
+    submitted: number;
+    underReview: number;
+    interviewed: number;
+    offerExtended: number;
+    hired: number;
+    rejected: number;
+  };
+  
+  topDepartments: Array<{
+    department: string;
+    openPositions: number;
+    applications: number;
+  }>;
+  
+  timeToHireByDepartment: Array<{
+    department: string;
+    averageDays: number;
+  }>;
+}
+
+export interface Interview {
+  id: string;
+  applicationId: string;
+  application?: Application;
+  interviewDate: string;
+  interviewTime: string;
+  interviewType: "PHONE" | "VIDEO" | "IN_PERSON" | "TECHNICAL" | "BEHAVIORAL";
+  interviewerIds: string[];
+  interviewers?: User[];
+  location?: string;
+  meetingLink?: string;
+  duration: number; // in minutes
+  status: "SCHEDULED" | "IN_PROGRESS" | "COMPLETED" | "CANCELLED" | "RESCHEDULED";
+  notes?: string;
+  feedback?: string;
+  score?: number;
+  
+  // Metadata
+  createdAt: string;
+  updatedAt: string;
+  createdBy?: string;
+  updatedBy?: string;
 }
 
 // ==================== PAYROLL MANAGEMENT TYPES ====================
@@ -607,6 +742,147 @@ export interface EmployeeTaxInfo {
   effectiveFrom: string;
   effectiveTo?: string;
   
+  createdAt: string;
+  updatedAt: string;
+  createdBy?: string;
+  updatedBy?: string;
+}
+
+export interface Applicant {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  dateOfBirth?: string;
+  address?: {
+    street?: string;
+    city?: string;
+    state?: string;
+    zipCode?: string;
+    country?: string;
+  };
+  linkedinProfile?: string;
+  portfolioUrl?: string;
+  resumeUrl?: string;
+  coverLetterUrl?: string;
+  
+  // Experience and skills
+  yearsOfExperience?: number;
+  currentPosition?: string;
+  currentCompany?: string;
+  expectedSalary?: number;
+  noticePeriod?: string;
+  skills: string[];
+  
+  // Status and tracking
+  status: ApplicantStatus;
+  source?: string; // Where did they come from (website, referral, etc.)
+  
+  // Metadata
+  createdAt: string;
+  updatedAt: string;
+  createdById?: string;
+  updatedById?: string;
+  
+  // Relations
+  applications?: Application[];
+  _count?: {
+    applications: number;
+  };
+}
+
+export interface Application {
+  id: string;
+  jobPostingId: string;
+  applicantId: string;
+  
+  // Application specific details
+  coverLetter?: string;
+  customResumeUrl?: string; // If they uploaded a job-specific resume
+  status: ApplicationStatus;
+  appliedAt: string;
+  
+  // Interview and evaluation
+  interviewDate?: string;
+  interviewNotes?: string;
+  evaluationScore?: number;
+  evaluationNotes?: string;
+  
+  // Decision tracking
+  rejectionReason?: string;
+  rejectedAt?: string;
+  rejectedById?: string;
+  
+  // Offer details
+  offerAmount?: number;
+  offerCurrency?: string;
+  offerDate?: string;
+  offerAcceptedAt?: string;
+  offerRejectedAt?: string;
+  
+  // Metadata
+  createdAt: string;
+  updatedAt: string;
+  updatedById?: string;
+  
+  // Relations
+  jobPosting?: JobPosting;
+  applicant?: Applicant;
+}
+
+export interface RecruitmentStats {
+  totalJobPostings: number;
+  activeJobPostings: number;
+  draftJobPostings: number;
+  closedJobPostings: number;
+  totalApplicants: number;
+  totalApplications: number;
+  applicationsPerJob: number;
+  averageTimeToHire: number;
+  hireRate: number;
+  interviewRate: number;
+  offerAcceptanceRate: number;
+  
+  funnel: {
+    submitted: number;
+    underReview: number;
+    interviewed: number;
+    offerExtended: number;
+    hired: number;
+    rejected: number;
+  };
+  
+  topDepartments: Array<{
+    department: string;
+    openPositions: number;
+    applications: number;
+  }>;
+  
+  timeToHireByDepartment: Array<{
+    department: string;
+    averageDays: number;
+  }>;
+}
+
+export interface Interview {
+  id: string;
+  applicationId: string;
+  application?: Application;
+  interviewDate: string;
+  interviewTime: string;
+  interviewType: "PHONE" | "VIDEO" | "IN_PERSON" | "TECHNICAL" | "BEHAVIORAL";
+  interviewerIds: string[];
+  interviewers?: User[];
+  location?: string;
+  meetingLink?: string;
+  duration: number; // in minutes
+  status: "SCHEDULED" | "IN_PROGRESS" | "COMPLETED" | "CANCELLED" | "RESCHEDULED";
+  notes?: string;
+  feedback?: string;
+  score?: number;
+  
+  // Metadata
   createdAt: string;
   updatedAt: string;
   createdBy?: string;

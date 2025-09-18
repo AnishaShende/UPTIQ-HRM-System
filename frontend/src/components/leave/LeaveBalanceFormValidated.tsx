@@ -42,9 +42,9 @@ export const LeaveBalanceForm: React.FC<LeaveBalanceFormProps> = ({
 }) => {
   const isEditing = !!balanceId;
   
-  // Separate forms for create and edit to avoid type conflicts
-  const createForm = useForm<CreateLeaveBalanceInput>({
-    resolver: zodResolver(createLeaveBalanceSchema),
+  // Use a single form with all fields for better type safety
+  const form = useForm<CreateLeaveBalanceInput>({
+    resolver: zodResolver(isEditing ? updateLeaveBalanceSchema : createLeaveBalanceSchema),
     defaultValues: {
       employeeId: initialEmployeeId || '',
       leaveTypeId: '',
@@ -54,16 +54,15 @@ export const LeaveBalanceForm: React.FC<LeaveBalanceFormProps> = ({
     }
   });
 
-  const editForm = useForm<UpdateLeaveBalanceInput>({
-    resolver: zodResolver(updateLeaveBalanceSchema),
-    defaultValues: {
-      totalDays: 0,
-      carriedForward: 0
-    }
-  });
-
-  // Use the appropriate form based on mode
-  const form = isEditing ? editForm : createForm;
+  // Destructure form methods from the active form
+  const {
+    register,
+    handleSubmit,
+    control,
+    setValue,
+    reset,
+    formState: { errors, isSubmitting }
+  } = form;
 
   // Fetch leave balance for editing
   const { 
@@ -95,16 +94,21 @@ export const LeaveBalanceForm: React.FC<LeaveBalanceFormProps> = ({
     }
   }, [balanceData, isEditing, setValue]);
 
-  const onSubmit = async (data: CreateLeaveBalanceInput | UpdateLeaveBalanceInput) => {
+  const onSubmit = async (data: CreateLeaveBalanceInput) => {
     try {
       if (isEditing && balanceId) {
+        // For updates, only send the fields that can be updated
+        const updateData: UpdateLeaveBalanceInput = {
+          totalDays: data.totalDays,
+          carriedForward: data.carriedForward
+        };
         await updateBalance.mutateAsync({
           id: balanceId,
-          data: data as UpdateLeaveBalanceInput
+          data: updateData
         });
         toast.success('Leave balance updated successfully');
       } else {
-        await createBalance.mutateAsync(data as CreateLeaveBalanceInput);
+        await createBalance.mutateAsync(data);
         toast.success('Leave balance created successfully');
       }
       

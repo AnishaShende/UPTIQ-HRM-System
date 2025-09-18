@@ -35,7 +35,7 @@ const employeeSchema = z.object({
   departmentId: z.string().min(1, "Department is required"),
   positionId: z.string().min(1, "Position is required"),
   managerId: z.string().optional(),
-  employmentType: z.enum(["FULL_TIME", "PART_TIME", "CONTRACT", "INTERN", "TEMPORARY"]),
+  employmentType: z.enum(["FULL_TIME", "PART_TIME", "CONTRACT", "INTERN", "TEMPORARY", "FREELANCE"]),
   workLocation: z.enum(["OFFICE", "REMOTE", "HYBRID"]),
   baseSalary: z.number().min(0, "Base salary must be positive"),
   currency: z.string().default("USD"),
@@ -156,7 +156,7 @@ export const EmployeeFormPage: React.FC<EmployeeFormPageProps> = ({ mode = "crea
         departmentId: employee.departmentId,
         positionId: employee.positionId,
         managerId: employee.managerId || "",
-        employmentType: employee.employmentType,
+        employmentType: employee.employmentType, 
         workLocation: employee.workLocation,
         baseSalary: employee.baseSalary,
         currency: employee.currency,
@@ -526,7 +526,9 @@ export const EmployeeFormPage: React.FC<EmployeeFormPageProps> = ({ mode = "crea
                             <option value="FULL_TIME">Full Time</option>
                             <option value="PART_TIME">Part Time</option>
                             <option value="CONTRACT">Contract</option>
+                            <option value="TEMPORARY">Temporary</option>
                             <option value="INTERN">Intern</option>
+                            <option value="FREELANCE">Freelance</option>
                           </Select>
                         </FormControl>
                         <FormMessage />
