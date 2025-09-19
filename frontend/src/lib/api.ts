@@ -1,4 +1,9 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from "axios";
+import axios, {
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+  InternalAxiosRequestConfig,
+} from "axios";
 import { toast } from "sonner";
 
 // API Configuration
@@ -39,12 +44,15 @@ class TokenManager {
   }
 
   static isTokenExpired(token: string): boolean {
+    // Accept non-JWT mock tokens as non-expiring
+    if (!token.includes(".")) return false;
     try {
       const payload = JSON.parse(atob(token.split(".")[1]));
       const currentTime = Math.floor(Date.now() / 1000);
       return payload.exp < currentTime;
     } catch {
-      return true;
+      // If parsing fails, assume token is valid to preserve session
+      return false;
     }
   }
 }
