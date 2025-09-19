@@ -1,14 +1,58 @@
 import { 
   JobPosting, 
   Applicant, 
-  Application,
-  JobStatus,
-  EmploymentType,
-  WorkLocation,
-  ExperienceLevel,
-  ApplicantStatus,
-  ApplicationStatus 
+  Application
 } from '@prisma/client';
+
+// Define enums locally to avoid import issues
+export enum EmploymentType {
+  FULL_TIME = 'FULL_TIME',
+  PART_TIME = 'PART_TIME',
+  CONTRACT = 'CONTRACT',
+  INTERNSHIP = 'INTERNSHIP',
+  TEMPORARY = 'TEMPORARY'
+}
+
+export enum WorkLocation {
+  REMOTE = 'REMOTE',
+  HYBRID = 'HYBRID',
+  ONSITE = 'ONSITE'
+}
+
+export enum JobStatus {
+  DRAFT = 'DRAFT',
+  PUBLISHED = 'PUBLISHED',
+  CLOSED = 'CLOSED',
+  CANCELLED = 'CANCELLED'
+}
+
+export enum ExperienceLevel {
+  ENTRY = 'ENTRY',
+  JUNIOR = 'JUNIOR',
+  MID = 'MID',
+  SENIOR = 'SENIOR',
+  LEAD = 'LEAD',
+  EXECUTIVE = 'EXECUTIVE'
+}
+
+export enum ApplicantStatus {
+  ACTIVE = 'ACTIVE',
+  INACTIVE = 'INACTIVE',
+  BLACKLISTED = 'BLACKLISTED'
+}
+
+export enum ApplicationStatus {
+  SUBMITTED = 'SUBMITTED',
+  UNDER_REVIEW = 'UNDER_REVIEW',
+  SHORTLISTED = 'SHORTLISTED',
+  INTERVIEW_SCHEDULED = 'INTERVIEW_SCHEDULED',
+  INTERVIEW_COMPLETED = 'INTERVIEW_COMPLETED',
+  OFFER_MADE = 'OFFER_MADE',
+  OFFER_ACCEPTED = 'OFFER_ACCEPTED',
+  OFFER_DECLINED = 'OFFER_DECLINED',
+  REJECTED = 'REJECTED',
+  WITHDRAWN = 'WITHDRAWN'
+}
 
 // Extended types with relations
 export interface JobPostingWithDetails extends JobPosting {
@@ -181,15 +225,7 @@ declare global {
   }
 }
 
-// Enum exports for easier use
-export {
-  JobStatus,
-  EmploymentType,
-  WorkLocation,
-  ExperienceLevel,
-  ApplicantStatus,
-  ApplicationStatus
-};
+// Enums are already exported above
 
 // Constants
 export const EMPLOYMENT_TYPES = Object.values(EmploymentType);

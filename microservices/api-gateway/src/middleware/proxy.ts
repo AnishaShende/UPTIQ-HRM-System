@@ -1,7 +1,7 @@
 import { createProxyMiddleware, Options } from 'http-proxy-middleware';
 import { Request, Response, NextFunction } from 'express';
 import { serviceConfig, routeConfig } from '../config/services';
-import { createLogger, NotFoundError, ServiceUnavailableError } from '../utils';
+import { createLogger, NotFoundError, ServiceUnavailableError } from '../utils/index';
 
 const logger = createLogger('api-gateway');
 

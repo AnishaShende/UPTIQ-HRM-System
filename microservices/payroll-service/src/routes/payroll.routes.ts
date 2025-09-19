@@ -128,7 +128,7 @@ router.post('/periods',
  */
 router.get('/periods',
   validateRequest({ query: payrollPeriodQuerySchema }),
-  payrollController.getPayrollPeriods.bind(payrollController)
+  payrollController.getAllPayrollPeriods.bind(payrollController)
 );
 
 /**

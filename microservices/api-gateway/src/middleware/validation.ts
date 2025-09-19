@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { z } from 'zod';
-import { ValidationError } from '../utils';
+import { ValidationError } from '../utils/index';
 
 // Base validation schemas
 export const commonSchemas = {

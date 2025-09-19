@@ -28,6 +28,7 @@ FROM base AS dev
 ENV NODE_ENV=development
 RUN npm install
 COPY payroll-service/ .
+RUN npx prisma generate
 EXPOSE 3004
 CMD ["npm", "run", "dev"]
 

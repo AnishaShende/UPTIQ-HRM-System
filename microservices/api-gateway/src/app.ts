@@ -16,7 +16,7 @@ import {
   authenticateToken,
   ResponseHelper,
   authorize
-} from './utils';
+} from './utils/index';
 
 import { routeToService, createServiceProxy } from './middleware/proxy';
 import { HealthChecker } from './services/health-checker';

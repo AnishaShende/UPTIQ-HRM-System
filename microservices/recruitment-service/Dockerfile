@@ -28,6 +28,7 @@ FROM base AS dev
 ENV NODE_ENV=development
 RUN npm install
 COPY recruitment-service/ .
+RUN npx prisma generate
 EXPOSE 3005
 CMD ["npm", "run", "dev"]
 

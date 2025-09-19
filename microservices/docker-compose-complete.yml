@@ -14,7 +14,7 @@ services:
     volumes:
       - postgres_auth_data:/var/lib/postgresql/data
     networks:
-      - hrm-network
+      - default
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d hrm_auth_db"]
@@ -34,7 +34,7 @@ services:
     volumes:
       - postgres_employee_data:/var/lib/postgresql/data
     networks:
-      - hrm-network
+      - default
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d hrm_employee_db"]
@@ -54,7 +54,7 @@ services:
     volumes:
       - postgres_leave_data:/var/lib/postgresql/data
     networks:
-      - hrm-network
+      - default
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d hrm_leave_db"]
@@ -74,7 +74,7 @@ services:
     volumes:
       - postgres_payroll_data:/var/lib/postgresql/data
     networks:
-      - hrm-network
+      - default
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d hrm_payroll_db"]
@@ -94,7 +94,7 @@ services:
     volumes:
       - postgres_recruitment_data:/var/lib/postgresql/data
     networks:
-      - hrm-network
+      - default
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d hrm_recruitment_db"]
@@ -111,7 +111,7 @@ services:
     volumes:
       - redis_data:/data
     networks:
-      - hrm-network
+      - default
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
@@ -164,7 +164,7 @@ services:
       redis:
         condition: service_healthy
     networks:
-      - hrm-network
+      - default
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3001/health"]
@@ -205,7 +205,7 @@ services:
       redis:
         condition: service_healthy
     networks:
-      - hrm-network
+      - default
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3002/health"]
@@ -249,7 +249,7 @@ services:
       employee-service:
         condition: service_healthy
     networks:
-      - hrm-network
+      - default
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3003/health"]
@@ -292,7 +292,7 @@ services:
       employee-service:
         condition: service_healthy
     networks:
-      - hrm-network
+      - default
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3004/health"]
@@ -336,7 +336,7 @@ services:
       employee-service:
         condition: service_healthy
     networks:
-      - hrm-network
+      - default
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3005/health"]
@@ -350,7 +350,7 @@ services:
     build:
       context: .
       dockerfile: ./api-gateway/Dockerfile
-      target: production
+      target: dev
     container_name: hrm-api-gateway
     environment:
       NODE_ENV: development
@@ -386,35 +386,35 @@ services:
       recruitment-service:
         condition: service_healthy
     networks:
-      - hrm-network
+      - default
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
       interval: 30s
       timeout: 10s
       retries: 3
-    command: ["npm", "start"]
+    command: ["npm", "run", "dev"]
 
   # Frontend
   frontend:
     build:
-      context: ../project
+      context: ../frontend
       dockerfile: Dockerfile
+      target: dev
     container_name: hrm-frontend
     environment:
       VITE_API_URL: http://localhost:3000/api/v1
     ports:
       - "5173:5173"
     volumes:
-      - ../project:/app
+      - ../frontend:/app
       - /app/node_modules
     depends_on:
       api-gateway:
         condition: service_healthy
     networks:
-      - hrm-network
+      - default
     restart: unless-stopped
-    command: npm run dev
 
 volumes:
   postgres_auth_data:
@@ -435,5 +435,5 @@ volumes:
   recruitment_uploads:
 
 networks:
-  hrm-network:
+  default:
     driver: bridge

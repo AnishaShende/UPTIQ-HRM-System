@@ -38,6 +38,7 @@ docker-compose -f docker-compose-complete.yml up --build -d
 - **Frontend** (Port 5173) - React/Vite application
 - **API Gateway** (Port 3000) - Central API routing
 - **Auth Service** (Port 3001) - Authentication & authorization
+
 - **Employee Service** (Port 3002) - Employee management
 - **Leave Service** (Port 3003) - Leave management
 - **Payroll Service** (Port 3004) - Payroll processing
@@ -173,5 +174,6 @@ The API Gateway routes requests to appropriate services based on URL patterns:
 - `/api/v1/leaves/*` → Leave Service
 - `/api/v1/payroll/*` → Payroll Service
 - `/api/v1/recruitment/*` → Recruitment Service
+
 
 
